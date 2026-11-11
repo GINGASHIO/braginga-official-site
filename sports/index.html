@@ -7,12 +7,14 @@
     <title>スポーツチーム向けオリジナルグッズ | BRAGINGA</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=20260831a">
-    <link rel="stylesheet" href="../creative.css?v=20260919a">
+    <link rel="stylesheet" href="../creative.css?v=20261112c">
     <link rel="stylesheet" href="../navigation.css?v=20260919a">
     <script src="../navigation.js?v=20260919a" defer></script>
-    <link rel="stylesheet" href="../studio.css?v=20261112b">
+    <link rel="stylesheet" href="../studio.css?v=20261112c">
     <link rel="stylesheet" href="../sports-feature.css?v=20261112b">
     <script src="../studio.js?v=20261105a" defer></script>
+  <link rel="stylesheet" href="../renewal.css?v=20261112r1">
+  <link rel="stylesheet" href="../product-detail.css?v=20261112renewal1">
   </head>
   <body data-page="products" class="sports-feature-page">
     <header class="site-header" data-header>
@@ -25,17 +27,15 @@
         <span class="menu-label">メニュー</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
-        <a href="../collections/index.html" data-nav="collections"><span>COLLECTION</span><small>特集コレクション</small></a>
-        <a href="../products/index.html" data-nav="products" aria-current="page"><span>PRODUCT</span><small>商品別</small></a>
-        <a href="../about/index.html" data-nav="about"><span>ABOUT</span><small>私たちについて</small></a>
-        <a href="../index.html#case" data-nav="cases"><span>CASE</span><small>制作実績</small></a>
-        <a href="../index.html#order" data-nav="order"><span>HOW TO ORDER</span><small>注文の流れ</small></a>
+        <a href="../products/index.html#lineup" data-nav="products"><span>PRODUCTS</span><small>商品を探す</small></a>
+        <a href="../collections/index.html" data-nav="collections"><span>COLLECTIONS</span><small>特集</small></a>
+        <a href="../cases/index.html" data-nav="cases"><span>WORKS</span><small>制作実績</small></a>
         <a href="../index.html#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
-        <a href="../estimate/index.html" data-nav="estimate"><span>ESTIMATE</span><small>お見積もり</small></a>
-        <a href="../index.html#contact" data-nav="contact"><span>CONTACT</span><small>お問い合わせ</small></a>
+        <a href="../estimate/index.html#quick" data-nav="contact"><span>CONSULT</span><small>メールで相談</small></a>
       </nav>
     </header>
-    <main class="sub-page product-archive-page sports-feature">
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <main id="main-content" class="sub-page product-archive-page sports-feature">
       <nav class="breadcrumbs" aria-label="現在地"><a href="../index.html">トップ</a><span aria-hidden="true">/</span><a href="../collections/index.html">特集コレクション</a><span aria-hidden="true">/</span><span aria-current="page">スポーツチーム向け</span></nav>
       <section class="sports-hero" aria-labelledby="sports-title">
         <div class="sports-hero-inner">
@@ -46,7 +46,7 @@
             <p class="sports-hero-description">ビブスや応援グッズから、卒業・卒団の記念品まで。チームロゴや大会名を入れたグッズの製作をご相談いただけます。</p>
             <div class="sports-hero-actions">
               <a class="sports-button sports-button-primary" href="#sports-lineup">商品を見る <span aria-hidden="true">↓</span></a>
-              <a class="sports-button sports-button-outline" href="mailto:info@ginga-bra.com?subject=%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E3%83%81%E3%83%BC%E3%83%A0%E5%90%91%E3%81%91%E3%82%B0%E3%83%83%E3%82%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールで相談 <span aria-hidden="true">↗</span></a>
+              <a class="sports-button sports-button-outline" href="../estimate/index.html?topic=sports#quick">メールで相談 <span aria-hidden="true">↗</span></a>
             </div>
           </div>
           <figure class="sports-hero-visual" aria-label="チームグッズの製作例">
@@ -77,7 +77,7 @@
           </div>
         </div>
       </section>
-      <section class="section product-archive-section sports-lineup" id="sports-lineup" aria-labelledby="sports-lineup-title">
+      <span id="lineup" class="anchor"></span><section class="section product-archive-section sports-lineup" id="sports-lineup" aria-labelledby="sports-lineup-title">
         <header class="sports-section-head sports-wrap"><p class="sports-eyebrow">TEAM GOODS LINEUP</p><h2 id="sports-lineup-title">スポーツチーム向け商品一覧</h2><p>全45アイテム。品目や商品名から探し、気になる商品の詳細へ進めます。</p></header>
         <div class="catalog-filter sports-filter" data-catalog-filter hidden>
           <label>商品名で探す<input type="search" data-catalog-search placeholder="例：バッグ、ビブス、フルカラー" aria-controls="sports-product-grid"></label>
@@ -100,7 +100,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=1#auto" aria-label="昇華ビブス（子ども用）の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E6%98%87%E8%8F%AF%E3%83%93%E3%83%96%E3%82%B9%EF%BC%88%E5%AD%90%E3%81%A9%E3%82%82%E7%94%A8%EF%BC%89%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="昇華ビブス（子ども用）についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=1#quick" data-consult-product="1" aria-label="昇華ビブス（子ども用）についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="1" aria-pressed="false" aria-label="昇華ビブス（子ども用）を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ビブス" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="2" id="product-02">
@@ -116,7 +117,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=2#auto" aria-label="昇華ビブス（大人用）の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E6%98%87%E8%8F%AF%E3%83%93%E3%83%96%E3%82%B9%EF%BC%88%E5%A4%A7%E4%BA%BA%E7%94%A8%EF%BC%89%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="昇華ビブス（大人用）についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=2#quick" data-consult-product="2" aria-label="昇華ビブス（大人用）についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="2" aria-pressed="false" aria-label="昇華ビブス（大人用）を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ビブス" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="3" id="product-03">
@@ -132,7 +134,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=3#auto" aria-label="昇華ビブス（子ども用）リバーシブルの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E6%98%87%E8%8F%AF%E3%83%93%E3%83%96%E3%82%B9%EF%BC%88%E5%AD%90%E3%81%A9%E3%82%82%E7%94%A8%EF%BC%89%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B7%E3%83%96%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="昇華ビブス（子ども用）リバーシブルについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=3#quick" data-consult-product="3" aria-label="昇華ビブス（子ども用）リバーシブルについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="3" aria-pressed="false" aria-label="昇華ビブス（子ども用）リバーシブルを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ビブス" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="4" id="product-04">
@@ -148,7 +151,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=4#auto" aria-label="昇華ビブス（大人用）リバーシブルの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E6%98%87%E8%8F%AF%E3%83%93%E3%83%96%E3%82%B9%EF%BC%88%E5%A4%A7%E4%BA%BA%E7%94%A8%EF%BC%89%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B7%E3%83%96%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="昇華ビブス（大人用）リバーシブルについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=4#quick" data-consult-product="4" aria-label="昇華ビブス（大人用）リバーシブルについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="4" aria-pressed="false" aria-label="昇華ビブス（大人用）リバーシブルを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="5" id="product-05">
@@ -164,10 +168,11 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=5#auto" aria-label="シューズバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="シューズバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=5#quick" data-consult-product="5" aria-label="シューズバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="5" aria-pressed="false" aria-label="シューズバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="タオル" data-use-cases="スポーツ" data-scenes="event sports graduation" data-search-aliases="" data-product-no="6" id="product-06">
+        <article class="public-product-card" data-category="タオル" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="6" id="product-06">
           <figure class="public-product-media product-image-slot" aria-label="マフラータオルの写真"><img src="../assets/images/products/product-06-20261111.webp" alt="マフラータオルの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.06</span><span>タオル</span></div>
@@ -180,10 +185,11 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=6#auto" aria-label="マフラータオルの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%9E%E3%83%95%E3%83%A9%E3%83%BC%E3%82%BF%E3%82%AA%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="マフラータオルについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=6#quick" data-consult-product="6" aria-label="マフラータオルについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="6" aria-pressed="false" aria-label="マフラータオルを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="キーホルダー" data-use-cases="スポーツ" data-scenes="event sports graduation" data-search-aliases="" data-product-no="7" id="product-07">
+        <article class="public-product-card" data-category="キーホルダー" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="7" id="product-07">
           <figure class="public-product-media product-image-slot" aria-label="ユニクッションキーホルダーの写真"><img src="../assets/images/products/product-07-20261111.webp" alt="ユニクッションキーホルダーの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.07</span><span>キーホルダー</span></div>
@@ -196,7 +202,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=7#auto" aria-label="ユニクッションキーホルダーの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%A6%E3%83%8B%E3%82%AF%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%AD%E3%83%BC%E3%83%9B%E3%83%AB%E3%83%80%E3%83%BC%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ユニクッションキーホルダーについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=7#quick" data-consult-product="7" aria-label="ユニクッションキーホルダーについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="7" aria-pressed="false" aria-label="ユニクッションキーホルダーを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="8" id="product-08">
@@ -212,7 +219,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=8#auto" aria-label="ランドリーバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%A9%E3%83%B3%E3%83%89%E3%83%AA%E3%83%BC%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ランドリーバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=8#quick" data-consult-product="8" aria-label="ランドリーバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="8" aria-pressed="false" aria-label="ランドリーバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ブランケット" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="9" id="product-09">
@@ -228,10 +236,11 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=9#auto" aria-label="ブランケットフリースの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%96%E3%83%A9%E3%83%B3%E3%82%B1%E3%83%83%E3%83%88%E3%83%95%E3%83%AA%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ブランケットフリースについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=9#quick" data-consult-product="9" aria-label="ブランケットフリースについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="9" aria-pressed="false" aria-label="ブランケットフリースを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="10" id="product-10">
+        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports graduation" data-search-aliases="" data-product-no="10" id="product-10">
           <figure class="public-product-media product-image-slot" aria-label="コンパクトエコバッグの写真"><img src="../assets/images/products/product-10-20261111.webp" alt="コンパクトエコバッグの制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.10</span><span>バッグ</span></div>
@@ -244,7 +253,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=10#auto" aria-label="コンパクトエコバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%B3%E3%83%B3%E3%83%91%E3%82%AF%E3%83%88%E3%82%A8%E3%82%B3%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="コンパクトエコバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=10#quick" data-consult-product="10" aria-label="コンパクトエコバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="10" aria-pressed="false" aria-label="コンパクトエコバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="巾着" data-use-cases="スポーツ" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="11" id="product-11">
@@ -260,7 +270,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=11#auto" aria-label="ミニ巾着の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%9F%E3%83%8B%E5%B7%BE%E7%9D%80%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ミニ巾着についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=11#quick" data-consult-product="11" aria-label="ミニ巾着についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="11" aria-pressed="false" aria-label="ミニ巾着を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ペナント" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="12" id="product-12">
@@ -276,7 +287,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=12#auto" aria-label="ペナントの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%9A%E3%83%8A%E3%83%B3%E3%83%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ペナントについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=12#quick" data-consult-product="12" aria-label="ペナントについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="12" aria-pressed="false" aria-label="ペナントを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ペナント" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="13" id="product-13">
@@ -292,10 +304,11 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=13#auto" aria-label="ミニペナントの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%9F%E3%83%8B%E3%83%9A%E3%83%8A%E3%83%B3%E3%83%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ミニペナントについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=13#quick" data-consult-product="13" aria-label="ミニペナントについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="13" aria-pressed="false" aria-label="ミニペナントを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="14" id="product-14">
+        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports graduation" data-search-aliases="" data-product-no="14" id="product-14">
           <figure class="public-product-media product-image-slot is-empty" aria-label="ランチバッグの写真"><span class="product-image-label">商品写真 掲載予定</span></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.14</span><span>バッグ</span></div>
@@ -308,7 +321,8 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=14#auto" aria-label="ランチバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%A9%E3%83%B3%E3%83%81%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ランチバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=14#quick" data-consult-product="14" aria-label="ランチバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="14" aria-pressed="false" aria-label="ランチバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="15" id="product-15">
@@ -324,10 +338,11 @@
               <div><dt>納期目安</dt><dd>約6週間</dd></div>
             </dl>
             <a class="public-product-cta" href="../estimate/index.html?product=15#auto" aria-label="ユニ型トートバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%A6%E3%83%8B%E5%9E%8B%E3%83%88%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ユニ型トートバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=15#quick" data-consult-product="15" aria-label="ユニ型トートバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="15" aria-pressed="false" aria-label="ユニ型トートバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="16" id="product-16">
+        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="16" id="product-16">
           <figure class="public-product-media product-image-slot" aria-label="POP・販促ツールの写真"><img src="../assets/images/products/product-16-20261111.webp" alt="POP・販促ツールのデザイン例" loading="lazy" decoding="async" width="1000" height="434"><figcaption>デザイン例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.16</span><span>店舗用品</span></div>
@@ -341,10 +356,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=16#auto" aria-label="POP・販促ツールの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=POP%E3%83%BB%E8%B2%A9%E4%BF%83%E3%83%84%E3%83%BC%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="POP・販促ツールについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=16#quick" data-consult-product="16" aria-label="POP・販促ツールについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="16" aria-pressed="false" aria-label="POP・販促ツールを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="17" id="product-17">
+        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="17" id="product-17">
           <figure class="public-product-media product-image-slot" aria-label="Tシャツ・プリントウェアの写真"><img src="../assets/images/products/product-17-20261111.webp" alt="Tシャツ・プリントウェアの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.17</span><span>ウェア</span></div>
@@ -358,10 +374,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=17#auto" aria-label="Tシャツ・プリントウェアの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=T%E3%82%B7%E3%83%A3%E3%83%84%E3%83%BB%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="Tシャツ・プリントウェアについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=17#quick" data-consult-product="17" aria-label="Tシャツ・プリントウェアについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="17" aria-pressed="false" aria-label="Tシャツ・プリントウェアを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="event sports graduation" data-search-aliases="" data-product-no="19" id="product-19">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="19" id="product-19">
           <figure class="public-product-media product-image-slot" aria-label="ぬいぐるみの写真"><img src="../assets/images/products/product-19-20261111.webp" alt="ぬいぐるみの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.19</span><span>記念品</span></div>
@@ -375,10 +392,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=19#auto" aria-label="ぬいぐるみの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ぬいぐるみについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=19#quick" data-consult-product="19" aria-label="ぬいぐるみについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="19" aria-pressed="false" aria-label="ぬいぐるみを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="のぼりバナー" data-product-no="20" id="product-20">
+        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="のぼりバナー" data-product-no="20" id="product-20">
           <figure class="public-product-media product-image-slot" aria-label="のぼりの写真"><img src="../assets/images/products/product-20-20261111.webp" alt="のぼりの制作例" loading="lazy" decoding="async" width="562" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.20</span><span>店舗用品</span></div>
@@ -392,10 +410,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=20#auto" aria-label="のぼりの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%81%AE%E3%81%BC%E3%82%8A%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="のぼりについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=20#quick" data-consult-product="20" aria-label="のぼりについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="20" aria-pressed="false" aria-label="のぼりを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="22" id="product-22">
+        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="22" id="product-22">
           <figure class="public-product-media product-image-slot" aria-label="はっぴの写真"><img src="../assets/images/products/product-22-20261111.webp" alt="はっぴの制作例" loading="lazy" decoding="async" width="908" height="622"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.22</span><span>ウェア</span></div>
@@ -409,10 +428,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=22#auto" aria-label="はっぴの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%81%AF%E3%81%A3%E3%81%B4%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="はっぴについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=22#quick" data-consult-product="22" aria-label="はっぴについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="22" aria-pressed="false" aria-label="はっぴを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="キーホルダー" data-use-cases="スポーツ" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="23" id="product-23">
+        <article class="public-product-card" data-category="キーホルダー" data-use-cases="スポーツ" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="23" id="product-23">
           <figure class="public-product-media product-image-slot" aria-label="アクリルキーホルダーの写真"><img src="../assets/images/products/product-23-20261111.webp" alt="アクリルキーホルダーの制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.23</span><span>キーホルダー</span></div>
@@ -426,10 +446,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=23#auto" aria-label="アクリルキーホルダーの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%A2%E3%82%AF%E3%83%AA%E3%83%AB%E3%82%AD%E3%83%BC%E3%83%9B%E3%83%AB%E3%83%80%E3%83%BC%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="アクリルキーホルダーについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=23#quick" data-consult-product="23" aria-label="アクリルキーホルダーについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="23" aria-pressed="false" aria-label="アクリルキーホルダーを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="24" id="product-24">
+        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="24" id="product-24">
           <figure class="public-product-media product-image-slot" aria-label="キャップの写真"><img src="../assets/images/products/product-24-20261111.webp" alt="キャップの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.24</span><span>ウェア</span></div>
@@ -443,7 +464,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=24#auto" aria-label="キャップの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%AD%E3%83%A3%E3%83%83%E3%83%97%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="キャップについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=24#quick" data-consult-product="24" aria-label="キャップについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="24" aria-pressed="false" aria-label="キャップを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="クッションシート シートクッション" data-product-no="25" id="product-25">
@@ -460,10 +482,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=25#auto" aria-label="クッションの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%AF%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="クッションについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=25#quick" data-consult-product="25" aria-label="クッションについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="25" aria-pressed="false" aria-label="クッションを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="26" id="product-26">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="26" id="product-26">
           <figure class="public-product-media product-image-slot" aria-label="クリアファイルの写真"><img src="../assets/images/products/product-26-20261111.webp" alt="クリアファイルの制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.26</span><span>記念品</span></div>
@@ -477,7 +500,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=26#auto" aria-label="クリアファイルの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%AF%E3%83%AA%E3%82%A2%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="クリアファイルについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=26#quick" data-consult-product="26" aria-label="クリアファイルについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="26" aria-pressed="false" aria-label="クリアファイルを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="27" id="product-27">
@@ -494,10 +518,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=27#auto" aria-label="サイン色紙の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%B5%E3%82%A4%E3%83%B3%E8%89%B2%E7%B4%99%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="サイン色紙についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=27#quick" data-consult-product="27" aria-label="サイン色紙についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="27" aria-pressed="false" aria-label="サイン色紙を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="28" id="product-28">
+        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports graduation" data-search-aliases="" data-product-no="28" id="product-28">
           <figure class="public-product-media product-image-slot" aria-label="スクエアトートバッグ・コンパクトの写真"><img src="../assets/images/products/product-28-20261111.webp" alt="スクエアトートバッグ・コンパクトの制作例" loading="lazy" decoding="async" width="951" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.28</span><span>バッグ</span></div>
@@ -511,7 +536,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=28#auto" aria-label="スクエアトートバッグ・コンパクトの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%B9%E3%82%AF%E3%82%A8%E3%82%A2%E3%83%88%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%82%B0%E3%83%BB%E3%82%B3%E3%83%B3%E3%83%91%E3%82%AF%E3%83%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="スクエアトートバッグ・コンパクトについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=28#quick" data-consult-product="28" aria-label="スクエアトートバッグ・コンパクトについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="28" aria-pressed="false" aria-label="スクエアトートバッグ・コンパクトを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="タオル" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="29" id="product-29">
@@ -528,10 +554,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=29#auto" aria-label="織りタオルの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E7%B9%94%E3%82%8A%E3%82%BF%E3%82%AA%E3%83%AB%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="織りタオルについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=29#quick" data-consult-product="29" aria-label="織りタオルについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="29" aria-pressed="false" aria-label="織りタオルを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="30" id="product-30">
+        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="30" id="product-30">
           <figure class="public-product-media product-image-slot" aria-label="タペストリー・横断幕の写真"><img src="../assets/images/products/product-30-20261111.webp" alt="タペストリー・横断幕の制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.30</span><span>店舗用品</span></div>
@@ -545,7 +572,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=30#auto" aria-label="タペストリー・横断幕の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%BF%E3%83%9A%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%BB%E6%A8%AA%E6%96%AD%E5%B9%95%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="タペストリー・横断幕についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=30#quick" data-consult-product="30" aria-label="タペストリー・横断幕についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="30" aria-pressed="false" aria-label="タペストリー・横断幕を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="31" id="product-31">
@@ -562,10 +590,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=31#auto" aria-label="ティッシュケースの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%86%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%82%B1%E3%83%BC%E3%82%B9%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ティッシュケースについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=31#quick" data-consult-product="31" aria-label="ティッシュケースについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="31" aria-pressed="false" aria-label="ティッシュケースを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports" data-search-aliases="" data-product-no="32" id="product-32">
+        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="32" id="product-32">
           <figure class="public-product-media product-image-slot" aria-label="薄手トートバッグの写真"><img src="../assets/images/products/product-32-20261111.webp" alt="薄手トートバッグのプリント例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>プリント例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.32</span><span>バッグ</span></div>
@@ -579,10 +608,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=32#auto" aria-label="薄手トートバッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E8%96%84%E6%89%8B%E3%83%88%E3%83%BC%E3%83%88%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="薄手トートバッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=32#quick" data-consult-product="32" aria-label="薄手トートバッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="32" aria-pressed="false" aria-label="薄手トートバッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="event promo sports" data-search-aliases="" data-product-no="33" id="product-33">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="promo sports" data-search-aliases="" data-product-no="33" id="product-33">
           <figure class="public-product-media product-image-slot" aria-label="ネックピース・ストラップの写真"><img src="../assets/images/products/product-33-20261111.webp" alt="ネックピース・ストラップの制作例" loading="lazy" decoding="async" width="462" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.33</span><span>記念品</span></div>
@@ -596,10 +626,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=33#auto" aria-label="ネックピース・ストラップの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%8D%E3%83%83%E3%82%AF%E3%83%94%E3%83%BC%E3%82%B9%E3%83%BB%E3%82%B9%E3%83%88%E3%83%A9%E3%83%83%E3%83%97%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ネックピース・ストラップについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=33#quick" data-consult-product="33" aria-label="ネックピース・ストラップについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="33" aria-pressed="false" aria-label="ネックピース・ストラップを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="34" id="product-34">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="34" id="product-34">
           <figure class="public-product-media product-image-slot" aria-label="缶バッジの写真"><img src="../assets/images/products/product-34-20261111.webp" alt="缶バッジの制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.34</span><span>記念品</span></div>
@@ -613,10 +644,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=34#auto" aria-label="缶バッジの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E7%BC%B6%E3%83%90%E3%83%83%E3%82%B8%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="缶バッジについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=34#quick" data-consult-product="34" aria-label="缶バッジについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="34" aria-pressed="false" aria-label="缶バッジを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="event sports" data-search-aliases="" data-product-no="35" id="product-35">
+        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="35" id="product-35">
           <figure class="public-product-media product-image-slot" aria-label="ハリセンの写真"><img src="../assets/images/products/product-35-20261111.webp" alt="ハリセンの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.35</span><span>応援グッズ</span></div>
@@ -630,10 +662,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=35#auto" aria-label="ハリセンの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%8F%E3%83%AA%E3%82%BB%E3%83%B3%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="ハリセンについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=35#quick" data-consult-product="35" aria-label="ハリセンについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="35" aria-pressed="false" aria-label="ハリセンを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="event sports graduation" data-search-aliases="" data-product-no="36" id="product-36">
+        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="36" id="product-36">
           <figure class="public-product-media product-image-slot" aria-label="フルカラー応援マフラーの写真"><img src="../assets/images/products/product-36-20261111.webp" alt="フルカラー応援マフラーの制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.36</span><span>応援グッズ</span></div>
@@ -647,10 +680,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=36#auto" aria-label="フルカラー応援マフラーの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%95%E3%83%AB%E3%82%AB%E3%83%A9%E3%83%BC%E5%BF%9C%E6%8F%B4%E3%83%9E%E3%83%95%E3%83%A9%E3%83%BC%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="フルカラー応援マフラーについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=36#quick" data-consult-product="36" aria-label="フルカラー応援マフラーについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="36" aria-pressed="false" aria-label="フルカラー応援マフラーを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="38" id="product-38">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="38" id="product-38">
           <figure class="public-product-media product-image-slot" aria-label="マグネットの写真"><img src="../assets/images/products/product-38-20261111.webp" alt="マグネットの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.38</span><span>記念品</span></div>
@@ -664,10 +698,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=38#auto" aria-label="マグネットの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%9E%E3%82%B0%E3%83%8D%E3%83%83%E3%83%88%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="マグネットについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=38#quick" data-consult-product="38" aria-label="マグネットについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="38" aria-pressed="false" aria-label="マグネットを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="promo sports" data-search-aliases="" data-product-no="39" id="product-39">
+        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports" data-search-aliases="" data-product-no="39" id="product-39">
           <figure class="public-product-media product-image-slot" aria-label="オリジナルマスクの写真"><img src="../assets/images/products/product-39-20261111.webp" alt="オリジナルマスクの制作例" loading="lazy" decoding="async" width="700" height="525"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.39</span><span>ウェア</span></div>
@@ -681,10 +716,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=39#auto" aria-label="オリジナルマスクの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%8A%E3%83%AB%E3%83%9E%E3%82%B9%E3%82%AF%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="オリジナルマスクについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=39#quick" data-consult-product="39" aria-label="オリジナルマスクについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="39" aria-pressed="false" aria-label="オリジナルマスクを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="event sports" data-search-aliases="" data-product-no="41" id="product-41">
+        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="41" id="product-41">
           <figure class="public-product-media product-image-slot" aria-label="メガホンの写真"><img src="../assets/images/products/product-41-20261111.webp" alt="メガホンの制作例" loading="lazy" decoding="async" width="1000" height="772"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.41</span><span>応援グッズ</span></div>
@@ -698,10 +734,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=41#auto" aria-label="メガホンの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%A1%E3%82%AC%E3%83%9B%E3%83%B3%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="メガホンについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=41#quick" data-consult-product="41" aria-label="メガホンについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="41" aria-pressed="false" aria-label="メガホンを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="promo sports graduation" data-search-aliases="" data-product-no="43" id="product-43">
+        <article class="public-product-card" data-category="バッグ" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports graduation" data-search-aliases="" data-product-no="43" id="product-43">
           <figure class="public-product-media product-image-slot" aria-label="保冷バッグの写真"><img src="../assets/images/products/product-43-20261111.webp" alt="保冷バッグの制作例" loading="lazy" decoding="async" width="1000" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.43</span><span>バッグ</span></div>
@@ -715,10 +752,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=43#auto" aria-label="保冷バッグの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E4%BF%9D%E5%86%B7%E3%83%90%E3%83%83%E3%82%B0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="保冷バッグについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=43#quick" data-consult-product="43" aria-label="保冷バッグについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="43" aria-pressed="false" aria-label="保冷バッグを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ 飲食店" data-scenes="event promo sports graduation" data-search-aliases="" data-product-no="46" id="product-46">
+        <article class="public-product-card" data-category="記念品" data-use-cases="スポーツ 飲食店" data-scenes="restaurant promo sports graduation" data-search-aliases="" data-product-no="46" id="product-46">
           <figure class="public-product-media product-image-slot" aria-label="吸盤POPの写真"><img src="../assets/images/products/product-46-20261111.webp" alt="吸盤POPの制作例" loading="lazy" decoding="async" width="750" height="1000"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.46</span><span>記念品</span></div>
@@ -732,10 +770,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=46#auto" aria-label="吸盤POPの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E5%90%B8%E7%9B%A4POP%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="吸盤POPについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=46#quick" data-consult-product="46" aria-label="吸盤POPについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="46" aria-pressed="false" aria-label="吸盤POPを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="event sports" data-search-aliases="" data-product-no="47" id="product-47">
+        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="47" id="product-47">
           <figure class="public-product-media product-image-slot" aria-label="応援用紙の写真"><img src="../assets/images/products/product-47-20261111.webp" alt="応援用紙の制作例" loading="lazy" decoding="async" width="1000" height="750"><figcaption>制作例</figcaption></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.47</span><span>応援グッズ</span></div>
@@ -749,7 +788,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=47#auto" aria-label="応援用紙の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E5%BF%9C%E6%8F%B4%E7%94%A8%E7%B4%99%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="応援用紙についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=47#quick" data-consult-product="47" aria-label="応援用紙についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="47" aria-pressed="false" aria-label="応援用紙を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ" data-scenes="sports" data-search-aliases="" data-product-no="48" id="product-48">
@@ -766,7 +806,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=48#auto" aria-label="手袋の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E6%89%8B%E8%A2%8B%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="手袋についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=48#quick" data-consult-product="48" aria-label="手袋についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="48" aria-pressed="false" aria-label="手袋を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="" data-product-no="49" id="product-49">
@@ -783,10 +824,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=49#auto" aria-label="靴下の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E9%9D%B4%E4%B8%8B%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="靴下についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=49#quick" data-consult-product="49" aria-label="靴下についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="49" aria-pressed="false" aria-label="靴下を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="event promo sports" data-search-aliases="団扇" data-product-no="50" id="product-50">
+        <article class="public-product-card" data-category="応援グッズ" data-use-cases="スポーツ" data-scenes="promo sports" data-search-aliases="団扇" data-product-no="50" id="product-50">
           <figure class="public-product-media product-image-slot is-empty" aria-label="うちわの写真"><span class="product-image-label">商品写真 掲載予定</span></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.50</span><span>応援グッズ</span></div>
@@ -800,10 +842,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=50#auto" aria-label="うちわの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%81%86%E3%81%A1%E3%82%8F%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="うちわについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=50#quick" data-consult-product="50" aria-label="うちわについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="50" aria-pressed="false" aria-label="うちわを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ" data-scenes="event sports graduation" data-search-aliases="レプリカユニ" data-product-no="51" id="product-51">
+        <article class="public-product-card" data-category="ウェア" data-use-cases="スポーツ" data-scenes="sports graduation" data-search-aliases="レプリカユニ" data-product-no="51" id="product-51">
           <figure class="public-product-media product-image-slot is-empty" aria-label="レプリカユニフォームの写真"><span class="product-image-label">商品写真 掲載予定</span></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.51</span><span>ウェア</span></div>
@@ -817,10 +860,11 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=51#auto" aria-label="レプリカユニフォームの簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%83%AC%E3%83%97%E3%83%AA%E3%82%AB%E3%83%A6%E3%83%8B%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="レプリカユニフォームについてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=51#quick" data-consult-product="51" aria-label="レプリカユニフォームについてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="51" aria-pressed="false" aria-label="レプリカユニフォームを比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
-        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ" data-scenes="event promo sports" data-search-aliases="のぼりバナーラウンドタイプ ラウンドバナー" data-product-no="52" id="product-52">
+        <article class="public-product-card" data-category="店舗用品" data-use-cases="スポーツ" data-scenes="promo sports" data-search-aliases="のぼりバナーラウンドタイプ ラウンドバナー" data-product-no="52" id="product-52">
           <figure class="public-product-media product-image-slot is-empty" aria-label="のぼりバナー（ラウンドタイプ）の写真"><span class="product-image-label">商品写真 掲載予定</span></figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.52</span><span>店舗用品</span></div>
@@ -834,7 +878,8 @@
             </dl>
             <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
             <a class="public-product-cta" href="../estimate/index.html?product=52#auto" aria-label="のぼりバナー（ラウンドタイプ）の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject=%E3%81%AE%E3%81%BC%E3%82%8A%E3%83%90%E3%83%8A%E3%83%BC%EF%BC%88%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%89%E3%82%BF%E3%82%A4%E3%83%97%EF%BC%89%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87" aria-label="のぼりバナー（ラウンドタイプ）についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product=52#quick" data-consult-product="52" aria-label="のぼりバナー（ラウンドタイプ）についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="52" aria-pressed="false" aria-label="のぼりバナー（ラウンドタイプ）を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>
         <!-- PUBLIC PRODUCTS END -->
@@ -859,15 +904,15 @@
         <div class="sports-wrap sports-contact-inner">
           <div><p class="sports-eyebrow">TELL US ABOUT YOUR TEAM</p><h2 id="sports-contact-title">チームグッズを相談する</h2><p>用途、希望の数量、納品希望日をお知らせください。商品や加工方法に合わせてご案内します。</p></div>
           <div class="sports-contact-actions">
-            <a class="sports-button sports-button-primary" href="mailto:info@ginga-bra.com?subject=%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E3%83%81%E3%83%BC%E3%83%A0%E5%90%91%E3%81%91%E3%82%B0%E3%83%83%E3%82%BA%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールで相談 <span aria-hidden="true">↗</span></a>
+            <a class="sports-button sports-button-primary" href="../estimate/index.html?topic=sports#quick">メールで相談 <span aria-hidden="true">↗</span></a>
             <a class="sports-button sports-button-outline" href="../estimate/index.html#auto">簡易見積もり <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
     </main>
     <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC / TEAM GOODS</span></footer>
-    <script src="../estimate/estimate-data.js?v=20261112b"></script>
-    <script src="../script.js?v=20261112b"></script>
-    <script src="../creative.js?v=20261111c"></script>
+    <script src="../estimate/estimate-data.js?v=20261112renewal1"></script>
+    <script src="../script.js?v=20261112renewal1"></script>
+    <script src="../creative.js?v=20261112r1"></script>
   </body>
 </html>

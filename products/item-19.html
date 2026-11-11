@@ -8,13 +8,14 @@
     <title>ぬいぐるみ | GINGA PRINT FACTORY</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=20260831a">
-    <link rel="stylesheet" href="../creative.css?v=20260919a">
+    <link rel="stylesheet" href="../creative.css?v=20261112c">
     <link rel="stylesheet" href="../navigation.css?v=20260919a">
-    <link rel="stylesheet" href="../studio.css?v=20261112b">
-    <link rel="stylesheet" href="../product-detail.css?v=20261112b">
+    <link rel="stylesheet" href="../studio.css?v=20261112c">
+    <link rel="stylesheet" href="../product-detail.css?v=20261112renewal1">
+    <link rel="stylesheet" href="../renewal.css?v=20261112r1">
     <script src="../navigation.js?v=20260919a" defer></script>
   </head>
-  <body data-page="products">
+  <body data-page="products" data-product-no="19">
     <header class="site-header" data-header>
       <a class="brand" href="../index.html#home" aria-label="GINGA PRINT FACTORY トップページ">
         <span class="brand-mark">GPF</span>
@@ -25,20 +26,17 @@
         <span class="menu-label">メニュー</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
-        <a href="../collections/index.html" data-nav="collections"><span>COLLECTION</span><small>特集コレクション</small></a>
-        <a href="../products/index.html" data-nav="products" aria-current="page"><span>PRODUCT</span><small>商品別</small></a>
-        <a href="../about/index.html" data-nav="about"><span>ABOUT</span><small>私たちについて</small></a>
-        <a href="../index.html#case" data-nav="cases"><span>CASE</span><small>制作実績</small></a>
-        <a href="../index.html#order" data-nav="order"><span>HOW TO ORDER</span><small>注文の流れ</small></a>
+        <a href="../products/index.html#lineup" data-nav="products"><span>PRODUCTS</span><small>商品を探す</small></a>
+        <a href="../collections/index.html" data-nav="collections"><span>COLLECTIONS</span><small>特集</small></a>
+        <a href="../cases/index.html" data-nav="cases"><span>WORKS</span><small>制作実績</small></a>
         <a href="../index.html#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
-        <a href="../estimate/index.html" data-nav="estimate"><span>ESTIMATE</span><small>お見積もり</small></a>
-        <a href="../index.html#contact" data-nav="contact"><span>CONTACT</span><small>お問い合わせ</small></a>
+        <a href="../estimate/index.html#quick" data-nav="contact"><span>CONSULT</span><small>メールで相談</small></a>
       </nav>
     </header>
     <main class="sub-page product-detail-page">
       <nav class="breadcrumbs" aria-label="現在地">
         <a href="../index.html">トップ</a><span aria-hidden="true">/</span>
-        <a href="index.html#lineup">商品一覧</a><span aria-hidden="true">/</span>
+        <a href="index.html#lineup" data-catalog-return>商品一覧</a><span aria-hidden="true">/</span>
         <span aria-current="page">ぬいぐるみ</span>
       </nav>
       <div class="detail-layout">
@@ -52,8 +50,9 @@
           <p class="detail-temp-note">仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>
           <div class="detail-actions">
             <a class="detail-action-primary" href="../estimate/index.html?product=19#auto">簡易見積もり <span aria-hidden="true">→</span></a>
-            <a href="mailto:info@ginga-bra.com?subject=%E3%81%AC%E3%81%84%E3%81%90%E3%82%8B%E3%81%BF%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87">メールで相談 <span aria-hidden="true">↗</span></a>
+            <a href="../estimate/index.html?product=19#quick" data-consult-product="19">メールで相談 <span aria-hidden="true">↗</span></a>
           </div>
+          <button class="product-compare-toggle" type="button" data-compare-product="19" aria-pressed="false" aria-label="ぬいぐるみを比較に追加" hidden>＋ 比較に追加</button>
         </section>
         <figure class="detail-photo">
           <div class="detail-photo-frame"><img src="../assets/images/products/product-19-20261111.webp" alt="ぬいぐるみの制作例" width="750" height="1000" fetchpriority="high" decoding="async"></div>
@@ -85,12 +84,14 @@
           </a>
         </div>
         <nav class="detail-return-links" aria-label="他の商品を探す">
-          <a href="index.html#lineup">商品一覧へ戻る →</a>
+          <a href="index.html#lineup" data-catalog-return>商品一覧へ戻る →</a>
           <a href="../collections/index.html">特集コレクションを見る →</a>
           <a href="../sports/index.html">スポーツ特集を見る →</a>
         </nav>
       </section>
     </main>
     <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC</span></footer>
+    <script src="../estimate/estimate-data.js?v=20261112renewal1"></script>
+    <script src="../script.js?v=20261112renewal1"></script>
   </body>
 </html>

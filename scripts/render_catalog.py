@@ -47,7 +47,8 @@ def render_cards(items, heading):
               <div><dt>納期目安</dt><dd>{escape(item['lead'])}</dd></div>
             </dl>{conditions}
             <a class="public-product-cta" href="../estimate/index.html?product={no}#auto" aria-label="{name}の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="mailto:info@ginga-bra.com?subject={quote(item['name'] + 'のご相談')}" aria-label="{name}についてメールで相談">メールで相談 ↗</a>
+            <a class="product-mail-link" href="../estimate/index.html?product={no}#quick" data-consult-product="{no}" aria-label="{name}についてメールで相談">メールで相談 ↗</a>
+            <button class="product-compare-toggle" type="button" data-compare-product="{no}" aria-pressed="false" aria-label="{name}を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>''')
     return '\n'.join(cards)

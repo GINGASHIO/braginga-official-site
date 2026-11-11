@@ -259,3 +259,69 @@
     align-content: start;
   }
 }
+
+/* Optional comparison stays in normal page flow, without a fixed overlay. */
+.product-compare-toggle,
+.comparison-heading button,
+.comparison-actions button,
+.consultation-draft-note button {
+  min-height: 44px;
+  border: 1px solid #c8cec4;
+  border-radius: 6px;
+  padding: 9px 12px;
+  color: #254537;
+  background: #f7f9f4;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.product-compare-toggle { width: 100%; margin-top: 10px; }
+.product-compare-toggle[aria-pressed="true"] { border-color: #356047; background: #e6efda; }
+.product-compare-toggle[hidden] { display: none; }
+.comparison-jump { display: inline-flex; align-items: center; min-height: 44px; margin-top: 3px; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.comparison-jump[hidden] { display: none; }
+.catalog-comparison { max-width: var(--max, 1180px); margin: 0 auto 18px; scroll-margin-top: 110px; }
+.product-detail-page > .catalog-comparison { width: min(var(--max), calc(100% - 2 * var(--gutter))); }
+.catalog-comparison details { padding: 14px 16px; border: 1px solid #d2d8cb; border-radius: 9px; background: #f6f8f1; }
+.catalog-comparison details[hidden] { display: none; }
+.catalog-comparison summary { min-height: 44px; padding: 9px 0; color: #214835; font-size: 15px; font-weight: 800; cursor: pointer; }
+.comparison-status { margin: 0; color: #36503b; font-size: 13px; line-height: 1.65; }
+.comparison-status:not(:empty) { margin-bottom: 9px; }
+.comparison-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 6px 0 14px; }
+.comparison-heading p { margin: 0; font-size: 13px; line-height: 1.7; }
+.comparison-heading button { flex-shrink: 0; }
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.comparison-item { min-width: 0; display: flex; flex-direction: column; padding: 16px; border: 1px solid #d7ddd0; border-radius: 7px; background: #fff; }
+.comparison-item h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.6; }
+.comparison-item h3 a { text-decoration: underline; text-underline-offset: 4px; }
+.comparison-item dl { margin: 0 0 12px; }
+.comparison-item dl div { display: grid; grid-template-columns: 95px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid #e5e9df; font-size: 13px; line-height: 1.65; }
+.comparison-item dt { color: #5c6657; }
+.comparison-item dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.comparison-note { margin: 0 0 12px; color: #70501d; font-size: 12px; line-height: 1.65; }
+.comparison-actions { display: grid; gap: 5px; margin-top: auto; }
+.comparison-actions a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 0; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.comparison-actions a:first-child { color: #254b36; }
+.comparison-actions button { margin-top: 2px; }
+.catalog-comparison :is(a, button, summary):focus-visible,
+.product-compare-toggle:focus-visible,
+.comparison-jump:focus-visible,
+.consultation-draft-note button:focus-visible { outline: 3px solid #4c7558; outline-offset: 3px; }
+.estimate-consult-link { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-block: 8px; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.consultation-context { margin: 0 0 18px; padding: 12px 15px; border-left: 3px solid #3b6346; background: #eef3e7; font-size: 14px; font-weight: 700; }
+.consultation-draft-note { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #5b6556; font-size: 12px; line-height: 1.6; }
+.consultation-draft-note button { flex-shrink: 0; }
+@media (max-width: 600px) {
+  .comparison-heading { align-items: flex-start; }
+  .comparison-heading p { max-width: 17em; }
+  .comparison-grid { grid-template-columns: minmax(0, 1fr); }
+  .comparison-item { padding: 13px; }
+  .comparison-item dl div { grid-template-columns: 90px minmax(0, 1fr); }
+  .consultation-draft-note { align-items: flex-start; flex-direction: column; }
+}
+.consultation-mail-preview { border: 1px solid #d3dacd; border-radius: 8px; padding: 10px 14px; background: #f8faf5; }
+.consultation-mail-preview summary { min-height: 44px; padding-block: 10px; font-size: 14px; font-weight: 700; cursor: pointer; }
+.consultation-mail-preview p { margin-block: 10px; font-size: 13px; }
+.consultation-mail-preview pre { max-width: 100%; margin: 12px 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: 13px; line-height: 1.8; }
+.consultation-mail-preview a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }

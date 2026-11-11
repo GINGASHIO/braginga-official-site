@@ -150,7 +150,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports",
         "graduation"
       ]
@@ -174,7 +173,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports",
         "graduation"
       ]
@@ -244,7 +242,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports",
         "graduation"
@@ -337,6 +335,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo",
         "sports",
         "graduation"
@@ -517,7 +516,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -544,7 +543,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -570,6 +569,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -594,7 +594,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports",
         "graduation"
       ]
@@ -621,7 +620,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ],
@@ -650,6 +649,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -675,7 +675,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -701,7 +701,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports",
         "graduation"
@@ -729,7 +728,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -784,7 +783,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports",
         "graduation"
@@ -837,7 +835,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports",
         "graduation"
@@ -890,7 +888,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -942,7 +940,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -968,7 +966,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports"
       ]
@@ -994,7 +991,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports",
         "graduation"
@@ -1021,7 +1017,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports"
       ]
     },
@@ -1046,7 +1041,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports",
         "graduation"
       ]
@@ -1072,6 +1066,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -1096,7 +1091,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports",
         "graduation"
@@ -1124,6 +1118,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo",
         "sports"
       ]
@@ -1149,6 +1144,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -1173,7 +1169,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports"
       ]
     },
@@ -1198,6 +1193,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -1223,6 +1219,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo",
         "sports",
         "graduation"
@@ -1249,6 +1246,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -1273,6 +1271,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
+        "restaurant",
         "promo"
       ]
     },
@@ -1298,7 +1297,7 @@ window.estimateCatalog = {
         "飲食店"
       ],
       "scenes": [
-        "event",
+        "restaurant",
         "promo",
         "sports",
         "graduation"
@@ -1325,7 +1324,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports"
       ]
     },
@@ -1396,7 +1394,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports"
       ],
@@ -1422,7 +1419,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "sports",
         "graduation"
       ],
@@ -1448,7 +1444,6 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "event",
         "promo",
         "sports"
       ],

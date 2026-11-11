@@ -19,7 +19,6 @@ body { background:#faf9f6; padding-bottom:78px; }
 .hero-status span {color:#333;}
 .marquee {background:#161616;color:#fff;padding:20px 0;}
 .marquee span {-webkit-text-stroke:0;color:#fff;font-size:clamp(23px,4vw,56px);letter-spacing:-.035em;}
-.marquee:hover .marquee-track {animation-play-state:paused;}
 .section {scroll-margin-top:100px;}
 .creative-heading {display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:end;}
 .creative-heading .kicker {grid-column:1/-1;}

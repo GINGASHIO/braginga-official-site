@@ -15,19 +15,11 @@
     const link = document.querySelector('[data-direction-link]'); link.href = url(d[4]); link.textContent = d[5];
     document.querySelector('[data-direction-consult]').href = 'mailto:info@ginga-bra.com?subject=' + encodeURIComponent(d[6] + 'のご相談');
   }));
-  const dock = document.createElement('aside'); dock.className = 'project-dock'; dock.setAttribute('aria-label', '制作のご相談');
-  const isTrophy = document.body.dataset.page === 'trophy';
-  dock.innerHTML = `<span>制作のご相談はこちら</span><a href="${isTrophy ? '#catalog' : url('estimate/index.html#auto')}">${isTrophy ? '商品を見る ↓' : '簡易見積もり ↗'}</a><a href="mailto:info@ginga-bra.com">メールで相談 ↗</a>`;
-  document.body.append(dock);
-  const gallery = document.querySelector('.trophy-works-grid');
+  const gallery = document.querySelector('.trophy-page:not(.trophy-direct-page) .trophy-works-grid');
   if (gallery) {
     const controls = document.createElement('div');controls.className = 'gallery-controls';
     controls.innerHTML = '<span>スワイプ・矢印で次の実績へ</span><button type="button" aria-label="前の制作実績">← 前へ</button><button type="button" aria-label="次の制作実績">次へ →</button>';
     gallery.after(controls);
     controls.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => gallery.scrollBy({left:gallery.firstElementChild.getBoundingClientRect().width * (i ? 1 : -1) + (i ? 22 : -22),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})));
-  }
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('creative-enter');observer.unobserve(entry.target);}}), {threshold:.12});
-    document.querySelectorAll('.creative-heading,.direction-stage,.list-section-head,.trophy-point,.case-study,.public-product-card').forEach(el => observer.observe(el));
   }
 })();

@@ -42,8 +42,8 @@ def related_cards(item, items):
     uses = set(item.get("useCases", []))
     candidates = [candidate for candidate in items if candidate["no"] != item["no"]]
     candidates.sort(key=lambda candidate: (
-        candidate["category"] != item["category"],
         not uses.intersection(candidate.get("useCases", [])),
+        candidate["category"] != item["category"],
         not candidate.get("image"),
         candidate["no"],
     ))
@@ -70,7 +70,6 @@ def page(item, items, header):
     size = escape(item.get("size") or "個別確認")
     spec = escape(item.get("spec") or "個別確認")
     lead = escape(item.get("lead") or "個別確認")
-    subject = quote(item["name"] + "のご相談", safe="")
     caption = escape(item.get("imageCaption") or "制作例")
     caption_html = f"<figcaption>{caption}</figcaption>" if item.get("image") else ""
     price_note = ('<p class="detail-temp-note">仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>'
@@ -87,18 +86,19 @@ def page(item, items, header):
     <title>{name} | GINGA PRINT FACTORY</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=20260831a">
-    <link rel="stylesheet" href="../creative.css?v=20260919a">
+    <link rel="stylesheet" href="../creative.css?v=20261112c">
     <link rel="stylesheet" href="../navigation.css?v=20260919a">
-    <link rel="stylesheet" href="../studio.css?v=20261112b">
-    <link rel="stylesheet" href="../product-detail.css?v=20261112b">
+    <link rel="stylesheet" href="../studio.css?v=20261112c">
+    <link rel="stylesheet" href="../product-detail.css?v=20261112renewal1">
+    <link rel="stylesheet" href="../renewal.css?v=20261112r1">
     <script src="../navigation.js?v=20260919a" defer></script>
   </head>
-  <body data-page="products">
+  <body data-page="products" data-product-no="{number}">
     {header}
     <main class="sub-page product-detail-page">
       <nav class="breadcrumbs" aria-label="現在地">
         <a href="../index.html">トップ</a><span aria-hidden="true">/</span>
-        <a href="index.html#lineup">商品一覧</a><span aria-hidden="true">/</span>
+        <a href="index.html#lineup" data-catalog-return>商品一覧</a><span aria-hidden="true">/</span>
         <span aria-current="page">{name}</span>
       </nav>
       <div class="detail-layout">
@@ -112,8 +112,9 @@ def page(item, items, header):
           {price_note}
           <div class="detail-actions">
             <a class="detail-action-primary" href="../estimate/index.html?product={number}#auto">簡易見積もり <span aria-hidden="true">→</span></a>
-            <a href="mailto:info@ginga-bra.com?subject={subject}">メールで相談 <span aria-hidden="true">↗</span></a>
+            <a href="../estimate/index.html?product={number}#quick" data-consult-product="{number}">メールで相談 <span aria-hidden="true">↗</span></a>
           </div>
+          <button class="product-compare-toggle" type="button" data-compare-product="{number}" aria-pressed="false" aria-label="{name}を比較に追加" hidden>＋ 比較に追加</button>
         </section>
         <figure class="detail-photo">
           <div class="detail-photo-frame">{photo(item, featured=True)}</div>
@@ -134,12 +135,14 @@ def page(item, items, header):
 {related_cards(item, items)}
         </div>
         <nav class="detail-return-links" aria-label="他の商品を探す">
-          <a href="index.html#lineup">商品一覧へ戻る →</a>
+          <a href="index.html#lineup" data-catalog-return>商品一覧へ戻る →</a>
           <a href="../collections/index.html">特集コレクションを見る →</a>{sports_link}
         </nav>
       </section>
     </main>
     <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC</span></footer>
+    <script src="../estimate/estimate-data.js?v=20261112renewal1"></script>
+    <script src="../script.js?v=20261112renewal1"></script>
   </body>
 </html>
 '''

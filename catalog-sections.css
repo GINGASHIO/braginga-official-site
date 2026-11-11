@@ -109,7 +109,7 @@
   box-shadow: 2px 6px 15px #14221624;
   transform: rotate(5deg);
 }
-.catalog-scene-event .catalog-scene-photo,
+.catalog-scene-restaurant .catalog-scene-photo,
 .catalog-scene-sports .catalog-scene-photo { transform: rotate(-5deg); }
 .catalog-scene-photo img {
   position: absolute;

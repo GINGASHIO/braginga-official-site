@@ -112,10 +112,46 @@ if (productGrid) {
     .join("");
 }
 
-const publicProductGrid = document.querySelector("[data-public-product-grid]");
+// Keep only this tab's browsing and drafts. Storage can be unavailable in private mode.
+const sessionRead = (key, fallback = null) => {
+  try { return JSON.parse(sessionStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+};
+const sessionWrite = (key, value) => {
+  try { sessionStorage.setItem(key, JSON.stringify(value)); } catch { /* Browsing still works without storage. */ }
+};
+const catalogReturnKey = 'braginga.catalog.return.v1';
+const catalogStatePrefix = 'braginga.catalog.filters.v1:';
+const comparisonKey = 'braginga.catalog.compare.v1';
+const estimatorDraftKey = 'braginga.estimate.v1';
+const consultationDraftKey = 'braginga.consultation.v1';
+const allowedCatalogPaths = new Set(['/products/', '/products/index.html', '/sports/', '/sports/index.html']);
+const safeCatalogReturn = value => {
+  if (typeof value !== 'string' || value.length > 1500) return null;
+  try {
+    const url = new URL(value, location.origin);
+    if (url.origin !== location.origin || !allowedCatalogPaths.has(url.pathname)) return null;
+    const clean = new URL(url.pathname, location.origin);
+    ['q', 'category', 'use', 'scene'].forEach(key => {
+      const text = url.searchParams.get(key);
+      if (text) clean.searchParams.set(key, text.slice(0, 120));
+    });
+    clean.hash = /^#product-\d{2,}$/.test(url.hash) ? url.hash : (url.pathname.startsWith('/sports') ? '#sports-lineup' : '#lineup');
+    return `${clean.pathname}${clean.search}${clean.hash}`;
+  } catch { return null; }
+};
+const catalogReturn = safeCatalogReturn(new URLSearchParams(location.search).get('return')) || safeCatalogReturn(sessionRead(catalogReturnKey));
+if (catalogReturn) {
+  document.querySelectorAll('[data-catalog-return]').forEach(link => { link.href = catalogReturn; });
+  document.querySelectorAll('.detail-related-card').forEach(link => {
+    const url = new URL(link.href);
+    url.searchParams.set('return', catalogReturn);
+    link.href = url.href;
+  });
+}
+const publicCatalogItems = (window.estimateCatalog?.products || []).filter(item => !item.provisional || item.published);
+const publicProductGrid = document.querySelector('[data-public-product-grid]');
 
 if (publicProductGrid) {
-  // Product information is in the HTML so it remains readable if JavaScript fails.
   const filters = document.querySelector('[data-catalog-filter]');
   if (filters) {
     const search = filters.querySelector('[data-catalog-search]');
@@ -126,7 +162,8 @@ if (publicProductGrid) {
     const activeScene = filters.querySelector('[data-catalog-active-scene]');
     const count = filters.querySelector('[data-catalog-count]');
     const empty = document.querySelector('[data-catalog-empty]');
-    const normalize = value => value.normalize('NFKC').toLocaleLowerCase('ja-JP').trim();
+    const sceneLabels = { restaurant: '飲食店', promo: '企業ノベルティ・販促', sports: 'スポーツ', graduation: '卒業記念・記念品' };
+    const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase('ja-JP').trim();
     const products = [...publicProductGrid.querySelectorAll('.public-product-card')].map(card => ({
       card,
       category: card.dataset.category || '',
@@ -134,6 +171,8 @@ if (publicProductGrid) {
       scenes: (card.dataset.scenes || '').split(/\s+/).filter(Boolean),
       searchText: normalize(`${card.textContent} ${card.dataset.category || ''} ${card.dataset.searchAliases || ''}`),
     }));
+    const pageScope = location.pathname.startsWith('/sports') ? 'sports' : 'products';
+    const stateKey = catalogStatePrefix + pageScope;
     let selectedUseCase = '';
     let selectedScene = '';
     const matchesScope = product =>
@@ -143,43 +182,68 @@ if (publicProductGrid) {
       const names = [...new Set(products.filter(matchesScope).map(product => product.category).filter(Boolean))];
       category.replaceChildren(new Option('すべての品目', ''), ...names.map(name => new Option(name, name)));
       category.value = names.includes(previous) ? previous : '';
-      categoryButtons.forEach(button => {
-        button.disabled = !names.includes(button.dataset.catalogCategoryTag);
-      });
+      categoryButtons.forEach(button => { button.disabled = !names.includes(button.dataset.catalogCategoryTag); });
     };
+    const readState = params => ({
+      q: (params.get('q') || '').slice(0, 120),
+      category: params.get('category') || '',
+      use: params.get('use') || '',
+      scene: params.get('scene') || '',
+    });
     const filterProducts = () => {
       const query = normalize(search.value);
+      const terms = query.split(/\s+/).filter(Boolean);
+      useCaseButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogUseCase === selectedUseCase && !selectedScene)));
       categoryButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogCategoryTag === category.value)));
+      sceneLinks.forEach(link => {
+        const active = link.dataset.catalogScene === selectedScene;
+        if (link.tagName === 'BUTTON') link.setAttribute('aria-pressed', String(active));
+        else if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+      if (activeScene) {
+        activeScene.textContent = selectedScene ? `利用シーン：${sceneLabels[selectedScene]}` : '';
+        activeScene.hidden = !selectedScene;
+      }
       let visible = 0;
       products.forEach(product => {
-        const matches = matchesScope(product) && (!category.value || product.category === category.value) && product.searchText.includes(query);
+        const matches = matchesScope(product) && (!category.value || product.category === category.value) && terms.every(term => product.searchText.includes(term));
         product.card.hidden = !matches;
         if (matches) visible += 1;
       });
       count.textContent = `${visible}件 / 全${products.length}件`;
-      empty.hidden = visible !== 0;
+      if (empty) empty.hidden = visible !== 0;
+      const state = { q: search.value.slice(0, 120), category: category.value, use: selectedUseCase, scene: selectedScene };
+      const url = new URL(location.href);
+      Object.entries(state).forEach(([key, value]) => value ? url.searchParams.set(key, value) : url.searchParams.delete(key));
+      url.searchParams.delete('restore');
+      history.replaceState(history.state, '', `${url.pathname}${url.search}${url.hash}`);
+      sessionWrite(stateKey, state);
+      sessionWrite(catalogReturnKey, safeCatalogReturn(`${url.pathname}${url.search}#lineup`));
+      products.forEach(product => {
+        const link = product.card.querySelector('.product-name-link');
+        if (!link) return;
+        const detail = new URL(link.href);
+        detail.searchParams.set('return', `${url.pathname}${url.search}#${product.card.id}`);
+        link.href = detail.href;
+      });
+      document.dispatchEvent(new CustomEvent('braginga:catalog-filter-change'));
     };
-    const selectUseCase = (value, previousCategory = category.value) => {
-      selectedUseCase = value;
-      useCaseButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogUseCase === value)));
-      syncCategories(previousCategory);
+    const applyState = state => {
+      selectedUseCase = ['スポーツ', '飲食店'].includes(state.use) ? state.use : '';
+      selectedScene = Object.hasOwn(sceneLabels, state.scene) ? state.scene : '';
+      if (selectedScene === 'restaurant') { selectedUseCase = '飲食店'; selectedScene = ''; }
+      if (selectedScene === 'sports') { selectedUseCase = 'スポーツ'; selectedScene = ''; }
+      search.value = typeof state.q === 'string' ? state.q.slice(0, 120) : '';
+      syncCategories(typeof state.category === 'string' ? state.category : '');
       filterProducts();
     };
-    const selectScene = link => {
-      selectedScene = link?.dataset.catalogScene || '';
-      sceneLinks.forEach(sceneLink => {
-        if (sceneLink === link) sceneLink.setAttribute('aria-current', 'true');
-        else sceneLink.removeAttribute('aria-current');
-      });
-      if (activeScene) {
-        const label = link?.dataset.catalogSceneLabel || link?.textContent.trim();
-        activeScene.textContent = label ? `選択中のシーン　${label}` : '';
-        activeScene.hidden = !label;
-      }
-      search.value = '';
-      selectUseCase('', '');
-    };
-    useCaseButtons.forEach(button => button.addEventListener('click', () => selectUseCase(button.dataset.catalogUseCase)));
+    useCaseButtons.forEach(button => button.addEventListener('click', () => {
+      selectedUseCase = button.dataset.catalogUseCase;
+      selectedScene = '';
+      syncCategories();
+      filterProducts();
+    }));
     categoryButtons.forEach(button => button.addEventListener('click', () => {
       const name = button.dataset.catalogCategoryTag;
       category.value = category.value === name ? '' : name;
@@ -187,19 +251,167 @@ if (publicProductGrid) {
     }));
     sceneLinks.forEach(link => link.addEventListener('click', event => {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      selectScene(link);
+      event.preventDefault();
+      applyState({ q: search.value, category: category.value, use: link.dataset.catalogSceneUseCase || '', scene: selectedScene === link.dataset.catalogScene ? '' : link.dataset.catalogScene });
     }));
     search.addEventListener('input', filterProducts);
     category.addEventListener('change', filterProducts);
-    filters.querySelector('[data-catalog-reset]').addEventListener('click', () => selectScene(null));
-    const initial = new URLSearchParams(location.search);
-    const initialScene = sceneLinks.find(link => link.dataset.catalogScene === initial.get('scene'));
-    const initialUseCase = useCaseButtons.find(button => button.dataset.catalogUseCase === initial.get('use'));
-    if (initialScene) selectScene(initialScene);
-    selectUseCase(initialUseCase?.dataset.catalogUseCase || '', initial.get('category'));
+    document.querySelectorAll('[data-catalog-reset]').forEach(button => button.addEventListener('click', () => {
+      applyState({});
+      search.focus({ preventScroll: true });
+    }));
+    const params = new URLSearchParams(location.search);
+    const explicit = ['q', 'category', 'use', 'scene'].some(key => params.has(key));
+    const saved = sessionRead(stateKey, {});
+    applyState(explicit ? readState(params) : (saved && typeof saved === 'object' ? saved : {}));
+    window.addEventListener('popstate', () => applyState(readState(new URLSearchParams(location.search))));
     filters.hidden = false;
   }
 }
+
+// Comparison is optional, lives in the page flow and never covers a product or CTA.
+const compareButtons = [...document.querySelectorAll('[data-compare-product]')];
+if (compareButtons.length && publicCatalogItems.length) {
+  let selected = [];
+  const validNumbers = new Set(publicCatalogItems.map(item => item.no));
+  const loadComparison = () => {
+    const stored = sessionRead(comparisonKey, []);
+    selected = Array.isArray(stored) ? [...new Set(stored.filter(no => Number.isSafeInteger(no) && validNumbers.has(no)))].slice(0, 3) : [];
+  };
+  loadComparison();
+  const region = document.createElement('section');
+  region.className = 'catalog-comparison';
+  region.id = 'product-comparison';
+  region.setAttribute('aria-label', '選んだ商品の比較');
+  region.innerHTML = '<p class="comparison-status" role="status" aria-live="polite" data-comparison-status></p><details data-comparison-details hidden><summary data-comparison-summary>商品を比較する</summary><div class="comparison-heading"><p>価格・最低ロット・仕様を見比べられます（最大3点）。</p><button type="button" data-comparison-clear>すべて外す</button></div><div class="comparison-grid" data-comparison-grid></div></details>';
+  if (publicProductGrid) publicProductGrid.before(region);
+  else document.querySelector('.detail-related')?.before(region);
+  compareButtons.forEach(button => {
+    const jump = document.createElement('a');
+    jump.className = 'comparison-jump'; jump.href = '#product-comparison'; jump.hidden = true;
+    jump.dataset.comparisonJump = button.dataset.compareProduct;
+    jump.textContent = '比較を見る';
+    jump.addEventListener('click', () => { region.querySelector('details').open = true; });
+    button.after(jump);
+  });
+  const details = region.querySelector('[data-comparison-details]');
+  const grid = region.querySelector('[data-comparison-grid]');
+  const summary = region.querySelector('[data-comparison-summary]');
+  const status = region.querySelector('[data-comparison-status]');
+  const element = (tag, text, className) => {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+  };
+  const syncComparisonLink = link => {
+    const no = Number(link.dataset.comparisonProductLink);
+    const base = publicProductGrid ? safeCatalogReturn(`${location.pathname}${location.search}`) : safeCatalogReturn(sessionRead(catalogReturnKey));
+    const target = new URL(link.href);
+    target.searchParams.delete('return');
+    if (base) {
+      const returnUrl = new URL(base, location.origin);
+      const card = publicProductGrid?.querySelector(`[data-product-no="${no}"]`);
+      if (card && !card.hidden) returnUrl.hash = `#${card.id}`;
+      target.searchParams.set('return', `${returnUrl.pathname}${returnUrl.search}${returnUrl.hash}`);
+    }
+    link.href = target.href;
+  };
+  document.addEventListener('braginga:catalog-filter-change', () => {
+    grid.querySelectorAll('[data-comparison-product-link]').forEach(syncComparisonLink);
+  });
+  const updateComparison = (message = '') => {
+    const focusedRemove = document.activeElement?.dataset.compareRemove;
+    details.hidden = selected.length === 0;
+    summary.textContent = `選んだ商品を比較する（${selected.length} / 3点）`;
+    status.textContent = message;
+    compareButtons.forEach(button => {
+      const no = Number(button.dataset.compareProduct);
+      const item = publicCatalogItems.find(product => product.no === no);
+      const active = selected.includes(no);
+      button.hidden = false;
+      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute('aria-label', `${item?.name || 'この商品'}を比較${active ? 'から外す' : 'に追加'}`);
+      button.textContent = active ? '✓ 比較に選択中' : '＋ 比較に追加';
+      const jump = button.nextElementSibling;
+      if (jump?.matches('[data-comparison-jump]')) { jump.hidden = !active; jump.textContent = `比較を見る（${selected.length}点）`; }
+    });
+    grid.replaceChildren();
+    selected.forEach(no => {
+      const item = publicCatalogItems.find(product => product.no === no);
+      const temporary = item.priceStatus === 'temporary';
+      const card = element('article', undefined, 'comparison-item');
+      const heading = element('h3');
+      const link = element('a', item.name);
+      link.href = `../products/item-${String(no).padStart(2, '0')}.html`;
+      link.dataset.comparisonProductLink = String(no);
+      syncComparisonLink(link);
+      heading.append(link);
+      card.append(heading);
+      const list = element('dl');
+      const price = Number.isFinite(item.price) ? `¥${item.price.toLocaleString('ja-JP')}（税抜）` : '個別確認';
+      const values = [[temporary ? '仮価格 / 1点' : '参考上代 / 1点', price], [temporary ? '仮最低ロット' : '最低ロット', Number.isFinite(item.lot) ? `${item.lot}点〜` : '個別確認'], ['サイズ', item.size || '個別確認'], ['仕様', item.spec || '個別確認'], ['納期目安', item.lead || '個別確認']];
+      values.forEach(([label, value]) => {
+        const row = element('div'); row.append(element('dt', label), element('dd', value)); list.append(row);
+      });
+      card.append(list);
+      if (temporary) card.append(element('p', '仮条件です。正式な価格・仕様・納期はご相談ください。', 'comparison-note'));
+      const actions = element('div', undefined, 'comparison-actions');
+      const estimate = element('a', '簡易見積もり →'); estimate.href = `../estimate/index.html?product=${no}#auto`;
+      const consult = element('a', 'メールで相談 →'); consult.href = `../estimate/index.html?product=${no}#quick`; consult.dataset.consultProduct = String(no);
+      const remove = element('button', '比較から外す'); remove.type = 'button'; remove.dataset.compareRemove = String(no); remove.setAttribute('aria-label', `${item.name}を比較から外す`);
+      actions.append(estimate, consult, remove); card.append(actions); grid.append(card);
+    });
+    if (focusedRemove && selected.length) (grid.querySelector(`[data-compare-remove="${focusedRemove}"]`) || grid.querySelector('[data-compare-remove]'))?.focus({ preventScroll: true });
+    sessionWrite(comparisonKey, selected);
+  };
+  const focusComparisonFallback = no => {
+    const visible = compareButtons.filter(button => !button.closest('[hidden]'));
+    const target = visible.find(button => Number(button.dataset.compareProduct) === no) || visible[0] || document.querySelector('[data-catalog-search]');
+    target?.focus({ preventScroll: true });
+  };
+  const removeFromComparison = no => {
+    const item = publicCatalogItems.find(product => product.no === no);
+    selected = selected.filter(value => value !== no);
+    updateComparison(`${item?.name || '商品'}を比較から外しました。`);
+    if (!selected.length) focusComparisonFallback(no);
+  };
+  compareButtons.forEach(button => button.addEventListener('click', () => {
+    const no = Number(button.dataset.compareProduct);
+    if (selected.includes(no)) return removeFromComparison(no);
+    if (selected.length >= 3) {
+      status.textContent = '比較は3点までです。選択中の商品を1点外してから追加してください。';
+      details.open = true;
+      summary.focus();
+      return;
+    }
+    selected.push(no);
+    updateComparison(`${publicCatalogItems.find(item => item.no === no)?.name}を比較に追加しました。${selected.length}点選択中です。`);
+  }));
+  region.querySelector('[data-comparison-clear]').addEventListener('click', () => {
+    selected = []; updateComparison('比較リストを空にしました。'); focusComparisonFallback();
+  });
+  grid.addEventListener('click', event => {
+    const remove = event.target.closest('[data-compare-remove]');
+    if (remove) removeFromComparison(Number(remove.dataset.compareRemove));
+  });
+  window.addEventListener('pageshow', () => { loadComparison(); updateComparison(); });
+  updateComparison();
+}
+
+// Carry a chosen quantity to consultation when returning from a calculator.
+document.addEventListener('click', event => {
+  const link = event.target.closest('[data-consult-product]');
+  if (!link) return;
+  const draft = sessionRead(estimatorDraftKey);
+  if (draft?.productNo !== Number(link.dataset.consultProduct)) return;
+  const quantity = Number(draft.quantity);
+  if (String(draft.quantity).trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0) {
+    const url = new URL(link.href);
+    url.searchParams.set('quantity', String(quantity));
+    link.href = url.href;
+  }
+});
 
 const caseTrack = document.querySelector("[data-case-track]");
 
@@ -278,9 +490,12 @@ if (autoEstimate) {
   const productSelect = autoEstimate.querySelector("[data-estimate-product]");
   const quantityInput = autoEstimate.querySelector("[data-estimate-quantity]");
 
-  const requestedProductNo = Number.parseInt(new URLSearchParams(window.location.search).get("product"), 10);
-  const requestedProduct = catalog.products.find((item) => item.no === requestedProductNo);
-  const requestedCategory = new URLSearchParams(window.location.search).get('category');
+  const estimateParams = new URLSearchParams(window.location.search);
+  const savedEstimate = sessionRead(estimatorDraftKey);
+  const requestedProductNo = /^\d+$/.test(estimateParams.get('product') || '') ? Number(estimateParams.get('product')) : null;
+  const explicitProduct = catalog.products.find(item => item.no === requestedProductNo);
+  const requestedCategory = estimateParams.get('category');
+  const requestedProduct = explicitProduct || (!requestedCategory && !estimateParams.has('product') && Number.isSafeInteger(savedEstimate?.productNo) ? catalog.products.find(item => item.no === savedEstimate.productNo) : null);
   categorySelect.innerHTML = catalog.categories.map((category) => `<option value="${category}">${category}</option>`).join("");
   if (catalog.categories.includes(requestedCategory)) categorySelect.value = requestedCategory;
   if (requestedProduct) {
@@ -342,22 +557,118 @@ if (autoEstimate) {
     autoEstimate.querySelector('[data-estimate-mail]').href = `mailto:info@ginga-bra.com?subject=${encodeURIComponent('簡易見積もりのご相談')}&body=${encodeURIComponent(body)}`;
   };
 
-  categorySelect.addEventListener("change", () => {
-    syncProducts();
+  const refreshEstimate = () => {
     updateEstimate();
+    const item = catalog.products[Number(productSelect.value)];
+    if (item) sessionWrite(estimatorDraftKey, {
+      productNo: item.no, quantity: quantityInput.value,
+      shipping: shippingInput.value, other: otherInput.value,
+    });
+  };
+  categorySelect.addEventListener('change', () => { syncProducts(); refreshEstimate(); });
+  productSelect.addEventListener('change', refreshEstimate);
+  quantityInput.addEventListener('input', refreshEstimate);
+  shippingInput.addEventListener('input', refreshEstimate);
+  otherInput.addEventListener('input', refreshEstimate);
+  autoEstimate.querySelector('[data-estimate-consult]')?.addEventListener('click', () => {
+    const item = catalog.products[Number(productSelect.value)];
+    if (item) document.dispatchEvent(new CustomEvent('braginga:consult-product', { detail: { productNo: item.no, quantity: quantityInput.value } }));
   });
-  productSelect.addEventListener("change", updateEstimate);
-  quantityInput.addEventListener("input", updateEstimate);
-  shippingInput.addEventListener("input", updateEstimate);
-  otherInput.addEventListener("input", updateEstimate);
   syncProducts();
-  updateEstimate();
+  if (requestedProduct && savedEstimate && Number.isSafeInteger(savedEstimate.productNo) && savedEstimate.productNo === requestedProduct.no) {
+    [['quantity', quantityInput], ['shipping', shippingInput], ['other', otherInput]].forEach(([key, input]) => {
+      if (typeof savedEstimate[key] === 'string' && savedEstimate[key].length <= 30) input.value = savedEstimate[key];
+    });
+  }
+  const requestedQuantity = estimateParams.get('quantity');
+  if (/^\d+$/.test(requestedQuantity || '') && Number.isSafeInteger(Number(requestedQuantity)) && Number(requestedQuantity) > 0) quantityInput.value = requestedQuantity;
+  refreshEstimate();
   if (catalog.products.length) document.querySelector("[data-estimate-fallback]")?.setAttribute("hidden", "");
 }
 
-document.querySelector("[data-quick-form]")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const body = `作りたい商品・用途：${form.get("item") || "未定"}\nおおよその数量：${form.get("quantity") || "未定"}\n希望時期：${form.get("date") || "未定"}\n\nご希望・相談内容：\n${form.get("note") || "未記入"}`;
-  window.location.href = `mailto:info@ginga-bra.com?subject=${encodeURIComponent("制作のご相談")}&body=${encodeURIComponent(body)}`;
-});
+const quickForm = document.querySelector('[data-quick-form]');
+if (quickForm) {
+  const names = ['item', 'quantity', 'date', 'note'];
+  const limits = { item: 200, quantity: 20, date: 100, note: 1500 };
+  const fields = Object.fromEntries(names.map(name => [name, quickForm.elements.namedItem(name)]));
+  const draft = sessionRead(consultationDraftKey, {});
+  const contexts = {
+    'case:uniform-goods': { item: 'ユニフォームをモチーフにしたチームグッズ', label: '参考の制作例：ユニフォームをグッズに' },
+    'case:mask': { item: 'オリジナルマスク', label: '参考の制作例：オリジナルマスク' },
+    'case:ecobag': { item: 'オリジナルエコバッグ', label: '参考の制作例：ピッチ柄のエコバッグ' },
+    'case:coffee': { item: 'コーヒー・マグカップのグッズ企画', label: '参考の制作例：HALF TIME COFFEE' },
+    'topic:trophy': { item: 'トロフィー・表彰品', label: 'ご相談のテーマ：トロフィー・表彰品' },
+    'award:budget': { item: '予算重視・高級感重視モデル（BG-4963 / BG-4904）', label: '選択した表彰品：予算重視・高級感重視モデル（BG-4963 / BG-4904）' },
+    'award:standard': { item: '定番トロフィー（BG-4925）', label: '選択した表彰品：定番トロフィー（BG-4925）' },
+    'award:personal': { item: '個人賞・個人表彰（BG-4988 / BG-7420）', label: '選択した表彰品：個人賞・個人表彰（BG-4988 / BG-7420）' },
+    'award:medal': { item: '個人賞メダル（BG-40）', label: '選択した表彰品：個人賞メダル（BG-40）' },
+    'topic:sports': { item: 'スポーツチーム・大会のグッズ', label: 'ご相談のテーマ：スポーツ・各種大会' },
+    'topic:restaurant': { item: '飲食店のウェア・オリジナルグッズ', label: 'ご相談のテーマ：飲食店' },
+    'topic:promo': { item: '企業ノベルティ・販促グッズ', label: 'ご相談のテーマ：企業ノベルティ・販促' },
+    'topic:graduation': { item: '卒業記念・記念品', label: 'ご相談のテーマ：卒業記念・記念品' },
+  };
+  let selectedProductNo = Number.isSafeInteger(draft?.productNo) ? draft.productNo : null;
+  let contextKey = Object.hasOwn(contexts, draft?.contextKey) ? draft.contextKey : '';
+  names.forEach(name => { if (typeof draft?.[name] === 'string') fields[name].value = draft[name].slice(0, limits[name]); });
+  const context = document.querySelector('[data-consultation-context]');
+  const mailContent = () => {
+    const contextLine = contextKey ? `${contexts[contextKey].label}\n` : '';
+    const body = `${contextLine}作りたい商品・用途：${fields.item.value || '未定'}\nおおよその数量：${fields.quantity.value || '未定'}\n希望時期：${fields.date.value || '未定'}\n\nご希望・相談内容：\n${fields.note.value || '未記入'}`;
+    return { body, href: `mailto:info@ginga-bra.com?subject=${encodeURIComponent('制作のご相談')}&body=${encodeURIComponent(body)}` };
+  };
+  const updateMailPreview = () => {
+    const mail = mailContent();
+    const preview = quickForm.querySelector('[data-consultation-preview]');
+    const link = quickForm.querySelector('[data-consultation-mail]');
+    if (preview) preview.textContent = mail.body;
+    if (link) link.href = mail.href;
+    quickForm.dataset.mailHref = mail.href;
+  };
+  const saveDraft = () => {
+    sessionWrite(consultationDraftKey, { productNo: selectedProductNo, contextKey, ...Object.fromEntries(names.map(name => [name, fields[name].value.slice(0, limits[name])])) });
+    updateMailPreview();
+  };
+  const validQuantity = value => /^\d+$/.test(String(value || '')) && Number.isSafeInteger(Number(value)) && Number(value) > 0;
+  const prefill = (productNo, quantity, force = false) => {
+    const item = (window.estimateCatalog?.products || []).find(product => product.no === productNo);
+    if (!item) return;
+    if (force || selectedProductNo !== productNo || !fields.item.value) fields.item.value = item.name;
+    selectedProductNo = productNo;
+    contextKey = '';
+    if (validQuantity(quantity)) fields.quantity.value = String(quantity);
+    if (context) { context.textContent = `選択中の商品：${item.name}`; context.hidden = false; }
+    saveDraft();
+  };
+  const params = new URLSearchParams(location.search);
+  const explicitProductNo = /^\d+$/.test(params.get('product') || '') ? Number(params.get('product')) : null;
+  const requestedAward = params.get('topic') === 'trophy' && ['budget', 'standard', 'personal', 'medal'].includes(params.get('award')) ? `award:${params.get('award')}` : '';
+  const requestedContext = requestedAward || (Object.hasOwn(contexts, `case:${params.get('case')}`) ? `case:${params.get('case')}` : Object.hasOwn(contexts, `topic:${params.get('topic')}`) ? `topic:${params.get('topic')}` : '');
+  if (!explicitProductNo && (requestedContext || contextKey)) {
+    const nextContext = requestedContext || contextKey;
+    if (nextContext !== contextKey || !fields.item.value) fields.item.value = contexts[nextContext].item;
+    contextKey = nextContext;
+    selectedProductNo = null;
+    if (context) { context.textContent = contexts[contextKey].label; context.hidden = false; }
+    saveDraft();
+  } else {
+    const productNo = explicitProductNo || selectedProductNo;
+    const savedCalculator = sessionRead(estimatorDraftKey);
+    const carriedQuantity = params.get('quantity') || (savedCalculator?.productNo === productNo && !fields.quantity.value ? savedCalculator.quantity : null);
+    prefill(productNo, carriedQuantity);
+  }
+  document.addEventListener('braginga:consult-product', event => prefill(event.detail?.productNo, event.detail?.quantity, true));
+  quickForm.addEventListener('input', saveDraft);
+  quickForm.addEventListener('change', saveDraft);
+  quickForm.querySelector('[data-consultation-clear]')?.addEventListener('click', () => {
+    names.forEach(name => { fields[name].value = ''; });
+    selectedProductNo = null; contextKey = '';
+    if (context) { context.textContent = ''; context.hidden = true; }
+    saveDraft(); fields.item.focus();
+  });
+  quickForm.addEventListener('submit', event => {
+    event.preventDefault();
+    saveDraft();
+    window.location.href = mailContent().href;
+  });
+  updateMailPreview();
+}

@@ -7,11 +7,13 @@
     <title>TROPHY / AWARD | GINGA PRINT FACTORY</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=20260831a">
-    <link rel="stylesheet" href="../creative.css?v=20260919a">
+    <link rel="stylesheet" href="../creative.css?v=20261112c">
     <link rel="stylesheet" href="../navigation.css?v=20260919a">
     <script src="../navigation.js?v=20260919a" defer></script>
-    <link rel="stylesheet" href="../studio.css?v=20261112b">
+    <link rel="stylesheet" href="../studio.css?v=20261112c">
+    <link rel="stylesheet" href="../case-story.css?v=20261112d">
     <script src="../studio.js?v=20261105a" defer></script>
+  <link rel="stylesheet" href="../renewal.css?v=20261112r1">
   </head>
   <body data-page="trophy">
     <header class="site-header" data-header>
@@ -24,63 +26,95 @@
         <span class="menu-label">メニュー</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
-        <a href="../collections/index.html" data-nav="collections"><span>COLLECTION</span><small>特集コレクション</small></a>
-        <a href="../products/index.html" data-nav="products"><span>PRODUCT</span><small>商品別</small></a>
-        <a href="../about/index.html" data-nav="about"><span>ABOUT</span><small>私たちについて</small></a>
-        <a href="../index.html#case" data-nav="cases"><span>CASE</span><small>制作実績</small></a>
-        <a href="../index.html#order" data-nav="order"><span>HOW TO ORDER</span><small>注文の流れ</small></a>
+        <a href="../products/index.html#lineup" data-nav="products"><span>PRODUCTS</span><small>商品を探す</small></a>
+        <a href="../collections/index.html" data-nav="collections"><span>COLLECTIONS</span><small>特集</small></a>
+        <a href="../cases/index.html" data-nav="cases"><span>WORKS</span><small>制作実績</small></a>
         <a href="../index.html#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
-        <a href="../estimate/index.html" data-nav="estimate"><span>ESTIMATE</span><small>お見積もり</small></a>
-        <a href="../index.html#contact" data-nav="contact"><span>CONTACT</span><small>お問い合わせ</small></a>
+        <a href="../estimate/index.html#quick" data-nav="contact"><span>CONSULT</span><small>メールで相談</small></a>
       </nav>
     </header>
 
-    <main class="sub-page trophy-page">
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <main id="main-content" class="sub-page trophy-page trophy-direct-page">
       <nav class="breadcrumbs" aria-label="現在地"><a href="../index.html">トップ</a><span aria-hidden="true">/</span><a href="../products/index.html">商品・価格</a><span aria-hidden="true">/</span><span aria-current="page">トロフィー・表彰品</span></nav>
       <section class="trophy-hero">
         <div class="trophy-hero-copy">
           <p class="kicker">TROPHY / トロフィー・表彰品</p>
-          <h1>大会の印象は<br>景品で決まる。</h1>
+          <h1>その一瞬を、<br>残るかたちに。</h1>
           <p class="lead">トロフィー・カップ・楯・メダルの名入れ制作。大会日程・必要数・ご予算をもとに、候補とお見積もりをご案内します。</p>
           <div class="trophy-hero-badges" aria-label="trophy selling points">
             <span>大会規模別に選べる</span>
             <span>個人賞までまとめて相談</span>
-            <span>急ぎ案件も確認可能</span>
+            <span>開催日から相談</span>
           </div>
           <div class="hero-actions">
             <a class="button button-primary" href="#catalog">商品ラインナップを見る ↓</a>
-            <a class="button button-ghost" href="#contact">トロフィーを相談する</a>
+            <a class="button button-ghost" href="../estimate/index.html?topic=trophy#quick">トロフィーを相談する</a>
           </div>
-          <nav class="page-links" aria-label="このページの案内"><a href="#works">制作実績を見る ↓</a><a href="#contact">見積りに必要な情報 ↓</a></nav>
+          <nav class="page-links" aria-label="このページの案内"><a href="#prices">価格について ↓</a><a href="#works">制作例 ↓</a><a href="#flow">注文の流れ ↓</a><a href="#contact">相談に必要な情報 ↓</a></nav>
         </div>
         <div class="trophy-hero-image" aria-label="トロフィー制作実績">
-          <img loading="lazy" decoding="async" class="trophy-hero-main" src="../assets/images/trophy/works/work-14.jpg" alt="サッカー大会用トロフィーの制作実績">
+          <img decoding="async" fetchpriority="high" width="1200" height="1600" class="trophy-hero-main" src="../assets/images/trophy/works/work-14.jpg" alt="サッカー大会用トロフィーの制作実績">
         </div>
       </section>
 
-      <section class="section trophy-proposal">
-        <div class="section-heading wide reveal">
-          <p class="kicker">PROPOSAL</p>
-          <h2>表彰品まで任せられる窓口へ。</h2>
-          <p>歓声の先に、ずっと残るものを。大会の雰囲気、表彰する人数、ご予算から、ふさわしい一式を一緒に選びます。</p>
+
+
+      <section class="section trophy-catalog" id="catalog">
+        <div class="list-section-head reveal">
+          <div>
+            <p class="kicker">CATALOG</p>
+            <h2>商品ラインナップ</h2>
+            <p>トロフィー・楯・メダルから、贈る相手に合う形を。画像を押すとサイズを記載した資料を拡大できます。</p>
+          </div>
+          <a class="vertical-list-link" href="#contact" aria-label="トロフィー案件を相談する">
+            <span>トロフィー案件を相談する ↓</span>
+          </a>
         </div>
-        <div class="trophy-point-grid">
-          <article class="trophy-point reveal">
-            <span>01</span>
-            <h3>大会規模に合わせて選べる</h3>
-            <p>優勝・準優勝・3位・個人賞など、表彰設計に合わせてサイズ違いを提案できます。</p>
+        <div class="trophy-catalog-grid">
+          <article class="trophy-catalog-card reveal">
+            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-budget.jpg" target="_blank" rel="noopener" aria-label="予算重視向けトロフィー資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-budget.jpg" alt="予算重視向けトロフィー資料"><span>資料を拡大 ↗</span></a>
+            <div>
+              <span>BG-4963 / BG-4904</span>
+              <h3>予算重視・高級感重視モデル</h3>
+              <p>大会規模に合わせた複数サイズ提案向け。</p>
+              <a class="trophy-item-consult" href="../estimate/index.html?topic=trophy&amp;award=budget#quick">このトロフィーを相談する →</a>
+            </div>
           </article>
-          <article class="trophy-point reveal">
-            <span>02</span>
-            <h3>即納・定番品の案内</h3>
-            <p>開催日をお知らせください。在庫・名入れ加工の日程を確認し、間に合う候補をご案内します。</p>
+          <article class="trophy-catalog-card reveal">
+            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-standard.jpg" target="_blank" rel="noopener" aria-label="定番トロフィー資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-standard.jpg" alt="定番トロフィー資料"><span>資料を拡大 ↗</span></a>
+            <div>
+              <span>BG-4925</span>
+              <h3>定番トロフィー</h3>
+              <p>優勝から入賞まで幅広く使える定番トロフィー。</p>
+              <a class="trophy-item-consult" href="../estimate/index.html?topic=trophy&amp;award=standard#quick">定番モデルを相談する →</a>
+            </div>
           </article>
-          <article class="trophy-point reveal">
-            <span>03</span>
-            <h3>個人賞・メダルまで対応</h3>
-            <p>MIP、得点王、敢闘賞。チームの勝利も、一人ひとりの活躍も、形に残しましょう。</p>
+          <article class="trophy-catalog-card reveal">
+            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-personal.jpg" target="_blank" rel="noopener" aria-label="個人賞トロフィーと楯の資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-personal.jpg" alt="個人賞向けトロフィーと楯資料"><span>資料を拡大 ↗</span></a>
+            <div>
+              <span>BG-4988 / BG-7420</span>
+              <h3>個人賞・個人表彰</h3>
+              <p>MVP、得点王、敢闘賞などの個人賞提案向け。</p>
+              <a class="trophy-item-consult" href="../estimate/index.html?topic=trophy&amp;award=personal#quick">個人賞を相談する →</a>
+            </div>
+          </article>
+          <article class="trophy-catalog-card reveal">
+            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-medal.jpg" target="_blank" rel="noopener" aria-label="メダル資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-medal.jpg" alt="個人賞メダル資料"><span>資料を拡大 ↗</span></a>
+            <div>
+              <span>BG-40</span>
+              <h3>個人賞メダル</h3>
+              <p>入賞チームやMIPに使いやすいケース付きメダル。</p>
+              <a class="trophy-item-consult" href="../estimate/index.html?topic=trophy&amp;award=medal#quick">メダルを相談する →</a>
+            </div>
           </article>
         </div>
+      </section>
+
+      <section class="section trophy-pricing" id="prices" aria-labelledby="trophy-prices-title">
+        <div><p class="kicker">PRICE / お見積もり</p><h2 id="trophy-prices-title">ご予算と表彰数から、<br>一式を組み立てます。</h2><p>サイズ・個数・名入れによって価格が変わるため、金額は個別にお見積もりします。まずは大会日程と必要数をお知らせください。</p></div>
+        <dl class="trophy-price-points"><div><dt>本体</dt><dd>種類・サイズ・個数に合わせて候補を選びます。</dd></div><div><dt>名入れ</dt><dd>大会名・受賞名・日付など、入れたい内容を確認します。</dd></div><div><dt>納期・配送</dt><dd>在庫と加工日程、配送先・送料を確認してご案内します。</dd></div></dl>
+        <a class="trophy-inline-consult" href="../estimate/index.html?topic=trophy#quick">予算に合わせて相談する →</a>
       </section>
 
       <section class="section trophy-works" id="works">
@@ -96,6 +130,8 @@
           <figure class="trophy-work trophy-work-featured reveal"><img src="../assets/images/trophy/works/work-01.jpg" alt="優勝トロフィーの制作実績" loading="lazy"><figcaption><span>01</span> CHAMPION TROPHY</figcaption></figure>
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-02.jpg" alt="大会表彰カップの制作実績" loading="lazy"><figcaption><span>02</span> AWARD CUP</figcaption></figure>
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-03.jpg" alt="名入れトロフィーの制作実績" loading="lazy"><figcaption><span>03</span> CUSTOM PLATE</figcaption></figure>
+        </div>
+        <details class="trophy-more"><summary>制作写真をもっと見る <span>あと12枚 ＋</span></summary><div class="trophy-works-grid">
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-04.jpg" alt="大会用トロフィーの制作実績" loading="lazy"><figcaption><span>04</span> TOURNAMENT AWARD</figcaption></figure>
           <figure class="trophy-work trophy-work-portrait reveal"><img src="../assets/images/trophy/works/work-05.jpg" alt="オーダー表彰品の制作実績" loading="lazy"><figcaption><span>05</span> ORDER MADE</figcaption></figure>
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-06.jpg" alt="記念トロフィーの制作実績" loading="lazy"><figcaption><span>06</span> MEMORIAL TROPHY</figcaption></figure>
@@ -108,86 +144,22 @@
           <figure class="trophy-work trophy-work-wide reveal"><img src="../assets/images/trophy/works/work-13.jpg" alt="大会用表彰品の制作実績" loading="lazy"><figcaption><span>13</span> CEREMONY AWARD</figcaption></figure>
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-14.jpg" alt="特注トロフィーの制作実績" loading="lazy"><figcaption><span>14</span> SPECIAL ORDER</figcaption></figure>
           <figure class="trophy-work reveal"><img src="../assets/images/trophy/works/work-15.jpg" alt="大会記念表彰品の制作実績" loading="lazy"><figcaption><span>15</span> PRODUCTION ARCHIVE</figcaption></figure>
-        </div>
+        </div></details>
       </section>
 
-      <section class="section trophy-catalog" id="catalog">
-        <div class="list-section-head reveal">
-          <div>
-            <p class="kicker">CATALOG</p>
-            <h2>商品ラインナップ</h2>
-            <p>画像を押すと資料を拡大できます。サイズ・個数・名入れによって価格が変わるため、金額は個別にお見積もりします。</p>
-          </div>
-          <a class="vertical-list-link" href="#contact" aria-label="トロフィー案件を相談する">
-            <span>トロフィー案件を相談する ↓</span>
-          </a>
-        </div>
-        <div class="trophy-catalog-grid">
-          <article class="trophy-catalog-card reveal">
-            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-budget.jpg" target="_blank" rel="noopener" aria-label="予算重視向けトロフィー資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-budget.jpg" alt="予算重視向けトロフィー資料"><span>資料を拡大 ↗</span></a>
-            <div>
-              <span>BG-4963 / BG-4904</span>
-              <h3>予算重視・高級感重視モデル</h3>
-              <p>大会規模に合わせた複数サイズ提案向け。</p>
-            </div>
-          </article>
-          <article class="trophy-catalog-card reveal">
-            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-standard.jpg" target="_blank" rel="noopener" aria-label="定番トロフィー資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-standard.jpg" alt="即納定番トロフィー資料"><span>資料を拡大 ↗</span></a>
-            <div>
-              <span>BG-4925</span>
-              <h3>即納お急ぎ・定番モデル</h3>
-              <p>優勝から入賞まで幅広く使える定番トロフィー。</p>
-            </div>
-          </article>
-          <article class="trophy-catalog-card reveal">
-            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-personal.jpg" target="_blank" rel="noopener" aria-label="個人賞トロフィーと楯の資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-personal.jpg" alt="個人賞向けトロフィーと楯資料"><span>資料を拡大 ↗</span></a>
-            <div>
-              <span>BG-4988 / BG-7420</span>
-              <h3>個人賞・個人表彰</h3>
-              <p>MVP、得点王、敢闘賞などの個人賞提案向け。</p>
-            </div>
-          </article>
-          <article class="trophy-catalog-card reveal">
-            <a class="trophy-catalog-preview" href="../assets/images/trophy/trophy-medal.jpg" target="_blank" rel="noopener" aria-label="メダル資料を拡大（新しいタブ）"><img loading="lazy" decoding="async" src="../assets/images/trophy/trophy-medal.jpg" alt="個人賞メダル資料"><span>資料を拡大 ↗</span></a>
-            <div>
-              <span>BG-40</span>
-              <h3>個人賞メダル</h3>
-              <p>入賞チームやMIPに使いやすいケース付きメダル。</p>
-            </div>
-          </article>
-        </div>
+      <section class="section trophy-order" id="flow" aria-labelledby="trophy-flow-title">
+        <div class="trophy-section-heading"><p class="kicker">HOW TO ORDER</p><h2 id="trophy-flow-title">ご相談から、お届けまで。</h2></div>
+        <ol class="trophy-order-steps"><li><span>01</span><div><h3>大会について相談</h3><p>開催日・必要数・予算を共有。</p></div></li><li><span>02</span><div><h3>候補と金額を確認</h3><p>種類・サイズ・名入れ内容を決定。</p></div></li><li><span>03</span><div><h3>内容を確認して製作</h3><p>表記や日付を確認して進行。</p></div></li><li><span>04</span><div><h3>お届け</h3><p>確認した日程と配送先へ。</p></div></li></ol>
       </section>
 
       <section class="contact trophy-contact" id="contact">
-        <div class="contact-copy reveal">
-          <p class="kicker">CONTACT</p>
-          <h2>大会日程と必要数だけでも相談できます。</h2>
-          <p>大会名、競技、表彰数、希望納期、予算感を送ってください。資料を見ながら候補を絞れます。</p>
-        </div>
-        <div class="contact-card reveal">
-          <dl>
-            <div>
-              <dt>Mail</dt>
-              <dd><a href="mailto:info@ginga-bra.com">info@ginga-bra.com</a></dd>
-            </div>
-            <div>
-              <dt>Company</dt>
-              <dd>ブラジンガ合同会社</dd>
-            </div>
-            <div>
-              <dt>Area</dt>
-              <dd>全国発送対応</dd>
-            </div>
-          </dl>
-          <div class="contact-actions">
-            <a class="button button-primary" href="mailto:info@ginga-bra.com">メールで相談</a>
-            <a class="button button-ghost" href="../index.html">トップへ戻る</a>
-          </div>
-        </div>
+        <div class="contact-copy"><p class="kicker">LET’S TALK</p><h2>大会日程と必要数だけでも、<br>ご相談ください。</h2><p>まだ商品が決まっていなくても大丈夫。決まっている項目からお聞かせください。</p><ul class="trophy-consult-check"><li>大会名・競技</li><li>開催日・お届け希望日</li><li>優勝・入賞・個人賞の数</li><li>ご予算・配送先</li></ul></div>
+        <div class="contact-card"><p class="kicker">TROPHY / AWARD</p><h3>表彰品の相談をはじめる</h3><p>トロフィー・楯・メダルをまとめてご相談いただけます。</p><div class="contact-actions"><a class="button button-primary" href="../estimate/index.html?topic=trophy#quick">メールで相談する →</a><a class="trophy-direct-mail" href="mailto:info@ginga-bra.com?subject=%E3%83%88%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%BB%E8%A1%A8%E5%BD%B0%E5%93%81%E3%81%AE%E3%81%94%E7%9B%B8%E8%AB%87&amp;body=%E3%83%88%E3%83%AD%E3%83%95%E3%82%A3%E3%83%BC%E3%83%BB%E8%A1%A8%E5%BD%B0%E5%93%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%81%84%E3%81%A7%E3%81%99%E3%80%82%0A%0A%E5%A4%A7%E4%BC%9A%E5%90%8D%E3%83%BB%E7%AB%B6%E6%8A%80%EF%BC%9A%0A%E9%96%8B%E5%82%AC%E6%97%A5%E3%83%BB%E3%81%8A%E5%B1%8A%E3%81%91%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A%0A%E8%A1%A8%E5%BD%B0%E3%81%99%E3%82%8B%E6%95%B0%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E3%81%AE%E5%95%86%E5%93%81%E3%83%BB%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9A%0A%E5%90%8D%E5%85%A5%E3%82%8C%E5%86%85%E5%AE%B9%EF%BC%9A%0A%E4%BA%88%E7%AE%97%EF%BC%9A%0A%E9%85%8D%E9%80%81%E5%85%88%EF%BC%9A%0A%E3%81%9D%E3%81%AE%E4%BB%96%EF%BC%9A">メールアプリを開く ↗</a></div><p class="trophy-mail-address">info@ginga-bra.com</p></div>
       </section>
+      <aside class="trophy-related" aria-labelledby="trophy-related-title"><div><p class="kicker">FOR YOUR TEAM</p><h2 id="trophy-related-title">大会のグッズも、一緒に。</h2><p>参加記念や応援に使うアイテムを探せます。</p></div><a href="../sports/index.html">スポーツチーム向け特集 →</a><a href="../products/item-12.html">ペナントの条件を見る →</a></aside>
     </main>
 
-    <script src="../script.js?v=20261112b"></script>
-    <script src="../creative.js?v=20261111c"></script>
+    <script src="../script.js?v=20261112c"></script>
+    <script src="../creative.js?v=20261112r1"></script>
   </body>
 </html>
