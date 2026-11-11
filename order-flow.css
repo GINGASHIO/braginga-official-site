@@ -1,0 +1,139 @@
+.section.order-flow,
+.section.estimate-quick-links {
+  padding-block: clamp(32px, 4.5vw, 56px);
+}
+
+.order-flow-heading {
+  margin: 0 0 18px;
+  font-size: clamp(24px, 3.3vw, 38px);
+  line-height: 1.35;
+  letter-spacing: -.035em;
+}
+
+.order-flow-list,
+.estimate-quick-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.order-flow-list {
+  list-style: none;
+  gap: 0;
+  border-top: 1px solid #caced0;
+}
+
+.order-flow-list li,
+.estimate-quick-link {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+}
+
+.order-flow-list li {
+  border-bottom: 1px solid #caced0;
+}
+
+.order-flow-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e7e9e1;
+  color: #31392b;
+}
+
+.order-flow-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.order-flow-list h3,
+.estimate-quick-link h3 {
+  margin: 0 0 3px;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.35;
+}
+
+.order-flow-list p,
+.estimate-quick-link p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4c5446;
+}
+
+.estimate-quick-link {
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  min-height: 48px;
+  padding: 13px 14px;
+  border: 1px solid #caced0;
+  background: #faf9f5;
+  color: #242a22;
+}
+
+.estimate-quick-link-primary {
+  border-color: #2a3227;
+  background: #2a3227;
+  color: #fff;
+}
+
+.estimate-quick-link-primary p {
+  color: #e1e7dc;
+}
+
+.estimate-quick-link:hover h3,
+.estimate-quick-link:focus-visible h3 {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.estimate-quick-link:focus-visible {
+  outline: 2px solid #46583e;
+  outline-offset: 3px;
+}
+
+.estimate-quick-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+@media (min-width: 641px) {
+  .order-flow-list,
+  .estimate-quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-flow-list {
+    column-gap: 22px;
+  }
+
+  .order-flow-list li,
+  .estimate-quick-link {
+    padding-block: 16px;
+  }
+
+  .estimate-quick-link {
+    padding-inline: 18px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .order-flow-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .order-flow-list li {
+    align-items: start;
+  }
+}

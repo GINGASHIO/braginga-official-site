@@ -1,0 +1,88 @@
+.home-sports-banner {
+  margin-block: clamp(14px, 2.2vw, 28px);
+  margin-inline: max(var(--gutter), calc((100% - var(--max)) / 2));
+}
+
+.home-sports-banner-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(112px, 40%);
+  align-items: stretch;
+  border-inline-start: 4px solid #edf078;
+  background: #153e31;
+  color: #f9f9e9;
+}
+
+.home-sports-banner-link:focus-visible {
+  outline: 3px solid #244e3b;
+  outline-offset: 4px;
+}
+
+.home-sports-banner-copy {
+  align-self: center;
+  padding: 20px 10px 20px clamp(16px, 3.5vw, 46px);
+}
+
+.home-sports-banner-copy :is(h2,h3) {
+  margin: 0;
+  color: #edf078;
+  font-size: clamp(20px, 3.2vw, 46px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.home-sports-banner-cta {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home-sports-banner-cta span {
+  display: inline-block;
+  margin-inline-start: 5px;
+  color: #edf078;
+}
+
+.home-sports-banner-photos {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: clamp(1px, 1.4vw, 16px);
+  padding: 4px 8px 4px clamp(6px, 3vw, 36px);
+  background: linear-gradient(114deg, #153e31 0 14%, #c9dfa5 14% 100%);
+}
+
+.home-sports-banner-photos img {
+  width: 48%;
+  height: clamp(100px, 14vw, 156px);
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.home-sports-banner-photos img:last-child {
+  width: 41%;
+  height: clamp(78px, 11vw, 122px);
+}
+
+@media (max-width: 640px) {
+  .home-sports-banner-copy {
+    padding: 14px 4px 14px 12px;
+  }
+
+  .home-sports-banner-cta {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .home-sports-banner-photos {
+    gap: 2px;
+    padding-inline: 4px;
+  }
+}
+
+.home-collections-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+.home-collections-heading h2{margin:0;font-size:clamp(16px,2vw,22px);line-height:1.4;letter-spacing:-.02em}
+.home-collections-heading a{display:inline-flex;align-items:center;gap:5px;min-height:44px;font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:4px}

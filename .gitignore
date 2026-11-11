@@ -3,3 +3,10 @@ Thumbs.db
 *.log
 .wrangler/
 node_modules/
+.build/
+__pycache__/
+.daily-release/
+docs/audit-2026-11-05.md
+docs/catalog-2026-11-11.md
+docs/product-photo-sources-20261111.json
+docs/product-qa-20261111.json

@@ -7,59 +7,78 @@
     <title>BRAGINGA | APPAREL PRODUCTION STUDIO</title>
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="preload" as="image" href="./assets/images/hero-print-workshop.png">
-    <link rel="stylesheet" href="./styles.css?v=20260823">
+    <link rel="stylesheet" href="./styles.css?v=20260831a">
+    <link rel="stylesheet" href="./creative.css?v=20260919a">
+    <link rel="stylesheet" href="./navigation.css?v=20260919a">
+    <script src="./navigation.js?v=20260919a" defer></script>
+    <link rel="stylesheet" href="./studio.css?v=20261112b">
+    <link rel="stylesheet" href="./order-flow.css?v=20261112b">
+    <link rel="stylesheet" href="./sports-banner.css?v=20261112b">
+    <script src="./studio.js?v=20261105a" defer></script>
   </head>
-  <body>
+  <body data-page="home">
     <div class="page-progress" aria-hidden="true" data-page-progress></div>
     <div class="page-intro" aria-hidden="true" data-page-intro>
       <span>BRAGINGA</span>
       <small>APPAREL PRODUCTION STUDIO</small>
     </div>
     <header class="site-header" data-header>
-      <a class="brand" href="#home" aria-label="GINGA PRINT FACTORY home">
+      <a class="brand" href="./index.html#home" aria-label="GINGA PRINT FACTORY トップページ">
         <span class="brand-mark">GPF</span>
         <span class="brand-text">GINGA PRINT FACTORY</span>
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
-        <span></span>
-        <span></span>
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 2h18M0 7h18M0 12h18"/></svg>
+        <span class="menu-label">メニュー</span>
       </button>
-      <nav class="site-nav" id="site-nav" data-site-nav>
-        <a href="#about">ABOUT</a>
-        <a href="#product">PRODUCT</a>
-        <a href="#case">CASE</a>
-        <a href="#order">HOW TO ORDER</a>
-        <a href="#faq">FAQ</a>
-        <a href="#column">COLUMN</a>
-        <a href="#contact">CONTACT</a>
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
+        <a href="./collections/index.html" data-nav="collections"><span>COLLECTION</span><small>特集コレクション</small></a>
+        <a href="./products/index.html" data-nav="products"><span>PRODUCT</span><small>商品別</small></a>
+        <a href="./about/index.html" data-nav="about"><span>ABOUT</span><small>私たちについて</small></a>
+        <a href="./index.html#case" data-nav="cases"><span>CASE</span><small>制作実績</small></a>
+        <a href="./index.html#order" data-nav="order"><span>HOW TO ORDER</span><small>注文の流れ</small></a>
+        <a href="./index.html#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
+        <a href="./estimate/index.html" data-nav="estimate"><span>ESTIMATE</span><small>お見積もり</small></a>
+        <a href="./index.html#contact" data-nav="contact"><span>CONTACT</span><small>お問い合わせ</small></a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
-          <img class="hero-slide is-active" src="./assets/images/hero-print-workshop.png" alt="">
-          <img class="hero-slide" src="./assets/images/product-range.png" alt="">
-          <img class="hero-slide" src="./assets/images/case-studies.png" alt="">
-          <div class="film-grain"></div>
-          <div class="scan-line"></div>
-        </div>
+      <section class="hero studio-hero" id="home" aria-labelledby="hero-title">
+        <div class="studio-eyebrow"><span>BRAGINGA / CREATIVE PRODUCTION</span><span>SAPPORO, JAPAN ↗</span></div>
         <div class="hero-copy">
-          <p class="kicker hero-line">APPAREL PRODUCTION STUDIO / SAPPORO</p>
-          <h1 class="hero-line hero-title" id="hero-title"><span>IDEA TO</span><br><span>GARMENT.</span></h1>
-          <p class="lead hero-line">イメージを、着られる形へ。企画・デザイン・素材選定・生産まで、ブランドの世界観を崩さず一つの窓口で仕立てます。</p>
-          <div class="hero-actions hero-line">
-            <a class="button button-primary" href="#contact">PROJECT START</a>
-            <a class="button button-ghost" href="#product">COLLECTION</a>
-          </div>
+          <h1 class="hero-title" id="hero-title"><span class="title-row">IDEAS INTO</span> <span class="title-row title-outline">SOMETHING.</span></h1>
+          <div class="studio-intro"><p class="lead">まだ見たことのない<br>「欲しい」を、つくろう。</p><div><p class="studio-description">プロスポーツチームから、地域の飲食店、PTAまで幅広く対応！<br>プロ仕様の品質とデザインをあなたのチーム／ビジネスに簡単でお安くサポートします</p><a class="studio-text-link" href="#creative-start">あなたの「つくりたい」から始める <span>↘</span></a></div></div>
         </div>
-        <div class="hero-status" aria-hidden="true">
-          <span>DESIGN</span>
-          <span>DEVELOPMENT</span>
-          <span>PRODUCTION</span>
-          <span>DELIVERY</span>
+        <div class="studio-visual">
+          <div class="hero-media" aria-hidden="true"><img class="hero-slide is-active" src="./assets/images/hero-print-workshop.png" alt="" fetchpriority="high"><img class="hero-slide" data-src="./assets/images/product-range.png" alt=""><img class="hero-slide" data-src="./assets/images/case-studies.png" alt=""></div>
+          <div class="visual-topline"><span>THE POSSIBILITIES ARE YOURS.</span></div>
+          <a class="studio-seal" href="./estimate/index.html#quick"><span>LET’S MAKE</span><strong>つくるを<br>相談する ↗</strong><span>YOUR NEXT IDEA</span></a>
+          <div class="hero-selector" role="group" aria-label="制作イメージを切り替える"><button type="button" data-hero-select="0" aria-pressed="true">01 / APPAREL</button><button type="button" data-hero-select="1" aria-pressed="false">02 / GOODS</button><button type="button" data-hero-select="2" aria-pressed="false">03 / CREATIVE</button></div>
+          <span class="visual-index" aria-hidden="true">BRAGINGA — FROM IDEA TO OBJECT</span>
         </div>
+        <div class="studio-bottom"><span>DESIGN. PRINT. CREATE.</span><a href="./products/index.html">商品・価格をチェック ↗</a><span>SCROLL TO EXPLORE ↓</span></div>
       </section>
+
+      <nav class="home-shortcuts" aria-label="目的から探す">
+        <a href="./products/index.html"><span>商品が決まっている方</span><strong>商品・価格・最低ロットを見る</strong><b aria-hidden="true">↗</b></a>
+        <a href="./trophy/index.html"><span>大会・表彰のご担当者</span><strong>トロフィー・表彰品を探す</strong><b aria-hidden="true">↗</b></a>
+        <a href="./estimate/index.html#quick"><span>何を作るか相談したい方</span><strong>用途・予算から相談する</strong><b aria-hidden="true">↗</b></a>
+      </nav>
+
+      <aside class="home-sports-banner" aria-labelledby="home-collections-title">
+        <div class="home-collections-heading"><h2 id="home-collections-title">特集コレクション</h2><a href="./collections/index.html">特集一覧を見る <span aria-hidden="true">→</span></a></div>
+        <a class="home-sports-banner-link" href="./sports/index.html">
+          <div class="home-sports-banner-copy">
+            <h3 id="home-sports-title">スポーツチーム向け</h3>
+            <span class="home-sports-banner-cta">チームグッズ特集を見る <span aria-hidden="true">→</span></span>
+          </div>
+          <div class="home-sports-banner-photos" aria-hidden="true">
+            <img src="./assets/images/products/product-15-20261111.webp" alt="" width="750" height="1000" loading="lazy" decoding="async">
+            <img src="./assets/images/products/product-07-20261111.webp" alt="" width="750" height="1000" loading="lazy" decoding="async">
+          </div>
+        </a>
+      </aside>
 
       <section class="marquee" aria-label="service keywords">
         <div class="marquee-track">
@@ -74,32 +93,43 @@
         </div>
       </section>
 
-      <section class="section split" id="about">
+      <section class="section creative-start" id="creative-start" aria-labelledby="creative-title">
+        <div class="creative-heading"><p class="kicker">01 / FIND YOUR DIRECTION</p><h2 id="creative-title">そのアイデア、<br><em>どこまで面白くできる？</em></h2><p>一着から広がる、ブランドの世界。<br>あなたの「つくりたい」を選んでください。</p></div>
+        <div class="direction-tabs" role="group" aria-label="制作の目的"><button type="button" data-direction="brand" aria-pressed="true">ブランド・物販</button><button type="button" data-direction="team" aria-pressed="false">チーム・店舗</button><button type="button" data-direction="event" aria-pressed="false">イベント・記念品</button></div>
+        <div class="direction-stage"><figure><img data-direction-image src="./assets/images/product-range.png" alt="ウェアとグッズの制作イメージ" loading="lazy"><figcaption>BRAGINGA / CREATIVE DIRECTION</figcaption></figure><div class="direction-copy" aria-live="polite"><span data-direction-number>01 — BRAND &amp; MERCH</span><h3 data-direction-title>ロゴの先に、<br>ブランドらしさを。</h3><p data-direction-description>Tシャツ、スウェット、バッグ。素材やシルエット、加工の組み合わせで、手に取りたくなるコレクションへ。</p><a class="button button-primary" data-direction-link href="./products/index.html">アイテムと価格を見る ↗</a><a class="direction-consult" data-direction-consult href="mailto:info@ginga-bra.com?subject=ブランド・物販のご相談">この方向で相談する ↗</a></div></div>
+      </section>
+
+      <section class="section split home-about" id="about">
         <div class="section-heading reveal">
-          <p class="kicker">ABOUT</p>
-          <h2>服を作る。<br>空気まで作る。</h2>
+          <p class="kicker">ABOUT / BRAGINGA LLC</p>
+          <h2>作るだけでは、<br>終わらせない。</h2>
+          <p class="home-about-note">APPAREL / GOODS / BRAND EXPERIENCE</p>
         </div>
         <div class="section-body reveal">
-          <p class="editorial-copy">プロダクトだけでは、ブランドにならない。シルエット、素材、グラフィック、仕上げ。そのすべてに一貫した意図を通し、着る人の記憶に残る一着へ。</p>
+          <p class="editorial-copy">2012年、「着たいウェアがない。じゃあ自分で作る」から始まった。アパレルとオリジナルグッズの経験を、人とブランドが長く繋がる仕事へ。</p>
           <div class="stat-grid">
             <div>
-              <strong>01</strong>
-              <span>BRAND DIRECTION</span>
+              <strong>2012</strong>
+              <span>BRAND SINCE</span>
+              <p>アパレルブランド始動</p>
             </div>
             <div>
-              <strong>02</strong>
-              <span>PRODUCT DEVELOPMENT</span>
+              <strong>40<span class="stat-plus">+</span></strong>
+              <span>WHOLESALE NETWORK</span>
+              <p>全国約40店舗・施設へ卸販売</p>
             </div>
             <div>
-              <strong>03</strong>
-              <span>DOMESTIC &amp; OVERSEAS</span>
+              <strong>PRO</strong>
+              <span>SPORTS TEAM WORKS</span>
+              <p>プロスポーツチームとの制作実績</p>
             </div>
           </div>
+          <a class="home-about-link" href="./about/index.html"><span>ブラジンガについて</span><strong>↗</strong></a>
         </div>
       </section>
 
       <section class="section visual-band" aria-label="print production visual">
-        <img src="./assets/images/product-range.png" alt="Tシャツ、スウェット、ユニフォーム、小物などの対応商品イメージ">
+        <img loading="lazy" decoding="async" src="./assets/images/product-range.png" alt="Tシャツ、スウェット、ユニフォーム、小物などの対応商品イメージ">
         <div class="visual-caption">
           <span>PRODUCT RANGE</span>
           <span>APPAREL / TEAM WEAR / GOODS</span>
@@ -117,8 +147,8 @@
           </div>
         </div>
         <div class="trophy-promo-grid reveal">
-          <img src="./assets/images/trophy/trophy-standard.jpg" alt="即納定番トロフィー資料">
-          <img src="./assets/images/trophy/trophy-medal.jpg" alt="個人賞メダル資料">
+          <img loading="lazy" decoding="async" src="./assets/images/trophy/trophy-standard.jpg" alt="即納定番トロフィー資料">
+          <img loading="lazy" decoding="async" src="./assets/images/trophy/trophy-medal.jpg" alt="個人賞メダル資料">
         </div>
       </section>
 
@@ -126,11 +156,11 @@
         <div class="list-section-head reveal">
           <div>
             <p class="kicker">PRODUCT</p>
-            <h2>製品一覧</h2>
+            <h2>商品・価格</h2>
             <p>ウェア、チーム用品、プリント加工、ブランドOEMまで、用途と数量に合わせてご提案します。</p>
           </div>
           <a class="vertical-list-link" href="./products/index.html" aria-label="プロダクト一覧を見る">
-            <span>プロダクト一覧を見る</span>
+            <span>全商品・価格を見る ↗</span>
           </a>
         </div>
         <div class="product-list-grid" data-products></div>
@@ -142,32 +172,50 @@
             <div>
               <p class="kicker">CASE</p>
               <h2>制作実績一覧</h2>
-              <p>公開許可をいただいた実績のみ掲載し、案件ごと・アイテムごとに制作イメージを確認できます。</p>
+              <p>スポンサー企業、スポーツチーム、サポーターをグッズで繋いだ商品化事例を紹介します。</p>
             </div>
             <a class="vertical-list-link" href="./cases/index.html" aria-label="制作実績一覧を見る">
-              <span>制作実績一覧を見る</span>
+              <span>制作実績を詳しく見る ↗</span>
             </a>
           </div>
           <div class="case-list-grid" data-case-track></div>
         </div>
       </section>
 
-      <section class="section process" id="order">
-        <div class="section-heading reveal">
-          <p class="kicker">HOW TO ORDER</p>
-          <h2>問い合わせから納品まで。</h2>
-        </div>
-        <ol class="process-list">
-          <li class="reveal"><span>01</span><strong>相談</strong><p>用途、数量、予算、希望納期、参考イメージを確認。</p></li>
-          <li class="reveal"><span>02</span><strong>仕様設計</strong><p>商品、印刷方式、生産国、ロット、データ形式を整理。</p></li>
-          <li class="reveal"><span>03</span><strong>見積・サンプル</strong><p>必要に応じてサンプルやプリント確認を実施。</p></li>
-          <li class="reveal"><span>04</span><strong>生産・納品</strong><p>国内外の背景から案件に合う工程で進行。</p></li>
+      <section class="section order-flow" id="order" aria-labelledby="order-flow-title">
+        <h2 class="order-flow-heading" id="order-flow-title">ご注文の流れ</h2>
+        <ol class="order-flow-list" role="list">
+          <li>
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5.5 4h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-5.5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M8 9h8m-8 3h5"/></svg>
+            </span>
+            <div><h3>相談</h3><p>用途・数量・予算・納期とイメージを伺います。</p></div>
+          </li>
+          <li>
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M13 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/><path d="m18.5 4.5 2 2-8.5 8.5-3 1 1-3 8.5-8.5Z"/></svg>
+            </span>
+            <div><h3>企画・提案</h3><p>商品・印刷方法と生産条件をご提案します。</p></div>
+          </li>
+          <li>
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+            </span>
+            <div><h3>仕様確定</h3><p>見積もりと必要なサンプルを確認し、仕様を決めます。</p></div>
+          </li>
+          <li>
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="m4 8 8-4 8 4v9l-8 4-8-4V8Zm0 0 8 4 8-4m-8 4v9M8 6l8 4v3"/></svg>
+            </span>
+            <div><h3>生産・納品</h3><p>確定した仕様で生産し、納品します。</p></div>
+          </li>
         </ol>
       </section>
 
       <section class="section faq-section" id="faq">
         <div class="faq-panel reveal">
           <p class="kicker">FAQ</p>
+          <h2>よくある質問</h2>
           <details open>
             <summary>価格はどこで確認できますか？</summary>
             <p>価格は各製品一覧・商品ページ記載。正式な金額は仕様、数量、納期、加工方法を確認して見積しますのでお問い合わせください。</p>
@@ -215,35 +263,31 @@
         </div>
       </section>
 
-      <section class="section column-section" id="column">
-        <div class="section-heading reveal">
-          <p class="kicker">COLUMN</p>
-          <h2>更新コンテンツの受け皿。</h2>
-        </div>
-        <div class="column-grid">
-          <article class="column-card reveal">
-            <span>PRINT GUIDE</span>
-            <h3>シルク印刷とDTFの使い分け</h3>
-            <p>数量、色数、風合い、納期から選ぶ加工方式の考え方。</p>
-          </article>
-          <article class="column-card reveal">
-            <span>OEM NOTE</span>
-            <h3>小さなブランドが最初に決める仕様</h3>
-            <p>ボディ、サイズ展開、ネーム、梱包までの基本項目。</p>
-          </article>
-          <article class="column-card reveal">
-            <span>TEAM WEAR</span>
-            <h3>チームウェア発注前の確認事項</h3>
-            <p>番号、個人名、追加発注、納期管理の注意点。</p>
-          </article>
+      <section class="section estimate-quick-links" id="estimate" aria-labelledby="estimate-quick-title">
+        <h2 class="order-flow-heading" id="estimate-quick-title">つくる前に、金額を確認。</h2>
+        <div class="estimate-quick-grid">
+          <a class="estimate-quick-link estimate-quick-link-primary" href="./estimate/index.html#auto">
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 7h7m-7 5h.5m5.5 0h.5m-6.5 4h.5m5.5 0h.5"/></svg>
+            </span>
+            <div><h3>簡易見積もり</h3><p>単価・個数・送料などから金額を確認。</p></div>
+            <span class="estimate-quick-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="estimate-quick-link" href="mailto:info@ginga-bra.com">
+            <span class="order-flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <div><h3>メールで相談</h3><p>商品やデザインが未定でも相談できます。</p></div>
+            <span class="estimate-quick-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
       </section>
 
       <section class="contact" id="contact">
         <div class="contact-copy reveal">
           <p class="kicker">CONTACT</p>
-          <h2>案件内容が固まっていなくても相談できます。</h2>
-          <p>メールまたは公式LINEから、用途・数量・希望納期・参考画像を送ってください。</p>
+          <h2>まずは、作りたいものを<br>聞かせてください。</h2>
+          <p>用途・数量・希望納期・参考画像をメールでお送りください。未定の項目があってもご相談いただけます。</p>
         </div>
         <div class="contact-card reveal">
           <dl>
@@ -261,12 +305,12 @@
             </div>
             <div>
               <dt>Mail</dt>
-              <dd><a href="mailto:info@braginga.net">info@braginga.net</a></dd>
+              <dd><a href="mailto:info@ginga-bra.com">info@ginga-bra.com</a></dd>
             </div>
           </dl>
           <div class="contact-actions">
-            <a class="button button-primary" href="mailto:info@braginga.net">メールで相談</a>
-            <span class="button button-ghost is-disabled" aria-disabled="true">公式LINE 準備中</span>
+            <a class="button button-primary" href="mailto:info@ginga-bra.com">メールで相談</a>
+            <a class="button button-ghost" href="./estimate/index.html#quick">相談内容を入力する</a>
           </div>
         </div>
       </section>
@@ -277,6 +321,7 @@
       <span>BRAGINGA LLC / APPAREL PRODUCTION STUDIO</span>
     </footer>
 
-    <script src="./script.js?v=20260823"></script>
+    <script src="./script.js?v=20261112b"></script>
+    <script src="./creative.js?v=20261111c"></script>
   </body>
 </html>

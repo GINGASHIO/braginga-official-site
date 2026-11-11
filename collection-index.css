@@ -1,0 +1,41 @@
+.collection-index .collection-hero {
+  padding-block: clamp(18px, 3vw, 42px) 0;
+  background: transparent;
+}
+
+.collection-index .collection-hero h1 {
+  margin: 0 0 10px;
+}
+
+.collection-index .collection-hero-actions {
+  margin-top: 14px;
+}
+
+.collection-index .page-links .collection-contact {
+  border-color: #254537;
+  background: #254537;
+  color: #fff;
+}
+
+.collection-index .page-links .collection-contact:hover {
+  background: #34604a;
+}
+
+.collection-index .page-links a:focus-visible {
+  outline: 3px solid #254537;
+  outline-offset: 3px;
+}
+
+.collection-index .home-sports-banner {
+  margin-block: clamp(18px, 3vw, 36px) 0;
+}
+
+.collection-index .catalog-scenes {
+  padding-block: clamp(24px, 4vw, 54px);
+  padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2));
+  background: transparent;
+}
+
+.collection-index .catalog-section-heading {
+  margin-bottom: clamp(16px, 2.7vw, 32px);
+}
