@@ -636,6 +636,7 @@ if (quickForm) {
     selectedProductNo = productNo;
     contextKey = '';
     if (validQuantity(quantity)) fields.quantity.value = String(quantity);
+    else if (force) fields.quantity.value = '';
     if (context) { context.textContent = `選択中の商品：${item.name}`; context.hidden = false; }
     saveDraft();
   };
