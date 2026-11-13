@@ -62,10 +62,12 @@ def page(item, items, header):
     number = positive_integer(item, "no")
     name = escape(item["name"])
     category = escape(item["category"])
-    price = positive_integer(item, "price")
-    lot = positive_integer(item, "lot")
+    individual = item.get("priceStatus") == "individual"
+    price = "個別確認" if individual else f"¥{positive_integer(item, 'price'):,}"
+    lot = "個別確認" if item["lot"] is None else f"{positive_integer(item, 'lot')}点〜"
+    price_unit = "" if individual else "<small>税抜 / 1点</small>"
     temporary = item.get("priceStatus") == "temporary"
-    price_label = "仮価格" if temporary else "参考上代"
+    price_label = "価格" if individual else "仮価格" if temporary else "参考上代"
     lot_label = "仮最低ロット" if temporary else "最低ロット"
     size = escape(item.get("size") or "個別確認")
     spec = escape(item.get("spec") or "個別確認")
@@ -106,8 +108,8 @@ def page(item, items, header):
           <p class="detail-category">{category}</p>
           <h1 id="detail-title">{name}</h1>
           <dl class="detail-price-list">
-            <div><dt>{price_label} <small>税抜 / 1点</small></dt><dd>¥{price:,}</dd></div>
-            <div><dt>{lot_label}</dt><dd>{lot}点〜</dd></div>
+            <div><dt>{price_label} {price_unit}</dt><dd>{price}</dd></div>
+            <div><dt>{lot_label}</dt><dd>{lot}</dd></div>
           </dl>
           {price_note}
           <div class="detail-actions">
@@ -141,8 +143,8 @@ def page(item, items, header):
       </section>
     </main>
     <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC</span></footer>
-    <script src="../estimate/estimate-data.js?v=20261112renewal1"></script>
-    <script src="../script.js?v=20261114catalog2"></script>
+    <script src="../estimate/estimate-data.js?v=20261114editor1"></script>
+    <script src="../script.js?v=20261114editor1"></script>
   </body>
 </html>
 '''

@@ -1,5 +1,31 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-home-carousel]').forEach(carousel => {
+    const controls = carousel.closest('.home-carousel-section').querySelector('[data-carousel-controls]');
+    const [first, second] = carousel.children;
+    if (!controls || !second) return;
+
+    const previous = controls.querySelector('[data-carousel-prev]');
+    const next = controls.querySelector('[data-carousel-next]');
+    const syncControls = () => {
+      const end = carousel.scrollWidth - carousel.clientWidth;
+      controls.hidden = end < 2;
+      previous.setAttribute('aria-disabled', String(carousel.scrollLeft < 2));
+      next.setAttribute('aria-disabled', String(end - carousel.scrollLeft < 2));
+    };
+    const move = (direction, button) => {
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      carousel.scrollBy({
+        left: direction * (second.offsetLeft - first.offsetLeft),
+        behavior: reduced.matches ? 'instant' : 'smooth',
+      });
+    };
+    previous.addEventListener('click', () => move(-1, previous));
+    next.addEventListener('click', () => move(1, next));
+    carousel.addEventListener('scroll', syncControls, { passive: true });
+    window.addEventListener('resize', syncControls);
+    syncControls();
+  });
   const slides = [...document.querySelectorAll('.hero-slide')];
   let selectionRequest = 0;
   const imageStatus = document.createElement('p');

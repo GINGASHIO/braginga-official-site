@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="./studio.css?v=20261112b">
     <link rel="stylesheet" href="./order-flow.css?v=20261112b">
     <link rel="stylesheet" href="./sports-banner.css?v=20261112b">
-    <link rel="stylesheet" href="./monochrome.css?v=20261114color2">
-    <script src="./studio.js?v=20261105a" defer></script>
+    <link rel="stylesheet" href="./monochrome.css?v=20261114carousel2">
+    <script src="./studio.js?v=20261114carousel2" defer></script>
   </head>
   <body data-page="home">
     <div class="page-progress" aria-hidden="true" data-page-progress></div>
@@ -79,67 +79,95 @@
       </section>
 
 
-      <section class="section" id="product">
+      <section class="section home-carousel-section" id="product" aria-labelledby="home-product-title">
         <div class="list-section-head reveal">
           <div>
             <p class="kicker">PRODUCT</p>
-            <h2>商品・価格</h2>
+            <h2 id="home-product-title">商品・価格</h2>
             <p>ウェア、チーム用品、プリント加工、ブランドOEMまで、用途と数量に合わせてご提案します。</p>
           </div>
-          <a class="vertical-list-link" href="./products/" aria-label="プロダクト一覧を見る">
-            <span>全商品・価格を見る ↗</span>
-          </a>
+          <div class="home-carousel-actions">
+            <a class="vertical-list-link" href="./products/">全商品・価格を見る <span aria-hidden="true">↗</span></a>
+            <div class="home-carousel-controls" data-carousel-controls hidden>
+              <button type="button" data-carousel-prev aria-label="前の商品" aria-controls="home-product-carousel" aria-disabled="true">←</button>
+              <button type="button" data-carousel-next aria-label="次の商品" aria-controls="home-product-carousel">→</button>
+            </div>
+          </div>
         </div>
-        <div class="product-list-grid home-product-details">
+        <div class="product-list-grid home-carousel" data-home-carousel id="home-product-carousel" tabindex="0" role="region" aria-label="ピックアップ商品、横にスクロールできます">
           <!-- HOME PRODUCTS START -->
           <article class="product-card">
             <a class="list-card-link" href="./products/item-15.html">
               <figure class="list-card-media"><img src="./assets/images/products/product-15-20261111.webp" alt="" loading="lazy" decoding="async" width="750" height="1000"></figure>
               <h3>ユニ型トートバッグ</h3>
-              <p>商品詳細を見る <span aria-hidden="true">↗</span></p>
             </a>
           </article>
           <article class="product-card">
             <a class="list-card-link" href="./products/item-06.html">
               <figure class="list-card-media"><img src="./assets/images/products/product-06-20261111.webp" alt="" loading="lazy" decoding="async" width="750" height="1000"></figure>
               <h3>マフラータオル</h3>
-              <p>商品詳細を見る <span aria-hidden="true">↗</span></p>
             </a>
           </article>
           <article class="product-card">
             <a class="list-card-link" href="./products/item-07.html">
               <figure class="list-card-media"><img src="./assets/images/products/product-07-20261111.webp" alt="" loading="lazy" decoding="async" width="750" height="1000"></figure>
               <h3>ユニクッションキーホルダー</h3>
-              <p>商品詳細を見る <span aria-hidden="true">↗</span></p>
             </a>
           </article>
           <article class="product-card">
             <a class="list-card-link" href="./products/item-36.html">
               <figure class="list-card-media"><img src="./assets/images/products/product-36-20261111.webp" alt="" loading="lazy" decoding="async" width="1000" height="750"></figure>
               <h3>フルカラー応援マフラー</h3>
-              <p>商品詳細を見る <span aria-hidden="true">↗</span></p>
+            </a>
+          </article>
+          <article class="product-card">
+            <a class="list-card-link" href="./products/item-41.html">
+              <figure class="list-card-media"><img src="./assets/images/products/product-41-20261111.webp" alt="" loading="lazy" decoding="async" width="1000" height="772"></figure>
+              <h3>メガホン</h3>
             </a>
           </article>
           <!-- HOME PRODUCTS END -->
         </div>
       </section>
 
-      <section class="section case-section" id="case">
+      <section class="section case-section home-carousel-section" id="case" aria-labelledby="home-case-title">
         <div class="case-list-wrap">
           <div class="list-section-head reveal">
             <div>
               <p class="kicker">CASE</p>
-              <h2>制作実績一覧</h2>
+              <h2 id="home-case-title">制作実績一覧</h2>
               <p>スポンサー企業、スポーツチーム、サポーターをグッズで繋いだ商品化事例を紹介します。</p>
             </div>
-            <a class="vertical-list-link" href="./cases/index.html" aria-label="制作実績一覧を見る">
-              <span>制作実績を詳しく見る ↗</span>
-            </a>
+            <div class="home-carousel-actions">
+              <a class="vertical-list-link" href="./cases/index.html">制作実績を詳しく見る <span aria-hidden="true">↗</span></a>
+              <div class="home-carousel-controls" data-carousel-controls hidden>
+                <button type="button" data-carousel-prev aria-label="前の事例" aria-controls="home-case-carousel" aria-disabled="true">←</button>
+                <button type="button" data-carousel-next aria-label="次の事例" aria-controls="home-case-carousel">→</button>
+              </div>
+            </div>
           </div>
-          <div class="case-list-grid">
-            <article class="case-card"><a class="list-card-link" href="./cases/index.html#uniform-goods"><figure class="list-card-media"><img src="./assets/images/products/product-15-20261111.webp" width="750" height="1000" loading="lazy" alt=""></figure><h3>ユニフォーム型グッズ</h3></a></article>
-            <article class="case-card"><a class="list-card-link" href="./cases/index.html#mask"><figure class="list-card-media"><img src="./assets/images/products/product-39-20261111.webp" width="700" height="525" loading="lazy" alt=""></figure><h3>チームロゴ入りマスク</h3></a></article>
-            <article class="case-card"><a class="list-card-link" href="./cases/index.html#ecobag"><figure class="list-card-media"><img src="./assets/images/products/product-10-20261111.webp" width="1000" height="750" loading="lazy" alt=""></figure><h3>ピッチ柄のエコバッグ</h3></a></article>
+          <div class="case-list-grid home-carousel home-case-carousel" data-home-carousel id="home-case-carousel" tabindex="0" role="region" aria-label="制作実績、横にスクロールできます">
+            <article class="case-card">
+              <a class="list-card-link" href="./cases/index.html#uniform-goods">
+                <figure class="list-card-media"><img src="./assets/images/products/product-15-20261111.webp" width="750" height="1000" loading="lazy" decoding="async" alt=""></figure>
+                <h3>ユニフォーム型グッズ</h3>
+                <p class="case-company"></p>
+              </a>
+            </article>
+            <article class="case-card">
+              <a class="list-card-link" href="./cases/index.html#mask">
+                <figure class="list-card-media"><img src="./assets/images/products/product-39-20261111.webp" width="700" height="525" loading="lazy" decoding="async" alt=""></figure>
+                <h3>チームロゴ入りマスク</h3>
+                <p class="case-company"></p>
+              </a>
+            </article>
+            <article class="case-card">
+              <a class="list-card-link" href="./cases/index.html#ecobag">
+                <figure class="list-card-media"><img src="./assets/images/products/product-10-20261111.webp" width="1000" height="750" loading="lazy" decoding="async" alt=""></figure>
+                <h3>ピッチ柄のエコバッグ</h3>
+                <p class="case-company"></p>
+              </a>
+            </article>
           </div>
         </div>
       </section>

@@ -17,11 +17,16 @@ def build():
     for name in ROOT_FILES + [f'{page}/index.html' for page in PAGES] + ['estimate/estimate-data.js']:
         copy(ROOT / name, PUBLIC / name)
     from render_catalog import load_catalog
-    for item in load_catalog()['products']:
+    products = load_catalog()['products']
+    active_images = {item.get('image') for item in products if not item['provisional'] or item.get('published')}
+    for item in products:
         if not item['provisional'] or item.get('published'):
             name = f"products/item-{item['no']:02}.html"
             copy(ROOT / name, PUBLIC / name)
     for src in (ROOT / 'assets').rglob('*'):
+        relative = src.relative_to(ROOT)
+        if relative.parent == Path('assets/images/products') and '-editor-' in src.name and relative.as_posix() not in active_images:
+            continue
         if src.is_file() and not any(part.startswith('.') for part in src.relative_to(ROOT).parts) and src.suffix.lower() in {'.png', '.jpg', '.jpeg', '.webp', '.avif', '.svg', '.woff2'}:
             copy(src, PUBLIC / src.relative_to(ROOT))
     return PUBLIC

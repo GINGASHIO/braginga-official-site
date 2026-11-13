@@ -1,6 +1,87 @@
-body[data-page='home'] .home-product-details .list-card-media { position: relative; aspect-ratio: 5 / 4; background: #ecece8; }
-body[data-page='home'] .home-product-details .list-card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
-body[data-page='home'] .home-product-details .list-card-link p { margin-bottom: 0; }
+.home-carousel-section .list-section-head { gap: 16px 28px; margin-bottom: 16px; }
+.home-carousel-section .list-section-head p:not(.kicker) { margin: 8px 0 0; }
+.home-carousel-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; }
+.home-carousel-section .home-carousel-actions .vertical-list-link {
+  display: inline-flex;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.home-carousel-controls:not([hidden]) { display: flex; gap: 4px; }
+.home-carousel-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--light-line);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 19px;
+  cursor: pointer;
+}
+.home-carousel-controls button[aria-disabled='true'] { opacity: .4; cursor: default; }
+.home-carousel-section .home-carousel {
+  --carousel-gap: clamp(10px, 1.4vw, 20px);
+  --carousel-card-width: calc((100% - 4 * var(--carousel-gap)) / 4.35);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--carousel-card-width);
+  grid-template-columns: none;
+  gap: var(--carousel-gap);
+  padding: 4px 4px 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 4px;
+  background: transparent;
+  border: 0;
+}
+.home-carousel-section .home-carousel > article {
+  border: 0;
+  scroll-snap-align: start;
+  transform: none;
+}
+.home-carousel-section .home-carousel .list-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+.home-carousel-section .home-carousel .list-card-media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: #ecece8;
+  border: 0;
+}
+.home-carousel-section .home-carousel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.home-carousel-section .home-carousel h3 {
+  margin: 0;
+  padding: 10px 8px;
+  font-size: clamp(14px, 1.3vw, 19px);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.home-carousel-section .home-carousel .list-card-link:focus-visible,
+.home-carousel-controls button:focus-visible,
+.home-carousel-section .home-carousel:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.home-carousel-section .home-case-carousel {
+  --carousel-card-width: calc((100% - 2 * var(--carousel-gap)) / 3);
+}
+.home-case-carousel .case-company { margin: 0; padding: 0 8px 10px; color: var(--muted); font-size: 13px; }
+.home-case-carousel .case-company:empty { display: none; }
+@media (max-width: 900px) {
+  .home-carousel-section .home-carousel { --carousel-card-width: calc((100% - 3 * var(--carousel-gap)) / 3.3); }
+}
+@media (max-width: 600px) {
+  .home-carousel-section .home-carousel { --carousel-card-width: calc((100% - 2 * var(--carousel-gap)) / 2.2); }
+}
 body[data-page='home'] .home-sports-banner-link { background: #242424; color: #fff; border-color: #a3a3a3; }
 body[data-page='home'] .home-sports-banner-copy { color: #fff; }
 body[data-page='home'] .home-sports-banner-photos { background: #e8e8e6; }

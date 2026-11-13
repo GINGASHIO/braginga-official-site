@@ -128,7 +128,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-awards"
       ]
     },
     {
@@ -151,7 +152,10 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-cheering",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -174,7 +178,9 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -219,7 +225,10 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-cheering",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -245,7 +254,9 @@ window.estimateCatalog = {
         "restaurant",
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -269,7 +280,9 @@ window.estimateCatalog = {
       "scenes": [
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -292,7 +305,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-awards"
       ]
     },
     {
@@ -315,7 +329,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-awards"
       ]
     },
     {
@@ -338,7 +353,8 @@ window.estimateCatalog = {
         "restaurant",
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch"
       ]
     },
     {
@@ -361,7 +377,9 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -545,7 +563,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-merch"
       ]
     },
     {
@@ -595,7 +614,9 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -622,7 +643,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering"
       ],
       "searchAliases": [
         "のぼりバナー"
@@ -677,7 +699,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering"
       ]
     },
     {
@@ -703,7 +726,9 @@ window.estimateCatalog = {
       "scenes": [
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -730,7 +755,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-merch"
       ]
     },
     {
@@ -755,7 +781,9 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ],
       "searchAliases": [
         "クッションシート",
@@ -785,7 +813,9 @@ window.estimateCatalog = {
       "scenes": [
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -810,7 +840,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-awards"
       ]
     },
     {
@@ -838,7 +869,9 @@ window.estimateCatalog = {
         "restaurant",
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -863,7 +896,10 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-cheering",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -890,7 +926,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering"
       ]
     },
     {
@@ -915,7 +952,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch"
       ]
     },
     {
@@ -942,7 +980,9 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -967,7 +1007,10 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -993,7 +1036,9 @@ window.estimateCatalog = {
       "scenes": [
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -1017,7 +1062,8 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "sports"
+        "sports",
+        "sports-cheering"
       ]
     },
     {
@@ -1042,7 +1088,9 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-cheering",
+        "sports-merch"
       ]
     },
     {
@@ -1093,7 +1141,9 @@ window.estimateCatalog = {
       "scenes": [
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -1120,7 +1170,8 @@ window.estimateCatalog = {
       "scenes": [
         "restaurant",
         "promo",
-        "sports"
+        "sports",
+        "sports-merch"
       ]
     },
     {
@@ -1169,7 +1220,8 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "sports"
+        "sports",
+        "sports-cheering"
       ]
     },
     {
@@ -1222,7 +1274,8 @@ window.estimateCatalog = {
         "restaurant",
         "promo",
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch"
       ]
     },
     {
@@ -1324,7 +1377,8 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "sports"
+        "sports",
+        "sports-cheering"
       ]
     },
     {
@@ -1348,7 +1402,8 @@ window.estimateCatalog = {
         "スポーツ"
       ],
       "scenes": [
-        "sports"
+        "sports",
+        "sports-merch"
       ]
     },
     {
@@ -1373,7 +1428,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch"
       ]
     },
     {
@@ -1395,7 +1451,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering"
       ],
       "searchAliases": [
         "団扇"
@@ -1420,7 +1477,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "sports",
-        "graduation"
+        "graduation",
+        "sports-merch"
       ],
       "searchAliases": [
         "レプリカユニ"
@@ -1445,7 +1503,8 @@ window.estimateCatalog = {
       ],
       "scenes": [
         "promo",
-        "sports"
+        "sports",
+        "sports-cheering"
       ],
       "searchAliases": [
         "のぼりバナーラウンドタイプ",

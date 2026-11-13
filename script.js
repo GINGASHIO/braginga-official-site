@@ -123,6 +123,7 @@ const comparisonKey = 'braginga.catalog.compare.v1';
 const estimatorDraftKey = 'braginga.estimate.v1';
 const consultationDraftKey = 'braginga.consultation.v1';
 const allowedCatalogPaths = new Set(['/products/', '/products/index.html', '/sports/', '/sports/index.html']);
+const sportsScenes = { 'sports-cheering': '応援', 'sports-merch': 'チーム物販', 'sports-awards': '卒団・表彰' };
 const safeCatalogReturn = value => {
   if (typeof value !== 'string' || value.length > 1500) return null;
   try {
@@ -133,7 +134,9 @@ const safeCatalogReturn = value => {
       const text = url.searchParams.get(key);
       if (text) clean.searchParams.set(key, text.slice(0, 120));
     });
-    clean.hash = /^#product-\d{2,}$/.test(url.hash) ? url.hash : (url.pathname.startsWith('/sports') ? '#sports-lineup' : '#lineup');
+    const sports = url.pathname.startsWith('/sports');
+    const sportsSection = sports && Object.hasOwn(sportsScenes, url.hash.slice(1));
+    clean.hash = /^#product-\d{2,}$/.test(url.hash) || sportsSection ? url.hash : (sports ? '#sports-lineup' : '#lineup');
     return `${clean.pathname}${clean.search}${clean.hash}`;
   } catch { return null; }
 };
@@ -160,7 +163,7 @@ if (publicProductGrid) {
     const activeScene = filters.querySelector('[data-catalog-active-scene]');
     const count = filters.querySelector('[data-catalog-count]');
     const empty = document.querySelector('[data-catalog-empty]');
-    const sceneLabels = { restaurant: '飲食店', promo: '企業ノベルティ・販促', sports: 'スポーツ', graduation: '卒業記念・記念品' };
+    const sceneLabels = { restaurant: '飲食店', promo: '企業ノベルティ・販促', sports: 'スポーツ', graduation: '卒業記念・記念品', ...sportsScenes };
     const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase('ja-JP').trim();
     const products = [...publicProductGrid.querySelectorAll('.public-product-card')].map(card => ({
       card,
@@ -226,6 +229,7 @@ if (publicProductGrid) {
     const applyState = state => {
       selectedUseCase = ['スポーツ', '飲食店'].includes(state.use) ? state.use : '';
       selectedScene = Object.hasOwn(sceneLabels, state.scene) ? state.scene : '';
+      if (Object.hasOwn(sportsScenes, selectedScene)) selectedUseCase = 'スポーツ';
       if (selectedScene === 'restaurant') { selectedUseCase = '飲食店'; selectedScene = ''; }
       if (selectedScene === 'sports') { selectedUseCase = 'スポーツ'; selectedScene = ''; }
       search.value = typeof state.q === 'string' ? state.q.slice(0, 120) : '';
@@ -487,7 +491,7 @@ if (autoEstimate) {
   const explicitProduct = catalog.products.find(item => item.no === requestedProductNo);
   const requestedCategory = estimateParams.get('category');
   const requestedProduct = explicitProduct || (!requestedCategory && !estimateParams.has('product') && Number.isSafeInteger(savedEstimate?.productNo) ? catalog.products.find(item => item.no === savedEstimate.productNo) : null);
-  categorySelect.innerHTML = catalog.categories.map((category) => `<option value="${category}">${category}</option>`).join("");
+  categorySelect.replaceChildren(...catalog.categories.map(category => new Option(category, category)));
   if (catalog.categories.includes(requestedCategory)) categorySelect.value = requestedCategory;
   if (requestedProduct) {
     categorySelect.value = requestedProduct.category;
@@ -496,7 +500,11 @@ if (autoEstimate) {
 
   const syncProducts = () => {
     const products = catalog.products.filter((item) => item.category === categorySelect.value);
-    productSelect.innerHTML = products.map((item) => `<option value="${catalog.products.indexOf(item)}">${item.name}${item.priceStatus === 'temporary' && item.published ? "（仮価格・仮ロット）" : item.provisional ? "（個別見積もり）" : ""}</option>`).join("");
+    productSelect.replaceChildren(...products.map(item => {
+      const label = item.priceStatus === 'temporary' && item.published ? '（仮価格・仮ロット）'
+        : item.provisional || item.priceStatus === 'individual' ? '（個別見積もり）' : '';
+      return new Option(item.name + label, String(catalog.products.indexOf(item)));
+    }));
     if (requestedProduct && products.includes(requestedProduct)) {
       productSelect.value = String(catalog.products.indexOf(requestedProduct));
     }
