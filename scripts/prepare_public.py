@@ -5,7 +5,7 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / '.build' / 'public'
 PAGES = ['about', 'products', 'cases', 'estimate', 'trophy', 'sports', 'collections']
-ROOT_FILES = ['index.html', '404.html', 'styles.css', 'creative.css', 'navigation.css', 'studio.css', 'catalog-sections.css', 'collection-index.css', 'order-flow.css', 'sports-banner.css', 'sports-feature.css', 'product-detail.css', 'case-story.css', 'renewal.css', 'renewal.js', 'script.js', 'creative.js', 'navigation.js', 'studio.js', 'robots.txt', '_headers']
+ROOT_FILES = ['index.html', '404.html', 'styles.css', 'creative.css', 'navigation.css', 'studio.css', 'catalog-sections.css', 'collection-index.css', 'order-flow.css', 'monochrome.css', 'sports-banner.css', 'sports-feature.css', 'product-detail.css', 'case-story.css', 'renewal.css', 'renewal.js', 'script.js', 'creative.js', 'navigation.js', 'studio.js', 'robots.txt', '_headers']
 
 def build():
     # Only this generated directory is recreated; never erase source/user folders.

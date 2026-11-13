@@ -1,0 +1,6 @@
+body[data-page='home'] .home-product-details .list-card-media { position: relative; aspect-ratio: 5 / 4; background: #ecece8; }
+body[data-page='home'] .home-product-details .list-card-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+body[data-page='home'] .home-product-details .list-card-link p { margin-bottom: 0; }
+body[data-page='home'] .home-sports-banner-link { background: #242424; color: #fff; border-color: #a3a3a3; }
+body[data-page='home'] .home-sports-banner-copy { color: #fff; }
+body[data-page='home'] .home-sports-banner-photos { background: #e8e8e6; }

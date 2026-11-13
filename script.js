@@ -119,8 +119,6 @@ const sessionRead = (key, fallback = null) => {
 const sessionWrite = (key, value) => {
   try { sessionStorage.setItem(key, JSON.stringify(value)); } catch { /* Browsing still works without storage. */ }
 };
-const catalogReturnKey = 'braginga.catalog.return.v1';
-const catalogStatePrefix = 'braginga.catalog.filters.v1:';
 const comparisonKey = 'braginga.catalog.compare.v1';
 const estimatorDraftKey = 'braginga.estimate.v1';
 const consultationDraftKey = 'braginga.consultation.v1';
@@ -139,7 +137,7 @@ const safeCatalogReturn = value => {
     return `${clean.pathname}${clean.search}${clean.hash}`;
   } catch { return null; }
 };
-const catalogReturn = safeCatalogReturn(new URLSearchParams(location.search).get('return')) || safeCatalogReturn(sessionRead(catalogReturnKey));
+const catalogReturn = safeCatalogReturn(new URLSearchParams(location.search).get('return'));
 if (catalogReturn) {
   document.querySelectorAll('[data-catalog-return]').forEach(link => { link.href = catalogReturn; });
   document.querySelectorAll('.detail-related-card').forEach(link => {
@@ -171,8 +169,6 @@ if (publicProductGrid) {
       scenes: (card.dataset.scenes || '').split(/\s+/).filter(Boolean),
       searchText: normalize(`${card.textContent} ${card.dataset.category || ''} ${card.dataset.searchAliases || ''}`),
     }));
-    const pageScope = location.pathname.startsWith('/sports') ? 'sports' : 'products';
-    const stateKey = catalogStatePrefix + pageScope;
     let selectedUseCase = '';
     let selectedScene = '';
     const matchesScope = product =>
@@ -218,8 +214,6 @@ if (publicProductGrid) {
       Object.entries(state).forEach(([key, value]) => value ? url.searchParams.set(key, value) : url.searchParams.delete(key));
       url.searchParams.delete('restore');
       history.replaceState(history.state, '', `${url.pathname}${url.search}${url.hash}`);
-      sessionWrite(stateKey, state);
-      sessionWrite(catalogReturnKey, safeCatalogReturn(`${url.pathname}${url.search}#lineup`));
       products.forEach(product => {
         const link = product.card.querySelector('.product-name-link');
         if (!link) return;
@@ -260,10 +254,7 @@ if (publicProductGrid) {
       applyState({});
       search.focus({ preventScroll: true });
     }));
-    const params = new URLSearchParams(location.search);
-    const explicit = ['q', 'category', 'use', 'scene'].some(key => params.has(key));
-    const saved = sessionRead(stateKey, {});
-    applyState(explicit ? readState(params) : (saved && typeof saved === 'object' ? saved : {}));
+    applyState(readState(new URLSearchParams(location.search)));
     window.addEventListener('popstate', () => applyState(readState(new URLSearchParams(location.search))));
     filters.hidden = false;
   }
@@ -306,7 +297,7 @@ if (compareButtons.length && publicCatalogItems.length) {
   };
   const syncComparisonLink = link => {
     const no = Number(link.dataset.comparisonProductLink);
-    const base = publicProductGrid ? safeCatalogReturn(`${location.pathname}${location.search}`) : safeCatalogReturn(sessionRead(catalogReturnKey));
+    const base = publicProductGrid ? safeCatalogReturn(`${location.pathname}${location.search}`) : catalogReturn;
     const target = new URL(link.href);
     target.searchParams.delete('return');
     if (base) {

@@ -62,9 +62,35 @@ def render_page(path, items, heading):
     result = text[:start] + '\n' + cards + '\n        ' + text[end:]
     if result != text: path.write_text(result)
 
+def render_home(items):
+    featured = {item['no']: item for item in items if item.get('image')}
+    cards = []
+    for number in (15, 6, 7, 36):
+        if number not in featured:
+            continue
+        item = featured[number]
+        name = escape(item['name'])
+        image = escape(item['image'], quote=True)
+        cards.append(f'''          <article class="product-card">
+            <a class="list-card-link" href="./products/item-{number:02}.html">
+              <figure class="list-card-media"><img src="./{image}" alt="" loading="lazy" decoding="async" width="{item.get('imageWidth', 800)}" height="{item.get('imageHeight', 600)}"></figure>
+              <h3>{name}</h3>
+              <p>商品詳細を見る <span aria-hidden="true">↗</span></p>
+            </a>
+          </article>''')
+    path = ROOT / 'index.html'
+    text = path.read_text()
+    start = text.index('<!-- HOME PRODUCTS START -->') + len('<!-- HOME PRODUCTS START -->')
+    end = text.index('<!-- HOME PRODUCTS END -->', start)
+    result = text[:start] + '\n' + '\n'.join(cards) + '\n          ' + text[end:]
+    if result != text:
+        path.write_text(result)
+
+
 def render():
     items = [item for item in load_catalog()['products'] if not item['provisional'] or item.get('published')]
     render_page(ROOT / 'products/index.html', items, 'h2')
+    render_home(items)
     sports = [item for item in items if 'スポーツ' in item.get('useCases', [])]
     render_page(ROOT / 'sports/index.html', sports, 'h3')
     from render_details import render as render_details
