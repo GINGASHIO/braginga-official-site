@@ -961,8 +961,8 @@ window.estimateCatalog = {
       ],
       "gallery": [
         {
-          "image": "assets/images/products/product-29-sapporo-daiichi-jacquard.jpg",
-          "thumb": "assets/images/products/product-29-sapporo-daiichi-jacquard.jpg",
+          "image": "assets/images/products/product-29-sapporo-daiichi-jacquard-blurred.webp",
+          "thumb": "assets/images/products/product-29-sapporo-daiichi-jacquard-blurred.webp",
           "alt": "札幌第一の青と白のマフラータオルを掲げて応援する観客",
           "width": 960,
           "height": 540
