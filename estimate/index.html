@@ -6,7 +6,7 @@
     <meta name="description" content="GINGA PRINT FACTORYのメールで相談・簡易見積もり。用途や数量から相談でき、対象商品の金額をその場で確認できます。">
     <title>簡易見積もり・メールで相談 | GINGA PRINT FACTORY</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=20261114color1">
+    <link rel="stylesheet" href="../styles.css?v=20261116estimate1">
     <link rel="stylesheet" href="../creative.css?v=20261114color1">
     <link rel="stylesheet" href="../navigation.css?v=20261116logo2">
     <script src="../navigation.js?v=20261116logo2" defer></script>
@@ -60,9 +60,10 @@
             <label><span>個数</span><input type="number" inputmode="numeric" data-estimate-quantity min="1" step="1" aria-describedby="quantity-warning" value="20"></label>
             <p class="estimate-warning" id="quantity-warning" role="status" data-estimate-warning></p>
             <div class="estimate-fees">
-              <label><span>送料（税抜）</span><input type="number" min="0" step="1" inputmode="numeric" placeholder="未定" aria-describedby="fee-warning" data-estimate-shipping></label>
+              <label><span>送料（税抜）</span><input type="number" min="0" step="1" inputmode="numeric" placeholder="未定" aria-describedby="shipping-note fee-warning" data-estimate-shipping></label>
               <label><span>その他費用（税抜）</span><input type="number" min="0" step="1" inputmode="numeric" placeholder="未定" aria-describedby="fee-warning" data-estimate-other></label>
             </div>
+            <p class="estimate-shipping-note" id="shipping-note">送料：段ボール個数 × ¥1,500</p>
             <p class="estimate-warning" id="fee-warning" role="status" data-estimate-fee-warning></p>
             <div class="auto-spec"><div><span>サイズ</span><strong data-estimate-spec>—</strong></div><div><span>仕様</span><strong data-estimate-print>—</strong></div><div><span>最低ロット</span><strong data-estimate-lot>—</strong></div><div><span>納期目安</span><strong data-estimate-lead>—</strong></div><div><span>備考</span><strong data-estimate-notes>—</strong></div></div>
             <p class="estimate-price-note" data-estimate-price-note></p>
