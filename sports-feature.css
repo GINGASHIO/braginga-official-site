@@ -29,6 +29,7 @@
 .sports-hero p { margin: 14px 0 0; color: #e1e3dd; font-size: clamp(14px, 1.4vw, 18px); }
 .sports-hero-visual { margin: 0; }
 .sports-hero-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 45%; }
+.sports-hero-pop { display: block; grid-column: 1 / -1; width: 100%; height: auto; }
 .sports-use-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--sports-line); }
 .sports-use-nav a {
   display: flex;

@@ -56,10 +56,54 @@
           </div>
           <button class="product-compare-toggle" type="button" data-compare-product="10" aria-pressed="false" aria-label="コンパクトエコバッグを比較に追加" hidden>＋ 比較に追加</button>
         </section>
+        <div class="detail-media" data-product-gallery>
         <figure class="detail-photo">
-          <div class="detail-photo-frame"><img src="../assets/images/products/product-10-20261111.webp" alt="コンパクトエコバッグの制作例" width="1000" height="750" fetchpriority="high" decoding="async"></div>
+          <div class="detail-photo-frame"><a class="detail-photo-zoom" href="../assets/images/products/product-10-espolada-eco-bag-open-20261117.webp" data-gallery-photo aria-label="コンパクトエコバッグのメイン画像を拡大">
+              <img src="../assets/images/products/product-10-espolada-eco-bag-open-20261117.webp" alt="エスポラーダ北海道のコンパクトエコバッグを広げた状態" width="1187" height="1440" fetchpriority="high" decoding="async"><span class="detail-photo-enlarge" aria-hidden="true">拡大 ⤢</span>
+            </a></div>
           <figcaption>制作例</figcaption>
         </figure>
+          <section class="detail-gallery" aria-label="追加写真">
+            <div class="detail-gallery-controls" data-gallery-controls hidden>
+              <button type="button" data-gallery-prev aria-label="前の写真へ" aria-controls="detail-gallery-track">←</button>
+              <button type="button" data-gallery-next aria-label="次の写真へ" aria-controls="detail-gallery-track">→</button>
+            </div>
+            <ul class="detail-gallery-track" id="detail-gallery-track" data-gallery-track>
+              <li>
+                <a href="../assets/images/products/product-10-espolada-eco-bag-packed-20261117.webp" data-gallery-photo aria-label="丸いケースに収納したエスポラーダ北海道のコンパクトエコバッグを拡大">
+                  <img src="../assets/images/products/product-10-espolada-eco-bag-packed-20261117-thumb.webp" width="390" height="520" alt="丸いケースに収納したエスポラーダ北海道のコンパクトエコバッグ" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>
+              <li>
+                <a href="../assets/images/products/product-10-vavamos-usage-20261117.webp" data-gallery-photo aria-label="サッカーコート柄のコンパクトエコバッグを手に持った使用例を拡大">
+                  <img src="../assets/images/products/product-10-vavamos-usage-20261117-thumb.webp" width="520" height="390" alt="サッカーコート柄のコンパクトエコバッグを手に持った使用例" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>
+              <li>
+                <a href="../assets/images/products/product-10-vavamos-soccer-field-20261117.webp" data-gallery-photo aria-label="サッカーコート柄のエコバッグにボール柄のケースを重ねた制作例を拡大">
+                  <img src="../assets/images/products/product-10-vavamos-soccer-field-20261117-thumb.webp" width="520" height="520" alt="サッカーコート柄のエコバッグにボール柄のケースを重ねた制作例" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+          <dialog class="detail-gallery-dialog" aria-labelledby="detail-gallery-dialog-title">
+            <div class="detail-gallery-viewer">
+              <div class="detail-gallery-dialog-bar">
+                <h2 id="detail-gallery-dialog-title">制作例の拡大</h2>
+                <button type="button" data-gallery-close autofocus>閉じる ×</button>
+              </div>
+              <img data-gallery-preview alt="">
+              <div class="detail-gallery-dialog-bar">
+                <button type="button" data-gallery-view-prev aria-label="拡大した前の写真">←</button>
+                <span data-gallery-position aria-live="polite"></span>
+                <button type="button" data-gallery-view-next aria-label="拡大した次の写真">→</button>
+              </div>
+            </div>
+          </dialog>
+        </div>
         <section class="detail-specifications" aria-labelledby="detail-spec-title">
           <h2 id="detail-spec-title">商品仕様</h2>
           <dl>
@@ -73,7 +117,7 @@
         <h2 id="detail-related-title">関連商品</h2>
         <div class="detail-related-grid">
           <a class="detail-related-card" href="item-05.html">
-            <span class="detail-related-media"><img src="../assets/images/products/product-05-20261111.webp" alt="" width="1000" height="750" loading="lazy" decoding="async"></span>
+            <span class="detail-related-media"><img src="../assets/images/products/product-05-rku-logo-20261117.webp" alt="" width="1050" height="1400" loading="lazy" decoding="async"></span>
             <span class="detail-related-name">シューズバッグ <span aria-hidden="true">→</span></span>
           </a>
           <a class="detail-related-card" href="item-08.html">
@@ -81,7 +125,7 @@
             <span class="detail-related-name">ランドリーバッグ <span aria-hidden="true">→</span></span>
           </a>
           <a class="detail-related-card" href="item-11.html">
-            <span class="detail-related-media"><img src="../assets/images/products/product-11-20261111.webp" alt="" width="750" height="1000" loading="lazy" decoding="async"></span>
+            <span class="detail-related-media"><img src="../assets/images/products/product-11-vavamos-drawstring-20261117.webp" alt="" width="1440" height="1080" loading="lazy" decoding="async"></span>
             <span class="detail-related-name">ミニ巾着 <span aria-hidden="true">→</span></span>
           </a>
         </div>

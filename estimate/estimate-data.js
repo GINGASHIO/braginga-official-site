@@ -30,6 +30,13 @@ window.estimateCatalog = {
     "記念品",
     "応援グッズ"
   ],
+  "homeFeatured": [
+    6,
+    7,
+    11,
+    8,
+    10
+  ],
   "products": [
     {
       "no": 1,
@@ -143,16 +150,54 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-05-20261111.webp",
+      "image": "assets/images/products/product-05-rku-logo-20261117.webp",
       "notes": "",
-      "imageWidth": 1000,
-      "imageHeight": 750,
+      "imageWidth": 1050,
+      "imageHeight": 1400,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
         "promo",
         "graduation",
         "sports-awards"
+      ],
+      "imageAlt": "流通経済大学サッカー部のロゴが入ったシューズバッグ",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-05-rku-number-3-20261117.webp",
+          "thumb": "assets/images/products/product-05-rku-number-3-20261117-thumb.webp",
+          "alt": "流通経済大学の背番号3が入ったシューズバッグ",
+          "width": 360,
+          "height": 480
+        },
+        {
+          "image": "assets/images/products/product-05-canby-20261117.webp",
+          "thumb": "assets/images/products/product-05-canby-20261117-thumb.webp",
+          "alt": "キャンビーのキャラクターをプリントした持ち手付きシューズバッグ",
+          "width": 360,
+          "height": 480
+        },
+        {
+          "image": "assets/images/products/product-05-allballz-20261117.webp",
+          "thumb": "assets/images/products/product-05-allballz-20261117-thumb.webp",
+          "alt": "allballzのロゴと番号23が入ったシューズバッグ",
+          "width": 360,
+          "height": 480
+        },
+        {
+          "image": "assets/images/products/product-05-vavamos-with-gear-20261117.webp",
+          "thumb": "assets/images/products/product-05-vavamos-with-gear-20261117-thumb.webp",
+          "alt": "サッカーコート柄のシューズバッグをシューズとボールの横に広げた使用例",
+          "width": 520,
+          "height": 390
+        },
+        {
+          "image": "assets/images/products/product-05-vavamos-with-shoes-20261117.webp",
+          "thumb": "assets/images/products/product-05-vavamos-with-shoes-20261117-thumb.webp",
+          "alt": "サッカーコート柄のシューズバッグにシューズを入れた使用例",
+          "width": 520,
+          "height": 390
+        }
       ]
     },
     {
@@ -267,6 +312,20 @@ window.estimateCatalog = {
           "width": 480,
           "height": 640,
           "alt": "白と緑のストライプにオレンジの背番号を入れたユニフォーム型クッションキーホルダー"
+        },
+        {
+          "image": "assets/images/products/product-07-espolada-uniform-keychains-20261117.webp",
+          "thumb": "assets/images/products/product-07-espolada-uniform-keychains-20261117-thumb.webp",
+          "alt": "エスポラーダ北海道の水色と緑のユニフォーム型クッションキーホルダー",
+          "width": 390,
+          "height": 520
+        },
+        {
+          "image": "assets/images/products/product-07-vavamos-bottle-20261117.webp",
+          "thumb": "assets/images/products/product-07-vavamos-bottle-20261117-thumb.webp",
+          "alt": "必勝デザインのユニフォーム型クッションキーホルダーを水筒につけた使用例",
+          "width": 520,
+          "height": 390
         }
       ]
     },
@@ -293,6 +352,20 @@ window.estimateCatalog = {
           "alt": "縦のGiNGAロゴが見える黒いランドリーバッグ",
           "width": 480,
           "height": 640
+        },
+        {
+          "image": "assets/images/products/product-08-canby-20261117.webp",
+          "thumb": "assets/images/products/product-08-canby-20261117-thumb.webp",
+          "alt": "キャンビーのキャラクターをプリントしたひも付きランドリーバッグ",
+          "width": 360,
+          "height": 480
+        },
+        {
+          "image": "assets/images/products/product-08-vavamos-worn-20261117.webp",
+          "thumb": "assets/images/products/product-08-vavamos-worn-20261117-thumb.webp",
+          "alt": "サッカーコート柄のランドリーバッグを背負った使用例",
+          "width": 520,
+          "height": 390
         }
       ],
       "scenes": [
@@ -322,6 +395,22 @@ window.estimateCatalog = {
         "sports-cheering",
         "sports-merch",
         "sports-awards"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-09-vavamos-fleece-20261117.webp",
+          "thumb": "assets/images/products/product-09-vavamos-fleece-20261117-thumb.webp",
+          "alt": "サッカーコート柄のブランケットを折り返して黒いフリースの裏地を見せた制作例",
+          "width": 520,
+          "height": 520
+        },
+        {
+          "image": "assets/images/products/product-09-espolada-blanket-20261117.webp",
+          "thumb": "assets/images/products/product-09-espolada-blanket-20261117-thumb.webp",
+          "width": 520,
+          "height": 346,
+          "alt": "エスポラーダ北海道のユニフォーム柄と背番号12をプリントしたブランケット"
+        }
       ]
     },
     {
@@ -334,10 +423,10 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-10-20261111.webp",
+      "image": "assets/images/products/product-10-espolada-eco-bag-open-20261117.webp",
       "notes": "",
-      "imageWidth": 1000,
-      "imageHeight": 750,
+      "imageWidth": 1187,
+      "imageHeight": 1440,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
@@ -345,6 +434,30 @@ window.estimateCatalog = {
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "imageAlt": "エスポラーダ北海道のコンパクトエコバッグを広げた状態",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-10-espolada-eco-bag-packed-20261117.webp",
+          "thumb": "assets/images/products/product-10-espolada-eco-bag-packed-20261117-thumb.webp",
+          "alt": "丸いケースに収納したエスポラーダ北海道のコンパクトエコバッグ",
+          "width": 390,
+          "height": 520
+        },
+        {
+          "image": "assets/images/products/product-10-vavamos-usage-20261117.webp",
+          "thumb": "assets/images/products/product-10-vavamos-usage-20261117-thumb.webp",
+          "alt": "サッカーコート柄のコンパクトエコバッグを手に持った使用例",
+          "width": 520,
+          "height": 390
+        },
+        {
+          "image": "assets/images/products/product-10-vavamos-soccer-field-20261117.webp",
+          "thumb": "assets/images/products/product-10-vavamos-soccer-field-20261117-thumb.webp",
+          "alt": "サッカーコート柄のエコバッグにボール柄のケースを重ねた制作例",
+          "width": 520,
+          "height": 520
+        }
       ]
     },
     {
@@ -357,10 +470,10 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-11-20261111.webp",
+      "image": "assets/images/products/product-11-vavamos-drawstring-20261117.webp",
       "notes": "",
-      "imageWidth": 750,
-      "imageHeight": 1000,
+      "imageWidth": 1440,
+      "imageHeight": 1080,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
@@ -371,13 +484,28 @@ window.estimateCatalog = {
       ],
       "gallery": [
         {
+          "image": "assets/images/products/product-11-20261111.webp",
+          "thumb": "assets/images/products/product-11-previous-20261117-thumb.webp",
+          "alt": "ミニ巾着の制作例",
+          "width": 390,
+          "height": 520
+        },
+        {
           "image": "assets/images/products/product-11-satsunae-20261116.webp",
           "thumb": "assets/images/products/product-11-satsunae-20261116-thumb.webp",
           "width": 480,
           "height": 640,
           "alt": "チームのエンブレムや背番号を入れたミニ巾着の制作例"
+        },
+        {
+          "image": "assets/images/products/product-11-espolada-pouch-20261117.webp",
+          "thumb": "assets/images/products/product-11-espolada-pouch-20261117-thumb.webp",
+          "alt": "エスポラーダ北海道のユニフォーム柄をプリントしたミニ巾着",
+          "width": 390,
+          "height": 520
         }
-      ]
+      ],
+      "imageAlt": "サッカーコート柄のミニ巾着をひもで持った使用例"
     },
     {
       "no": 12,
@@ -389,15 +517,25 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "片面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-12-20261111.webp",
+      "image": "assets/images/products/product-12-pennant-examples-20261117.webp",
       "notes": "",
-      "imageWidth": 777,
-      "imageHeight": 1000,
+      "imageWidth": 1440,
+      "imageHeight": 1080,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
         "graduation",
         "sports-awards"
+      ],
+      "imageAlt": "スポーツチームのフリンジ付きペナントの制作例を並べた写真",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-12-20261111.webp",
+          "thumb": "assets/images/products/product-12-ishikari-20261117-thumb.webp",
+          "width": 373,
+          "height": 480,
+          "alt": "石狩フットボールクラブの卒団記念ペナント"
+        }
       ]
     },
     {
@@ -410,15 +548,32 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "片面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-13-20261111.webp",
+      "image": "assets/images/products/product-13-rku-20261117.webp",
       "notes": "",
-      "imageWidth": 750,
-      "imageHeight": 1000,
+      "imageWidth": 1080,
+      "imageHeight": 1440,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
         "graduation",
         "sports-awards"
+      ],
+      "imageAlt": "流通経済大学サッカー部のエンブレムが入ったミニペナント",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-13-rku-angle-20261117.webp",
+          "thumb": "assets/images/products/product-13-rku-angle-20261117-thumb.webp",
+          "width": 390,
+          "height": 520,
+          "alt": "流通経済大学サッカー部のミニペナントを別の角度から撮影した写真"
+        },
+        {
+          "image": "assets/images/products/product-13-20261111.webp",
+          "thumb": "assets/images/products/product-13-20261111-thumb.webp",
+          "width": 390,
+          "height": 520,
+          "alt": "ミニペナントの既存の制作例"
+        }
       ]
     },
     {
@@ -431,7 +586,7 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-43-20261111.webp",
+      "image": "assets/images/products/product-14-vavamos-open-20261117.webp",
       "notes": "",
       "scenes": [
         "sports",
@@ -440,12 +595,28 @@ window.estimateCatalog = {
         "sports-merch",
         "sports-awards"
       ],
-      "imageWidth": 1000,
-      "imageHeight": 1000,
+      "imageWidth": 1440,
+      "imageHeight": 1080,
       "imageCaption": "制作例",
-      "imageAlt": "ランチバッグの制作例",
+      "imageAlt": "サッカーコート柄のランチバッグを開いて中身を見せた使用例",
       "legacyNumbers": [
         43
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-14-vavamos-closed-20261117.webp",
+          "thumb": "assets/images/products/product-14-vavamos-closed-20261117-thumb.webp",
+          "alt": "サッカーコート柄のランチバッグのファスナーを閉じた状態",
+          "width": 520,
+          "height": 390
+        },
+        {
+          "image": "assets/images/products/product-43-20261111.webp",
+          "thumb": "assets/images/products/product-14-previous-20261117-thumb.webp",
+          "alt": "ランチバッグの既存の制作例",
+          "width": 520,
+          "height": 520
+        }
       ]
     },
     {
@@ -707,9 +878,9 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": "assets/images/products/product-20-20261111.webp",
-      "imageWidth": 562,
-      "imageHeight": 1000,
+      "image": "assets/images/products/product-20-hokusho-20261117.webp",
+      "imageWidth": 1440,
+      "imageHeight": 1080,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
@@ -719,6 +890,23 @@ window.estimateCatalog = {
       ],
       "searchAliases": [
         "のぼりバナー"
+      ],
+      "imageAlt": "グラウンドのフェンスに並んだHOKUSHOののぼり",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-20-hokusho-close-20261117.webp",
+          "thumb": "assets/images/products/product-20-hokusho-close-20261117-thumb.webp",
+          "width": 390,
+          "height": 520,
+          "alt": "HOKUSHOのエンブレムとのぼりを近くから見た写真"
+        },
+        {
+          "image": "assets/images/products/product-20-20261111.webp",
+          "thumb": "assets/images/products/product-20-20261111-thumb.webp",
+          "width": 292,
+          "height": 520,
+          "alt": "のぼりの既存の制作例"
+        }
       ]
     },
     {
@@ -865,9 +1053,9 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": "assets/images/products/product-26-20261111.webp",
-      "imageWidth": 1000,
-      "imageHeight": 750,
+      "image": "assets/images/products/product-26-vavamos-front-20261117.webp",
+      "imageWidth": 1280,
+      "imageHeight": 1280,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
@@ -875,6 +1063,16 @@ window.estimateCatalog = {
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "imageAlt": "サッカーコート柄の緑のクリアファイルの表面",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-26-vavamos-back-20261117.webp",
+          "thumb": "assets/images/products/product-26-vavamos-back-20261117-thumb.webp",
+          "alt": "黒いコートラインが入ったクリアファイルの裏面",
+          "width": 520,
+          "height": 520
+        }
       ]
     },
     {
@@ -1048,6 +1246,13 @@ window.estimateCatalog = {
           "width": 480,
           "height": 640,
           "alt": "薄手トートバッグのもう一つのプリント例"
+        },
+        {
+          "image": "assets/images/products/product-32-urakawa-20261117.webp",
+          "thumb": "assets/images/products/product-32-urakawa-20261117-thumb.webp",
+          "width": 390,
+          "height": 520,
+          "alt": "第42回ピスカリマラソンの文字とキャラクターをプリントした薄手トートバッグ"
         }
       ],
       "imageAlt": "黒いGiNGAロゴをプリントした生成りの薄手トートバッグ"
@@ -1091,9 +1296,9 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": "assets/images/products/product-34-20261111.webp",
-      "imageWidth": 1000,
-      "imageHeight": 750,
+      "image": "assets/images/products/product-34-vavamos-front-20261117.webp",
+      "imageWidth": 1280,
+      "imageHeight": 1280,
       "imageCaption": "制作例",
       "scenes": [
         "sports",
@@ -1101,6 +1306,16 @@ window.estimateCatalog = {
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "imageAlt": "サッカーボール柄とコート柄の缶バッジの表面",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-34-vavamos-back-20261117.webp",
+          "thumb": "assets/images/products/product-34-vavamos-back-20261117-thumb.webp",
+          "alt": "缶バッジの裏面と留めピン",
+          "width": 520,
+          "height": 520
+        }
       ]
     },
     {
@@ -1170,6 +1385,15 @@ window.estimateCatalog = {
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-38-vavamos-magnets-20261117.webp",
+          "thumb": "assets/images/products/product-38-vavamos-magnets-20261117-thumb.webp",
+          "alt": "サッカーボール柄とコート柄の丸いマグネットの制作例",
+          "width": 520,
+          "height": 520
+        }
       ]
     },
     {
