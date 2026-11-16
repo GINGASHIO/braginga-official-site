@@ -958,6 +958,15 @@ window.estimateCatalog = {
       "priceNote": "価格は枚数ごとの1枚あたりの税抜単価です。",
       "searchAliases": [
         "織りタオル"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-29-sapporo-daiichi-jacquard.jpg",
+          "thumb": "assets/images/products/product-29-sapporo-daiichi-jacquard.jpg",
+          "alt": "札幌第一の青と白のマフラータオルを掲げて応援する観客",
+          "width": 960,
+          "height": 540
+        }
       ]
     },
     {

@@ -56,10 +56,42 @@
           </div>
           <button class="product-compare-toggle" type="button" data-compare-product="29" aria-pressed="false" aria-label="2色ジャガード織マフラータオルを比較に追加" hidden>＋ 比較に追加</button>
         </section>
+        <div class="detail-media" data-product-gallery>
         <figure class="detail-photo">
-          <div class="detail-photo-frame"><img src="../assets/images/products/product-29-20261111.webp" alt="2色ジャガード織マフラータオルの制作例" width="750" height="1000" fetchpriority="high" decoding="async"></div>
+          <div class="detail-photo-frame"><a class="detail-photo-zoom" href="../assets/images/products/product-29-20261111.webp" data-gallery-photo aria-label="2色ジャガード織マフラータオルのメイン画像を拡大">
+              <img src="../assets/images/products/product-29-20261111.webp" alt="2色ジャガード織マフラータオルの制作例" width="750" height="1000" fetchpriority="high" decoding="async"><span class="detail-photo-enlarge" aria-hidden="true">拡大 ⤢</span>
+            </a></div>
           <figcaption>制作例</figcaption>
         </figure>
+          <section class="detail-gallery" aria-label="追加写真">
+            <div class="detail-gallery-controls" data-gallery-controls hidden>
+              <button type="button" data-gallery-prev aria-label="前の写真へ" aria-controls="detail-gallery-track">←</button>
+              <button type="button" data-gallery-next aria-label="次の写真へ" aria-controls="detail-gallery-track">→</button>
+            </div>
+            <ul class="detail-gallery-track" id="detail-gallery-track" data-gallery-track>
+              <li>
+                <a href="../assets/images/products/product-29-sapporo-daiichi-jacquard.jpg" data-gallery-photo aria-label="札幌第一の青と白のマフラータオルを掲げて応援する観客を拡大">
+                  <img src="../assets/images/products/product-29-sapporo-daiichi-jacquard.jpg" width="960" height="540" alt="札幌第一の青と白のマフラータオルを掲げて応援する観客" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+          <dialog class="detail-gallery-dialog" aria-labelledby="detail-gallery-dialog-title">
+            <div class="detail-gallery-viewer">
+              <div class="detail-gallery-dialog-bar">
+                <h2 id="detail-gallery-dialog-title">制作例の拡大</h2>
+                <button type="button" data-gallery-close autofocus>閉じる ×</button>
+              </div>
+              <img data-gallery-preview alt="">
+              <div class="detail-gallery-dialog-bar">
+                <button type="button" data-gallery-view-prev aria-label="拡大した前の写真">←</button>
+                <span data-gallery-position aria-live="polite"></span>
+                <button type="button" data-gallery-view-next aria-label="拡大した次の写真">→</button>
+              </div>
+            </div>
+          </dialog>
+        </div>
         <section class="detail-specifications" aria-labelledby="detail-spec-title">
           <h2 id="detail-spec-title">商品仕様</h2>
           <dl>
