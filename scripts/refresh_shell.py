@@ -61,6 +61,8 @@ def refresh():
                       lambda match: match[1] + NAV_VERSION, html)
         html = re.sub(r'((?:/script|estimate-data|product-detail)\.(?:css|js)\?v=)[\w-]+',
                       lambda match: match[1] + CATALOG_VERSION, html)
+        if name == 'estimate/index.html':
+            html = html.replace(f'/script.js?v={CATALOG_VERSION}', '/script.js?v=20261116copy1')
         if html != original:
             page.write_text(html, encoding='utf-8')
 

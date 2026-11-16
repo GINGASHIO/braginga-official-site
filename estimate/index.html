@@ -6,7 +6,7 @@
     <meta name="description" content="GINGA PRINT FACTORYのメールで相談・簡易見積もり。用途や数量から相談でき、対象商品の金額をその場で確認できます。">
     <title>簡易見積もり・メールで相談 | GINGA PRINT FACTORY</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=20261116estimate1">
+    <link rel="stylesheet" href="../styles.css?v=20261116estimate2">
     <link rel="stylesheet" href="../creative.css?v=20261114color1">
     <link rel="stylesheet" href="../navigation.css?v=20261116logo2">
     <script src="../navigation.js?v=20261116logo2" defer></script>
@@ -43,7 +43,7 @@
         <p class="kicker">ESTIMATE TOOL</p>
         <h1>簡易見積もり・メールで相談</h1>
         <p class="lead">単価×個数に、送料・その他費用を加えて金額を確認できます。仕様や費用が未定の場合は、メールでご相談ください。</p>
-        <div class="estimate-choice"><a href="#auto"><span>商品・数量が決まっている方</span><strong>簡易見積もり ↓</strong><p>単価×個数＋送料＋その他費用を確認します。</p></a><a href="#quick"><span>仕様や商品を相談したい方</span><strong>メールで相談 ↓</strong><p>分かる項目だけ入力して相談できます。</p></a></div>
+        <div class="estimate-choice"><a href="#auto"><span>商品・数量が決まっている方</span><strong>簡易見積もり ↓</strong><p>単価×個数＋送料＋その他費用を確認します。</p></a><a href="#quick"><span>仕様や商品を相談したい方</span><strong>メールで相談 ↓</strong><p>相談内容を入力してコピーできます。</p></a></div>
       </section>
 
       <section class="estimate-tool-section auto-estimate" id="auto" tabindex="-1" data-auto-estimate>
@@ -52,7 +52,7 @@
           <h2>簡易見積もり</h2>
           <p>参考上代をもとに、単価×個数＋送料＋その他費用を計算します。入力・表示金額は税抜です。送料とその他費用が未定の場合は、空欄のままメールでご相談いただけます。</p>
         </div>
-        <p data-estimate-fallback role="status">簡易見積もりが表示されない場合は、メールでご相談ください。 <a href="mailto:info@ginga-bra.com">info@ginga-bra.com</a></p>
+        <p data-estimate-fallback role="status">簡易見積もりが表示されない場合は、info@ginga-bra.com へご相談ください。</p>
         <div class="auto-estimate-grid">
           <div class="auto-controls">
             <label><span>商品カテゴリ</span><select data-estimate-category></select></label>
@@ -82,8 +82,10 @@
               <div><dt>税込参考</dt><dd data-estimate-tax>—</dd></div>
             </dl>
             <p class="estimate-total-note" data-estimate-total-note>送料・その他費用を入力すると合計を表示します。</p>
-            <a class="button button-primary" data-estimate-mail href="mailto:info@ginga-bra.com">メールで相談 ↗</a>
-            <a class="estimate-consult-link" href="#quick" data-estimate-consult>希望納期やデザインも相談する ↓</a>
+            <button type="button" class="button button-primary" data-estimate-copy hidden>見積もり内容をコピーする</button>
+            <textarea class="copy-preview" data-estimate-copy-preview rows="6" readonly hidden aria-label="コピーする見積もり内容"></textarea>
+            <p class="copy-status" data-estimate-copy-status role="status"></p>
+            <a class="estimate-consult-link" href="#quick" data-estimate-consult>相談内容を入力する ↓</a>
             <small>表示金額は入力内容に基づきます。正式な価格・送料・追加費用は内容確認後にご案内します。</small>
           </aside>
         </div>
@@ -93,26 +95,27 @@
         <div class="estimate-tool-heading">
           <p class="kicker">MAIL CONSULTATION</p>
           <h2>メールで相談</h2>
-          <p>分かる項目だけで大丈夫です。入力内容をメールに引き継ぎ、担当者へ相談できます。</p>
+          <p>分かる項目を入力し、コピーした文章をメールに貼り付けてお送りください。</p>
         </div>
         <p class="consultation-context" data-consultation-context hidden></p>
-        <form class="estimate-form" data-quick-form action="mailto:info@ginga-bra.com" method="post" enctype="text/plain">
-          <noscript><p>メールを作成できない場合は、info@ginga-bra.comへ直接ご相談ください。入力内容はこのサイトへ送信されません。</p></noscript>
+        <div class="estimate-form" data-quick-form>
+          <noscript><p>コピー機能を使うにはJavaScriptを有効にしてください。メールの宛先は info@ginga-bra.com です。</p></noscript>
           <label><span>作りたい商品・用途</span><input name="item" type="text" maxlength="200" placeholder="例：大会用ビブス、チームグッズ"></label>
           <label><span>おおよその数量</span><input name="quantity" type="number" inputmode="numeric" min="1" step="1" placeholder="例：30"></label>
           <label><span>希望時期</span><input name="date" type="text" maxlength="100" placeholder="例：10月上旬、未定"></label>
           <label class="form-wide"><span>ご希望・相談内容</span><textarea name="note" rows="5" maxlength="1500" placeholder="デザイン、予算、納期など。未定の項目は空欄で構いません。"></textarea></label>
           <div class="form-wide consultation-draft-note"><span>入力内容はこのタブで一時保存します。サイトへの送信は行いません。</span><button type="button" data-consultation-clear>入力内容をクリア</button></div>
-          <details class="form-wide consultation-mail-preview"><summary>メールの内容を確認する</summary><p>宛先：info@ginga-bra.com</p><pre data-consultation-preview></pre><a href="mailto:info@ginga-bra.com" data-consultation-mail>この内容でメールアプリを開く ↗</a></details>
-          <div class="form-wide estimate-submit-row"><p>メールアプリが開きます。内容を確認して送信してください。正式金額は内容確認後にご案内します。</p><button class="button button-primary" type="submit">メールを作成する ↗</button></div>
-        </form>
+          <details class="form-wide consultation-mail-preview"><summary>コピーする内容を確認する</summary><textarea class="copy-preview" data-consultation-preview rows="7" readonly aria-label="コピーする相談内容"></textarea></details>
+          <div class="form-wide estimate-submit-row"><p>メールの宛先：info@ginga-bra.com</p><button class="button button-primary" type="button" data-consultation-copy hidden>相談内容をコピーする</button></div>
+          <div class="form-wide copy-status" data-consultation-copy-status role="status"></div>
+        </div>
       </section>
 
     </main>
 
     <footer class="site-footer"><span class="footer-brand"><img src="/assets/images/pront-wt-footer.png" width="1636" height="994" alt="GINGA PRINT FACTORY" loading="lazy" decoding="async"></span><span>BRAGINGA LLC / ESTIMATE TOOL</span></footer>
     <script src="./estimate-data.js?v=20261116catalog3"></script>
-    <script src="../script.js?v=20261116catalog3"></script>
+    <script src="../script.js?v=20261116copy1"></script>
     <script src="../creative.js?v=20261112r1"></script>
   </body>
 </html>

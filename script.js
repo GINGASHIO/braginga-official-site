@@ -551,6 +551,26 @@ revealTargets.forEach((target) => observer.observe(target));
 }
 
 const yen = (value) => `¥${Math.round(value).toLocaleString("ja-JP")}`;
+function setupTextCopy(button, preview, status, getText) {
+  if (!button || !preview || !status) return;
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    const text = getText();
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = 'コピーしました。';
+    } catch {
+      preview.value = text;
+      preview.hidden = false;
+      const details = preview.closest('details');
+      if (details) details.open = true;
+      preview.focus();
+      preview.select();
+      status.textContent = '選択した文章を手動でコピーしてください。';
+    }
+  });
+}
+
 const autoEstimate = document.querySelector("[data-auto-estimate]");
 
 if (autoEstimate) {
@@ -590,6 +610,9 @@ if (autoEstimate) {
 
   const shippingInput = autoEstimate.querySelector('[data-estimate-shipping]');
   const otherInput = autoEstimate.querySelector('[data-estimate-other]');
+  const copyPreview = autoEstimate.querySelector('[data-estimate-copy-preview]');
+  const copyStatus = autoEstimate.querySelector('[data-estimate-copy-status]');
+  let estimateText = '';
   const parseFee = input => {
     const text = input.value.trim();
     const value = Number(text);
@@ -631,8 +654,9 @@ if (autoEstimate) {
     autoEstimate.querySelector('[data-estimate-warning]').textContent = invalidQuantity ? '個数は1以上の整数で入力してください。大きすぎる個数は個別にご相談ください。' : belowLot ? `最低ロットは${item.lot}点です。ロット未満は個別見積もりとなります。` : '';
     autoEstimate.querySelector('[data-estimate-fee-warning]').textContent = (!shipping.empty && !shipping.valid) || (!other.empty && !other.valid) || (total !== null && !validTotal) ? '送料・その他費用は0以上の整数で入力してください。大きすぎる金額は個別にご相談ください。' : '';
     autoEstimate.querySelector('[data-estimate-total-note]').textContent = !item ? '商品を選択してください。' : ask ? 'この商品の価格と最低ロットはメールでご相談ください。' : !canEstimate ? '商品・個数を確認するか、メールでご相談ください。' : validTotal ? '正式な費用は、内容確認後のお見積もりでご案内します。' : '送料・その他費用を入力すると合計を表示します。未定の場合もメールでご相談いただけます。';
-    const body = `商品：${item?.name || '未定'}\nサイズ：${size || '個別確認'}\n仕様：${spec || '個別確認'}\n個数：${item && validQuantity ? quantity + '点' : '未定・要確認'}\n参考単価（税抜）：${ask ? 'ASK' : hasPrice ? yen(item.price) : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) : '未定・要確認'}${ask ? '\n最低ロット：ASK' : ''}\n\nこの内容で相談します。`;
-    autoEstimate.querySelector('[data-estimate-mail]').href = `mailto:info@ginga-bra.com?subject=${encodeURIComponent('簡易見積もりのご相談')}&body=${encodeURIComponent(body)}`;
+    estimateText = `商品：${item?.name || '未定'}\nサイズ：${size || '個別確認'}\n仕様：${spec || '個別確認'}\n個数：${item && validQuantity ? quantity + '点' : '未定・要確認'}\n参考単価（税抜）：${ask ? 'ASK' : hasPrice ? yen(item.price) : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) : '未定・要確認'}${ask ? '\n最低ロット：ASK' : ''}\n\nこの内容で相談します。`;
+    if (copyPreview) copyPreview.value = estimateText;
+    if (copyStatus) copyStatus.textContent = '';
   };
 
   const refreshEstimate = () => {
@@ -652,6 +676,7 @@ if (autoEstimate) {
     const item = chosenProduct();
     if (item) document.dispatchEvent(new CustomEvent('braginga:consult-product', { detail: { productNo: item.no, quantity: quantityInput.value } }));
   });
+  setupTextCopy(autoEstimate.querySelector('[data-estimate-copy]'), copyPreview, copyStatus, () => estimateText);
   syncProducts();
   if (requestedProduct && savedProduct === requestedProduct) {
     [['quantity', quantityInput], ['shipping', shippingInput], ['other', otherInput]].forEach(([key, input]) => {
@@ -668,7 +693,9 @@ const quickForm = document.querySelector('[data-quick-form]');
 if (quickForm) {
   const names = ['item', 'quantity', 'date', 'note'];
   const limits = { item: 200, quantity: 20, date: 100, note: 1500 };
-  const fields = Object.fromEntries(names.map(name => [name, quickForm.elements.namedItem(name)]));
+  const fields = Object.fromEntries(names.map(name => [name, quickForm.querySelector(`[name="${name}"]`)]));
+  const copyPreview = quickForm.querySelector('[data-consultation-preview]');
+  const copyStatus = quickForm.querySelector('[data-consultation-copy-status]');
   const draft = sessionRead(consultationDraftKey, {});
   const contexts = {
     'case:uniform-goods': { item: 'チームオリジナルグッズ', label: '参考の制作例：ニチジョウにチーム愛を' },
@@ -689,22 +716,17 @@ if (quickForm) {
   let contextKey = Object.hasOwn(contexts, draft?.contextKey) ? draft.contextKey : '';
   names.forEach(name => { if (typeof draft?.[name] === 'string') fields[name].value = draft[name].slice(0, limits[name]); });
   const context = document.querySelector('[data-consultation-context]');
-  const mailContent = () => {
+  const consultationText = () => {
     const contextLine = contextKey ? `${contexts[contextKey].label}\n` : '';
-    const body = `${contextLine}作りたい商品・用途：${fields.item.value || '未定'}\nおおよその数量：${fields.quantity.value || '未定'}\n希望時期：${fields.date.value || '未定'}\n\nご希望・相談内容：\n${fields.note.value || '未記入'}`;
-    return { body, href: `mailto:info@ginga-bra.com?subject=${encodeURIComponent('制作のご相談')}&body=${encodeURIComponent(body)}` };
+    return `${contextLine}作りたい商品・用途：${fields.item.value || '未定'}\nおおよその数量：${fields.quantity.value || '未定'}\n希望時期：${fields.date.value || '未定'}\n\nご希望・相談内容：\n${fields.note.value || '未記入'}`;
   };
-  const updateMailPreview = () => {
-    const mail = mailContent();
-    const preview = quickForm.querySelector('[data-consultation-preview]');
-    const link = quickForm.querySelector('[data-consultation-mail]');
-    if (preview) preview.textContent = mail.body;
-    if (link) link.href = mail.href;
-    quickForm.dataset.mailHref = mail.href;
+  const updateCopyPreview = () => {
+    if (copyPreview) copyPreview.value = consultationText();
+    if (copyStatus) copyStatus.textContent = '';
   };
   const saveDraft = () => {
     sessionWrite(consultationDraftKey, { productNo: selectedProductNo, contextKey, ...Object.fromEntries(names.map(name => [name, fields[name].value.slice(0, limits[name])])) });
-    updateMailPreview();
+    updateCopyPreview();
   };
   const validQuantity = value => /^\d+$/.test(String(value || '')) && Number.isSafeInteger(Number(value)) && Number(value) > 0;
   const prefill = (productNo, quantity, force = false) => {
@@ -746,10 +768,6 @@ if (quickForm) {
     if (context) { context.textContent = ''; context.hidden = true; }
     saveDraft(); fields.item.focus();
   });
-  quickForm.addEventListener('submit', event => {
-    event.preventDefault();
-    saveDraft();
-    window.location.href = mailContent().href;
-  });
-  updateMailPreview();
+  setupTextCopy(quickForm.querySelector('[data-consultation-copy]'), copyPreview, copyStatus, consultationText);
+  updateCopyPreview();
 }

@@ -925,6 +925,23 @@ details p {
 .estimate-submit-row p { color: var(--muted); font-size: 13px; }
 .estimate-submit-row button { cursor: pointer; }
 
+.estimate-result [data-estimate-copy] { cursor: pointer; }
+.estimate-page .copy-preview {
+  width: 100%;
+  min-width: 0;
+  margin-top: 8px;
+  border: 1px solid var(--light-line);
+  padding: 10px;
+  background: var(--light-surface);
+  color: var(--light-text);
+  font: inherit;
+  font-size: 16px;
+  resize: vertical;
+}
+.estimate-page .copy-status { margin: 0; font-size: 13px; }
+.estimate-page .copy-status:not(:empty) { margin-top: 6px; }
+
+
 .auto-estimate {
   padding-block: clamp(32px, 5vw, 64px);
   background: #0b0b0b;
