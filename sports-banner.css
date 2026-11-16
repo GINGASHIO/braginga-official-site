@@ -12,6 +12,17 @@
   color: #f9f9e9;
 }
 
+.home-sports-banner-link.home-sports-banner-link--art {
+  display: block;
+  border: 0;
+}
+
+.home-sports-banner-link--art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .home-sports-banner-link:focus-visible {
   outline: 3px solid #244e3b;
   outline-offset: 4px;
