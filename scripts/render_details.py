@@ -4,7 +4,7 @@ from html import escape
 from pathlib import Path
 from urllib.parse import quote, urlsplit
 
-from refresh_shell import CATALOG_VERSION, NAV_VERSION, header_html
+from refresh_shell import CATALOG_VERSION, NAV_VERSION, footer_brand_html, header_html
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -206,7 +206,7 @@ def page(item, items, *, legacy=False):
         </nav>
       </section>
     </main>
-    <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC</span></footer>
+    <footer class="site-footer">{footer_brand_html()}<span>BRAGINGA LLC</span></footer>
     <script src="../estimate/estimate-data.js?v={CATALOG_VERSION}"></script>
     <script src="../script.js?v={CATALOG_VERSION}"></script>
   </body>

@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NAV_VERSION = '20261116menu1'
+NAV_VERSION = '20261116logo2'
 CATALOG_VERSION = '20261116catalog3'
 BASE_PAGES = (
     'index.html', 'about/index.html', 'cases/index.html', 'collections/index.html',
@@ -29,8 +29,7 @@ def header_html():
     )
     return f'''<header class="site-header" data-header>
       <a class="brand" href="/#home" aria-label="GINGA PRINT FACTORY トップページ">
-        <span class="brand-mark">GPF</span>
-        <span class="brand-text">GINGA PRINT FACTORY</span>
+        <img class="brand-logo" src="/assets/images/pront-blk-header.png" width="1636" height="994" alt="">
       </a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
         <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 2h18M0 7h18M0 12h18"/></svg>
@@ -42,6 +41,12 @@ def header_html():
     </header>'''
 
 
+def footer_brand_html():
+    return ('<span class="footer-brand">'
+            '<img src="/assets/images/pront-wt-footer.png" width="1636" height="994" '
+            'alt="GINGA PRINT FACTORY" loading="lazy" decoding="async"></span>')
+
+
 def refresh():
     for name in BASE_PAGES:
         page = ROOT / name
@@ -50,6 +55,8 @@ def refresh():
                               lambda _: header_html(), original, flags=re.S)
         if count != 1:
             raise ValueError(f'Expected one site header in {name}')
+        html = re.sub(r'(<footer class="site-footer">\s*)<span>GINGA PRINT FACTORY</span>',
+                      lambda match: match[1] + footer_brand_html(), html)
         html = re.sub(r'(navigation\.(?:css|js)\?v=)[\w-]+',
                       lambda match: match[1] + NAV_VERSION, html)
         html = re.sub(r'((?:/script|estimate-data|product-detail)\.(?:css|js)\?v=)[\w-]+',
