@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../creative.css?v=20261114color1">
     <link rel="stylesheet" href="../navigation.css?v=20261116logo2">
     <link rel="stylesheet" href="../studio.css?v=20261112c">
-    <link rel="stylesheet" href="../product-detail.css?v=20261116catalog3">
+    <link rel="stylesheet" href="../product-detail.css?v=20261116catalog7">
     <link rel="stylesheet" href="../renewal.css?v=20261112r1">
     <script src="../navigation.js?v=20261116logo2" defer></script>
   </head>
@@ -56,10 +56,42 @@
           </div>
           <button class="product-compare-toggle" type="button" data-compare-product="2" aria-pressed="false" aria-label="昇華ビブス（大人用）を比較に追加" hidden>＋ 比較に追加</button>
         </section>
+        <div class="detail-media" data-product-gallery>
         <figure class="detail-photo">
-          <div class="detail-photo-frame"><span class="detail-photo-pending">商品写真 掲載予定</span></div>
-
+          <div class="detail-photo-frame"><a class="detail-photo-zoom" href="../assets/images/products/product-02-20261116.webp" data-gallery-photo aria-label="昇華ビブス（大人用）のメイン画像を拡大">
+              <img src="../assets/images/products/product-02-20261116.webp" alt="番号とロゴが入った黄色い大人用ビブス2枚の制作例" width="1200" height="1600" fetchpriority="high" decoding="async"><span class="detail-photo-enlarge" aria-hidden="true">拡大 ⤢</span>
+            </a></div>
+          <figcaption>制作例</figcaption>
         </figure>
+          <section class="detail-gallery" aria-label="追加写真">
+            <div class="detail-gallery-controls" data-gallery-controls hidden>
+              <button type="button" data-gallery-prev aria-label="前の写真へ" aria-controls="detail-gallery-track">←</button>
+              <button type="button" data-gallery-next aria-label="次の写真へ" aria-controls="detail-gallery-track">→</button>
+            </div>
+            <ul class="detail-gallery-track" id="detail-gallery-track" data-gallery-track>
+              <li>
+                <a href="../assets/images/products/product-02-detail-20261116.webp" data-gallery-photo aria-label="大人用ビブスのプリントとメッシュ生地のアップを拡大">
+                  <img src="../assets/images/products/product-02-detail-20261116-thumb.webp" width="480" height="640" alt="大人用ビブスのプリントとメッシュ生地のアップ" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>
+            </ul>
+          </section>
+          <dialog class="detail-gallery-dialog" aria-labelledby="detail-gallery-dialog-title">
+            <div class="detail-gallery-viewer">
+              <div class="detail-gallery-dialog-bar">
+                <h2 id="detail-gallery-dialog-title">制作例の拡大</h2>
+                <button type="button" data-gallery-close autofocus>閉じる ×</button>
+              </div>
+              <img data-gallery-preview alt="">
+              <div class="detail-gallery-dialog-bar">
+                <button type="button" data-gallery-view-prev aria-label="拡大した前の写真">←</button>
+                <span data-gallery-position aria-live="polite"></span>
+                <button type="button" data-gallery-view-next aria-label="拡大した次の写真">→</button>
+              </div>
+            </div>
+          </dialog>
+        </div>
         <section class="detail-specifications" aria-labelledby="detail-spec-title">
           <h2 id="detail-spec-title">商品仕様</h2>
           <dl>
@@ -73,15 +105,15 @@
         <h2 id="detail-related-title">関連商品</h2>
         <div class="detail-related-grid">
           <a class="detail-related-card" href="item-01.html">
-            <span class="detail-related-media"><span class="detail-photo-pending">商品写真 掲載予定</span></span>
+            <span class="detail-related-media"><img src="../assets/images/products/product-01-20261116.webp" alt="" width="1200" height="1600" loading="lazy" decoding="async"></span>
             <span class="detail-related-name">昇華ビブス（子ども用） <span aria-hidden="true">→</span></span>
           </a>
           <a class="detail-related-card" href="item-03.html">
-            <span class="detail-related-media"><span class="detail-photo-pending">商品写真 掲載予定</span></span>
+            <span class="detail-related-media"><img src="../assets/images/products/product-03-20261116.webp" alt="" width="1200" height="1600" loading="lazy" decoding="async"></span>
             <span class="detail-related-name">昇華ビブス（子ども用）リバーシブル <span aria-hidden="true">→</span></span>
           </a>
           <a class="detail-related-card" href="item-04.html">
-            <span class="detail-related-media"><span class="detail-photo-pending">商品写真 掲載予定</span></span>
+            <span class="detail-related-media"><img src="../assets/images/products/product-04-20261116.webp" alt="" width="1200" height="1600" loading="lazy" decoding="async"></span>
             <span class="detail-related-name">昇華ビブス（大人用）リバーシブル <span aria-hidden="true">→</span></span>
           </a>
         </div>
@@ -93,7 +125,7 @@
       </section>
     </main>
     <footer class="site-footer"><span class="footer-brand"><img src="/assets/images/pront-wt-footer.png" width="1636" height="994" alt="GINGA PRINT FACTORY" loading="lazy" decoding="async"></span><span>BRAGINGA LLC</span></footer>
-    <script src="../estimate/estimate-data.js?v=20261116catalog3"></script>
-    <script src="../script.js?v=20261116catalog3"></script>
+    <script src="../estimate/estimate-data.js?v=20261116catalog7"></script>
+    <script src="../script.js?v=20261116catalog7"></script>
   </body>
 </html>

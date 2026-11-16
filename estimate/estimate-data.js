@@ -11,7 +11,6 @@ window.estimateCatalog = {
     "タオル",
     "キーホルダー",
     "ブランケット",
-    "巾着",
     "ペナント",
     "Tシャツ",
     "エプロン",
@@ -42,13 +41,15 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": null,
+      "image": "assets/images/products/product-01-20261116.webp",
+      "imageWidth": 1200,
+      "imageHeight": 1600,
+      "imageCaption": "制作例",
+      "imageAlt": "背番号とロゴをプリントした白い昇華ビブス（子ども用）の制作例",
       "notes": "",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "sports"
+        "sports",
+        "graduation"
       ]
     },
     {
@@ -61,13 +62,24 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": null,
-      "notes": "",
-      "useCases": [
-        "スポーツ"
+      "image": "assets/images/products/product-02-20261116.webp",
+      "imageWidth": 1200,
+      "imageHeight": 1600,
+      "imageCaption": "制作例",
+      "imageAlt": "番号とロゴが入った黄色い大人用ビブス2枚の制作例",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-02-detail-20261116.webp",
+          "thumb": "assets/images/products/product-02-detail-20261116-thumb.webp",
+          "alt": "大人用ビブスのプリントとメッシュ生地のアップ",
+          "width": 480,
+          "height": 640
+        }
       ],
+      "notes": "",
       "scenes": [
-        "sports"
+        "sports",
+        "graduation"
       ]
     },
     {
@@ -80,13 +92,15 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": null,
+      "image": "assets/images/products/product-03-20261116.webp",
+      "imageWidth": 1200,
+      "imageHeight": 1600,
+      "imageCaption": "制作例",
+      "imageAlt": "青と黄色の子ども用リバーシブルビブスの制作例",
       "notes": "",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "sports"
+        "sports",
+        "graduation"
       ]
     },
     {
@@ -99,13 +113,24 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": null,
-      "notes": "",
-      "useCases": [
-        "スポーツ"
+      "image": "assets/images/products/product-04-20261116.webp",
+      "imageWidth": 1200,
+      "imageHeight": 1600,
+      "imageCaption": "制作例",
+      "imageAlt": "青い面のスポンサー印刷が見える大人用リバーシブルビブスの制作例",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-04-detail-20261116.webp",
+          "thumb": "assets/images/products/product-04-detail-20261116-thumb.webp",
+          "alt": "大人用リバーシブルビブスの黄色い面",
+          "width": 480,
+          "height": 640
+        }
       ],
+      "notes": "",
       "scenes": [
-        "sports"
+        "sports",
+        "graduation"
       ]
     },
     {
@@ -123,11 +148,9 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
+        "promo",
         "graduation",
         "sports-awards"
       ]
@@ -147,11 +170,9 @@ window.estimateCatalog = {
       "imageWidth": 1125,
       "imageHeight": 1500,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
+        "promo",
         "graduation",
         "sports-cheering",
         "sports-merch",
@@ -194,13 +215,20 @@ window.estimateCatalog = {
           "width": 270,
           "height": 360,
           "alt": "青いマフラーのグラデーションと記念ロゴ"
+        },
+        {
+          "image": "assets/images/products/product-06-team-photo-20261116.webp",
+          "thumb": "assets/images/products/product-06-team-photo-20261116-thumb.webp",
+          "width": 480,
+          "height": 640,
+          "alt": "チームの集合写真をプリントしたピンクと紫の応援マフラー"
         }
       ]
     },
     {
       "no": 7,
       "category": "キーホルダー",
-      "name": "ユニクッションキーホルダー",
+      "name": "ユニフォーム型クッションキーホルダー",
       "size": "11×11cm",
       "price": 1300,
       "lot": 30,
@@ -212,14 +240,34 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-07-basketball-20261116.webp",
+          "thumb": "assets/images/products/product-07-basketball-20261116-thumb.webp",
+          "width": 459,
+          "height": 640,
+          "alt": "青いバスケットボールユニフォーム型のクッションキーホルダーの制作例"
+        },
+        {
+          "image": "assets/images/products/product-07-packaged-20261116.webp",
+          "thumb": "assets/images/products/product-07-packaged-20261116-thumb.webp",
+          "width": 480,
+          "height": 640,
+          "alt": "背番号入りの青いユニフォーム型クッションキーホルダーを並べた制作例"
+        },
+        {
+          "image": "assets/images/products/product-07-satsunae-20261116.webp",
+          "thumb": "assets/images/products/product-07-satsunae-20261116-thumb.webp",
+          "width": 480,
+          "height": 640,
+          "alt": "白と緑のストライプにオレンジの背番号を入れたユニフォーム型クッションキーホルダー"
+        }
       ]
     },
     {
@@ -232,16 +280,25 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": "assets/images/products/product-08-20261111.webp",
+      "image": "assets/images/products/product-08-ginga-20261116.webp",
       "notes": "",
-      "imageWidth": 1000,
-      "imageHeight": 750,
+      "imageWidth": 1200,
+      "imageHeight": 1600,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
+      "imageAlt": "黄色いマークとGiNGAロゴを配した黒いランドリーバッグの制作例",
+      "gallery": [
+        {
+          "image": "assets/images/products/product-08-ginga-side-20261116.webp",
+          "thumb": "assets/images/products/product-08-ginga-side-20261116-thumb.webp",
+          "alt": "縦のGiNGAロゴが見える黒いランドリーバッグ",
+          "width": 480,
+          "height": 640
+        }
       ],
       "scenes": [
-        "sports"
+        "sports",
+        "promo",
+        "graduation"
       ]
     },
     {
@@ -259,9 +316,6 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -285,14 +339,9 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -300,7 +349,7 @@ window.estimateCatalog = {
     },
     {
       "no": 11,
-      "category": "巾着",
+      "category": "バッグ",
       "name": "ミニ巾着",
       "size": "17×21cm",
       "price": 1300,
@@ -313,15 +362,21 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-11-satsunae-20261116.webp",
+          "thumb": "assets/images/products/product-11-satsunae-20261116-thumb.webp",
+          "width": 480,
+          "height": 640,
+          "alt": "チームのエンブレムや背番号を入れたミニ巾着の制作例"
+        }
       ]
     },
     {
@@ -339,9 +394,6 @@ window.estimateCatalog = {
       "imageWidth": 777,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -363,9 +415,6 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -382,18 +431,21 @@ window.estimateCatalog = {
       "lead": "約6週間",
       "spec": "両面フルカラー",
       "provisional": false,
-      "image": null,
+      "image": "assets/images/products/product-43-20261111.webp",
       "notes": "",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo",
         "sports",
+        "promo",
         "graduation",
-        "sports-merch"
+        "sports-merch",
+        "sports-awards"
+      ],
+      "imageWidth": 1000,
+      "imageHeight": 1000,
+      "imageCaption": "制作例",
+      "imageAlt": "ランチバッグの制作例",
+      "legacyNumbers": [
+        43
       ]
     },
     {
@@ -411,9 +463,6 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -568,14 +617,9 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 434,
       "imageCaption": "デザイン例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
-        "promo",
-        "sports"
+        "promo"
       ]
     },
     {
@@ -595,15 +639,13 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
-        "sports-merch"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -623,12 +665,8 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo"
+        "restaurant"
       ]
     },
     {
@@ -648,11 +686,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -675,14 +711,10 @@ window.estimateCatalog = {
       "imageWidth": 562,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
         "sports-cheering"
       ],
       "searchAliases": [
@@ -706,9 +738,6 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
         "promo"
@@ -731,15 +760,9 @@ window.estimateCatalog = {
       "imageWidth": 908,
       "imageHeight": 622,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
-        "promo",
-        "sports",
-        "sports-cheering"
+        "promo"
       ]
     },
     {
@@ -759,15 +782,21 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-23-satsunae-20261116.webp",
+          "thumb": "assets/images/products/product-23-satsunae-20261116-thumb.webp",
+          "width": 480,
+          "height": 360,
+          "alt": "緑色のユニフォーム型アクリルキーホルダーの制作例"
+        }
       ]
     },
     {
@@ -787,15 +816,13 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
-        "sports-merch"
+        "graduation",
+        "sports-merch",
+        "sports-awards"
       ]
     },
     {
@@ -815,9 +842,6 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -846,12 +870,9 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -874,9 +895,6 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
@@ -900,14 +918,9 @@ window.estimateCatalog = {
       "imageWidth": 951,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -930,11 +943,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
+        "promo",
         "graduation",
         "sports-cheering",
         "sports-merch",
@@ -958,14 +969,10 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
         "sports-cheering"
       ]
     },
@@ -986,13 +993,10 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "sports",
-        "graduation",
-        "sports-merch"
+        "restaurant",
+        "promo",
+        "graduation"
       ]
     },
     {
@@ -1008,21 +1012,28 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": "assets/images/products/product-32-20261111.webp",
-      "imageWidth": 750,
-      "imageHeight": 1000,
-      "imageCaption": "プリント例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
+      "image": "assets/images/products/product-32-ginga-20261116.webp",
+      "imageWidth": 1200,
+      "imageHeight": 1600,
+      "imageCaption": "制作例",
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
+        "graduation",
         "sports-merch",
         "sports-awards"
-      ]
+      ],
+      "gallery": [
+        {
+          "image": "assets/images/products/product-32-20261111.webp",
+          "thumb": "assets/images/products/product-32-previous-20261116-thumb.webp",
+          "width": 480,
+          "height": 640,
+          "alt": "薄手トートバッグのもう一つのプリント例"
+        }
+      ],
+      "imageAlt": "黒いGiNGAロゴをプリントした生成りの薄手トートバッグ"
     },
     {
       "no": 33,
@@ -1041,13 +1052,11 @@ window.estimateCatalog = {
       "imageWidth": 462,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
-        "sports-cheering",
+        "restaurant",
+        "promo",
+        "graduation",
         "sports-merch",
         "sports-awards"
       ]
@@ -1069,12 +1078,9 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -1097,9 +1103,6 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "sports-cheering"
@@ -1122,9 +1125,6 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
         "promo"
@@ -1147,12 +1147,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
-        "promo",
         "sports",
+        "promo",
         "graduation",
         "sports-merch",
         "sports-awards"
@@ -1175,14 +1172,10 @@ window.estimateCatalog = {
       "imageWidth": 700,
       "imageHeight": 525,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
+        "sports",
         "restaurant",
         "promo",
-        "sports",
         "sports-merch"
       ]
     },
@@ -1203,9 +1196,6 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
         "promo"
@@ -1228,9 +1218,6 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 772,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "sports-cheering"
@@ -1253,41 +1240,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
         "restaurant",
         "promo"
-      ]
-    },
-    {
-      "no": 43,
-      "category": "バッグ",
-      "name": "保冷バッグ",
-      "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "写真は制作例です。サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
-      "published": true,
-      "priceStatus": "temporary",
-      "image": "assets/images/products/product-43-20261111.webp",
-      "imageWidth": 1000,
-      "imageHeight": 1000,
-      "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
-      "scenes": [
-        "restaurant",
-        "promo",
-        "sports",
-        "graduation",
-        "sports-merch"
       ]
     },
     {
@@ -1307,12 +1262,8 @@ window.estimateCatalog = {
       "imageWidth": 681,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo"
+        "restaurant"
       ]
     },
     {
@@ -1332,12 +1283,8 @@ window.estimateCatalog = {
       "imageWidth": 162,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo"
+        "restaurant"
       ]
     },
     {
@@ -1357,15 +1304,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ",
-        "飲食店"
-      ],
       "scenes": [
-        "restaurant",
-        "promo",
         "sports",
-        "graduation"
+        "promo"
       ]
     },
     {
@@ -1385,37 +1326,10 @@ window.estimateCatalog = {
       "imageWidth": 1000,
       "imageHeight": 750,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
+        "promo",
         "sports-cheering"
-      ]
-    },
-    {
-      "no": 48,
-      "category": "ウェア",
-      "name": "手袋",
-      "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "写真は制作例です。サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
-      "published": true,
-      "priceStatus": "temporary",
-      "image": "assets/images/products/product-48-20261111.webp",
-      "imageWidth": 462,
-      "imageHeight": 1000,
-      "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
-      "scenes": [
-        "sports",
-        "sports-merch"
       ]
     },
     {
@@ -1435,12 +1349,9 @@ window.estimateCatalog = {
       "imageWidth": 750,
       "imageHeight": 1000,
       "imageCaption": "制作例",
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
-        "graduation",
+        "promo",
         "sports-merch"
       ]
     },
@@ -1457,18 +1368,20 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": null,
-      "useCases": [
-        "スポーツ"
-      ],
+      "image": "assets/images/products/product-50-shinei-20261116.webp",
       "scenes": [
-        "promo",
         "sports",
-        "sports-cheering"
+        "promo",
+        "sports-cheering",
+        "sports-merch"
       ],
       "searchAliases": [
         "団扇"
-      ]
+      ],
+      "imageWidth": 1115,
+      "imageHeight": 1152,
+      "imageAlt": "真栄FCのエンブレムや協賛ロゴを入れた青と黄色のうちわ",
+      "imageCaption": "制作例"
     },
     {
       "no": 51,
@@ -1484,13 +1397,11 @@ window.estimateCatalog = {
       "published": true,
       "priceStatus": "temporary",
       "image": null,
-      "useCases": [
-        "スポーツ"
-      ],
       "scenes": [
         "sports",
         "graduation",
-        "sports-merch"
+        "sports-merch",
+        "sports-awards"
       ],
       "searchAliases": [
         "レプリカユニ"
@@ -1509,19 +1420,21 @@ window.estimateCatalog = {
       "provisional": true,
       "published": true,
       "priceStatus": "temporary",
-      "image": null,
-      "useCases": [
-        "スポーツ"
-      ],
+      "image": "assets/images/products/product-52-round-20261116.webp",
       "scenes": [
-        "promo",
         "sports",
+        "restaurant",
+        "promo",
         "sports-cheering"
       ],
       "searchAliases": [
         "のぼりバナーラウンドタイプ",
         "ラウンドバナー"
-      ]
+      ],
+      "imageWidth": 904,
+      "imageHeight": 896,
+      "imageAlt": "屋外に設置した紫色のラウンドタイプののぼりバナー",
+      "imageCaption": "制作例"
     }
   ]
 };

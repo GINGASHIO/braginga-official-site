@@ -922,7 +922,7 @@ details p {
 
 .estimate-form textarea { resize: vertical; }
 .estimate-submit-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.estimate-submit-row p { color: var(--muted); font-size: 13px; }
+.estimate-submit-row p { color: var(--muted); font-size: 16px; }
 .estimate-submit-row button { cursor: pointer; }
 
 .estimate-result [data-estimate-copy] { cursor: pointer; }
@@ -1164,9 +1164,6 @@ details p {
 }
 
 .public-product-index {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
   color: var(--muted);
   font-size: 10px;
   font-weight: 900;

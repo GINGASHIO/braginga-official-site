@@ -4,7 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 NAV_VERSION = '20261116logo2'
-CATALOG_VERSION = '20261116catalog3'
+CATALOG_VERSION = '20261116catalog7'
 BASE_PAGES = (
     'index.html', 'about/index.html', 'cases/index.html', 'collections/index.html',
     'products/index.html', 'sports/index.html', 'estimate/index.html', 'trophy/index.html',

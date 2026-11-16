@@ -101,7 +101,7 @@ body[data-page=products] .product-image-slot figcaption{background:#fffdf7e8;col
 @media(max-width:430px){.estimate-fees{grid-template-columns:1fr}}
 body[data-page=products] .product-conditions-note{font-size:12px;line-height:1.7;color:#735025;margin:-8px 0 18px;padding:10px 12px;background:#fbf2e6}
 
-/* Catalog filter tags */
+/* Catalog scene filters */
 .catalog-filter .catalog-active-scene {
   flex: 1 1 100%;
   margin: 0;
@@ -126,7 +126,6 @@ body[data-page=products] .product-conditions-note{font-size:12px;line-height:1.7
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  max-width: 24rem;
 }
 .catalog-filter .catalog-tag-options button {
   flex: 1 1 0;
@@ -144,12 +143,6 @@ body[data-page=products] .product-conditions-note{font-size:12px;line-height:1.7
   border-color: #22281f;
   background: #22281f;
   color: #fff;
-}
-.catalog-filter .catalog-tag-options button:disabled {
-  border-color: #d5d4cf;
-  background: #f4f4f0;
-  color: #63695c;
-  cursor: default;
 }
 .catalog-tag-options button:focus-visible {
   outline: 2px solid #536348;

@@ -32,7 +32,6 @@ def render_cards(items, heading):
     cards = []
     for item in items:
         ask = item.get('priceStatus') == 'temporary'
-        use_cases = escape(' '.join(item.get('useCases', [])), quote=True)
         scenes = escape(' '.join(item.get('scenes', [])), quote=True)
         aliases = escape(' '.join(item.get('searchAliases', [])), quote=True)
         individual = item.get('priceStatus') == 'individual'
@@ -58,10 +57,10 @@ def render_cards(items, heading):
         consult_class = 'public-product-cta' if ask else 'product-mail-link'
         actions.append(f'<a class="{consult_class}" href="../estimate/index.html?product={no}#quick" data-consult-product="{no}" aria-label="{name}についてメールで相談">メールで相談 <span aria-hidden="true">↗</span></a>')
         action_html = '\n            '.join(actions)
-        cards.append(f'''        <article class="public-product-card" data-category="{escape(item['category'])}" data-use-cases="{use_cases}" data-scenes="{scenes}" data-search-aliases="{aliases}" data-product-no="{no}" id="product-{no:02}">
+        cards.append(f'''        <article class="public-product-card" data-category="{escape(item['category'])}" data-scenes="{scenes}" data-search-aliases="{aliases}" data-product-no="{no}" id="product-{no:02}">
           <figure class="public-product-media product-image-slot{' is-empty' if not image else ''}" aria-label="{name}の写真">{media}</figure>
           <div class="public-product-body">
-            <div class="public-product-index"><span>NO.{no:02}</span><span>{escape(item['category'])}</span></div>
+            <div class="public-product-index">{escape(item['category'])}</div>
             <{heading}><a class="product-name-link" href="../products/item-{no:02}.html" aria-label="{name}の商品詳細">{name} <span aria-hidden="true">↗</span></a></{heading}>
             <p class="public-product-price"><span>{price_label} {"" if ask or individual else "<small>税抜 / 1点</small>"}</span><strong>{price}</strong></p>
             <dl class="public-product-specs">
@@ -148,7 +147,7 @@ def render():
     items = [item for item in catalog['products'] if not item['provisional'] or item.get('published')]
     render_page(ROOT / 'products/index.html', items, 'h2')
     render_home(items, catalog.get('homeFeatured', [15, 6, 7, 20, 41]))
-    sports = [item for item in items if 'スポーツ' in item.get('useCases', [])]
+    sports = [item for item in items if 'sports' in item.get('scenes', [])]
     sports_page = ROOT / 'sports/index.html'
     render_sports_picks(sports_page, sports)
     from render_details import render as render_details

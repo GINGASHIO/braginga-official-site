@@ -162,30 +162,28 @@ if (publicProductGrid) {
     const search = filters.querySelector('[data-catalog-search]');
     const category = filters.querySelector('[data-catalog-category]');
     const useCaseButtons = [...filters.querySelectorAll('[data-catalog-use-case]')];
-    const categoryButtons = [...filters.querySelectorAll('[data-catalog-category-tag]')];
     const sceneLinks = [...document.querySelectorAll('[data-catalog-scene]')];
     const activeScene = filters.querySelector('[data-catalog-active-scene]');
     const count = filters.querySelector('[data-catalog-count]');
     const empty = document.querySelector('[data-catalog-empty]');
+    const useCaseScenes = { 'スポーツ': 'sports', '飲食店': 'restaurant' };
     const sceneLabels = { restaurant: '飲食店', promo: '企業ノベルティ・販促', sports: 'スポーツ', graduation: '卒業記念・記念品', ...sportsScenes };
     const normalize = value => String(value).normalize('NFKC').toLocaleLowerCase('ja-JP').trim();
     const products = [...publicProductGrid.querySelectorAll('.public-product-card')].map(card => ({
       card,
       category: card.dataset.category || '',
-      useCases: (card.dataset.useCases || '').split(/\s+/).filter(Boolean),
       scenes: (card.dataset.scenes || '').split(/\s+/).filter(Boolean),
       searchText: normalize(`${card.textContent} ${card.dataset.category || ''} ${card.dataset.searchAliases || ''}`),
     }));
     let selectedUseCase = '';
     let selectedScene = '';
     const matchesScope = product =>
-      (!selectedUseCase || product.useCases.includes(selectedUseCase)) &&
+      (!selectedUseCase || product.scenes.includes(useCaseScenes[selectedUseCase])) &&
       (!selectedScene || product.scenes.includes(selectedScene));
     const syncCategories = (previous = category.value) => {
       const names = [...new Set(products.filter(matchesScope).map(product => product.category).filter(Boolean))];
       category.replaceChildren(new Option('すべての品目', ''), ...names.map(name => new Option(name, name)));
       category.value = names.includes(previous) ? previous : '';
-      categoryButtons.forEach(button => { button.disabled = !names.includes(button.dataset.catalogCategoryTag); });
     };
     const readState = params => ({
       q: (params.get('q') || '').slice(0, 120),
@@ -196,8 +194,11 @@ if (publicProductGrid) {
     const filterProducts = () => {
       const query = normalize(search.value);
       const terms = query.split(/\s+/).filter(Boolean);
-      useCaseButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogUseCase === selectedUseCase && !selectedScene)));
-      categoryButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.catalogCategoryTag === category.value)));
+      const sportsSubscene = Object.hasOwn(sportsScenes, selectedScene);
+      useCaseButtons.forEach(button => {
+        const active = button.dataset.catalogUseCase === selectedUseCase && (!selectedScene || sportsSubscene);
+        button.setAttribute('aria-pressed', String(active));
+      });
       sceneLinks.forEach(link => {
         const active = link.dataset.catalogScene === selectedScene;
         if (link.tagName === 'BUTTON') link.setAttribute('aria-pressed', String(active));
@@ -231,7 +232,7 @@ if (publicProductGrid) {
       document.dispatchEvent(new CustomEvent('braginga:catalog-filter-change'));
     };
     const applyState = state => {
-      selectedUseCase = ['スポーツ', '飲食店'].includes(state.use) ? state.use : '';
+      selectedUseCase = Object.hasOwn(useCaseScenes, state.use) ? state.use : '';
       selectedScene = Object.hasOwn(sceneLabels, state.scene) ? state.scene : '';
       if (Object.hasOwn(sportsScenes, selectedScene)) selectedUseCase = 'スポーツ';
       if (selectedScene === 'restaurant') { selectedUseCase = '飲食店'; selectedScene = ''; }
@@ -244,11 +245,6 @@ if (publicProductGrid) {
       selectedUseCase = button.dataset.catalogUseCase;
       selectedScene = '';
       syncCategories();
-      filterProducts();
-    }));
-    categoryButtons.forEach(button => button.addEventListener('click', () => {
-      const name = button.dataset.catalogCategoryTag;
-      category.value = category.value === name ? '' : name;
       filterProducts();
     }));
     sceneLinks.forEach(link => link.addEventListener('click', event => {
