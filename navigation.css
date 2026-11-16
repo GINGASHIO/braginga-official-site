@@ -9,7 +9,10 @@ html { scroll-padding-top: calc(var(--header-height) + 20px); }
 .site-nav a::after { bottom: 1px; }
 .site-nav a[aria-current]::after { transform: scaleX(1); }
 .site-nav a[aria-current] small { color: #111; font-weight: 700; }
-.menu-button { align-items: center; justify-content: center; gap: 9px; width: auto; height: 42px; padding: 10px 12px; cursor: pointer; font: inherit; }
+#site-nav a[data-nav="contact"] { min-height: 44px; padding-inline: 12px; background: #20251d; color: #fff; }
+#site-nav a[data-nav="contact"] small { color: inherit; }
+#site-nav a[data-nav="contact"][aria-current]::after { left: 12px; right: 12px; bottom: 4px; }
+.menu-button { align-items: center; justify-content: center; gap: 9px; width: auto; height: 44px; padding: 10px 12px; cursor: pointer; font: inherit; }
 .menu-button .menu-label { display: inline; height: auto; margin: 0; background: none; font-size: 12px; font-weight: 600; line-height: 1.5; }
 .sub-page { padding-top: var(--header-height); }
 .breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; padding: 24px max(var(--gutter), calc((100vw - var(--max)) / 2)) 0; font-size: 12px; color: #555; }

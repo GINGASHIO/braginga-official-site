@@ -34,9 +34,17 @@
   const syncCurrent = () => {
     const homeSections = { '#product': 'products', '#case': 'cases', '#order': 'order', '#faq': 'faq', '#contact': 'contact' };
     const page = document.body.dataset.page;
-    const key = page === 'home' ? homeSections[location.hash] : page === 'trophy' ? 'products' : page;
+    const sports = document.body.classList.contains('sports-feature-page');
+    const productDetail = document.body.hasAttribute('data-product-no');
+    const consultation = page === 'estimate' && location.hash === '#quick';
+    const section = page === 'home' || page === 'trophy' || sports || productDetail || consultation;
+    const key = page === 'home' ? homeSections[location.hash]
+      : sports ? 'collections'
+      : page === 'trophy' ? 'products'
+      : consultation ? 'contact'
+      : page;
     nav.querySelectorAll('[data-nav]').forEach(link => {
-      if (link.dataset.nav === key) link.setAttribute('aria-current', page === 'home' || page === 'trophy' ? 'location' : 'page');
+      if (link.dataset.nav === key) link.setAttribute('aria-current', section ? 'location' : 'page');
       else link.removeAttribute('aria-current');
     });
   };

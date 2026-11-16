@@ -6,17 +6,17 @@
     <meta name="description" content="ブラジンガ合同会社のビジョン、沿革、事業内容、会社情報。2012年に始まったサッカーアパレルの経験を、商品企画とものづくりへ。">
     <title>ABOUT | BRAGINGA LLC</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=20261114color1">
+    <link rel="stylesheet" href="../styles.css?v=20261116about1">
     <link rel="stylesheet" href="../creative.css?v=20261114color1">
-    <link rel="stylesheet" href="../navigation.css?v=20260919a">
-    <script src="../navigation.js?v=20260919a" defer></script>
+    <link rel="stylesheet" href="../navigation.css?v=20261116menu1">
+    <script src="../navigation.js?v=20261116menu1" defer></script>
     <link rel="stylesheet" href="../studio.css?v=20261112c">
     <script src="../studio.js?v=20261105a" defer></script>
   <link rel="stylesheet" href="../renewal.css?v=20261112r1">
   </head>
   <body data-page="about">
     <header class="site-header" data-header>
-      <a class="brand" href="../index.html#home" aria-label="GINGA PRINT FACTORY トップページ">
+      <a class="brand" href="/#home" aria-label="GINGA PRINT FACTORY トップページ">
         <span class="brand-mark">GPF</span>
         <span class="brand-text">GINGA PRINT FACTORY</span>
       </a>
@@ -25,11 +25,14 @@
         <span class="menu-label">メニュー</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
-        <a href="../products/index.html#lineup" data-nav="products"><span>PRODUCTS</span><small>商品を探す</small></a>
-        <a href="../collections/index.html" data-nav="collections"><span>COLLECTIONS</span><small>特集</small></a>
-        <a href="../cases/index.html" data-nav="cases"><span>WORKS</span><small>制作実績</small></a>
-        <a href="../index.html#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
-        <a href="../estimate/index.html#quick" data-nav="contact"><span>CONSULT</span><small>メールで相談</small></a>
+        <a href="/collections/" data-nav="collections"><span>COLLECTION</span><small>特集コレクション</small></a>
+        <a href="/products/#lineup" data-nav="products"><span>PRODUCT</span><small>商品を探す</small></a>
+        <a href="/about/" data-nav="about"><span>ABOUT</span><small>私たちについて</small></a>
+        <a href="/cases/" data-nav="cases"><span>WORKS</span><small>制作実績</small></a>
+        <a href="/#order" data-nav="order"><span>ORDER</span><small>注文の流れ</small></a>
+        <a href="/#faq" data-nav="faq"><span>FAQ</span><small>よくある質問</small></a>
+        <a href="/estimate/#auto" data-nav="estimate"><span>ESTIMATE</span><small>簡易見積もり</small></a>
+        <a href="/estimate/#quick" data-nav="contact"><span>CONSULT</span><small>メールで相談</small></a>
       </nav>
     </header>
 
@@ -43,10 +46,10 @@
         <nav class="page-links" aria-label="このページの案内"><a href="#story">2012年からの歩み ↓</a><a href="#business">事業内容 ↓</a><a href="#company">会社情報 ↓</a></nav>
       </section>
 
-      <section class="section about-story-grid" id="story">
-        <div class="about-story-copy">
+      <section class="section about-story" id="story" aria-labelledby="about-story-title">
+        <div class="about-section-heading">
           <p class="kicker">OUR STORY</p>
-          <h2>着たいウェアがない。<br>じゃあ、自分で作る。</h2>
+          <h2 id="about-story-title"><span>着たいウェアがない。</span><wbr><span>じゃあ、自分で作る。</span></h2>
         </div>
         <div class="about-story-body">
           <p>ブラジンガの原点は、2012年に始まったサッカーアパレル「ジンガ」。デザインと企画を軸に、チームオーダー、展示会、直営店、オンラインストアへと展開してきました。</p>
@@ -54,18 +57,82 @@
         </div>
       </section>
 
-      <section class="section about-business" id="business">
-        <div class="section-heading wide"><p class="kicker">MAIN BUSINESS</p><h2>二つの強みを、<br>一つの窓口で。</h2></div>
+      <section class="section about-business" id="business" aria-labelledby="about-business-title">
+        <div class="about-section-heading">
+          <p class="kicker">MAIN BUSINESS</p>
+          <h2 id="about-business-title"><span>二つの強みを、</span><wbr><span>一つの窓口で。</span></h2>
+        </div>
         <div class="about-business-grid">
-          <article><span>01 / APPAREL</span><h3>サッカー・アパレル</h3><p>チームウェア、ショップユニフォーム、オリジナルウェア。デザインから生産までを一貫して進行します。</p></article>
-          <article class="is-light"><span>02 / GOODS</span><h3>オリジナルグッズ</h3><p>イベントアイテム、広告宣伝グッズ、店頭物販、トロフィー、タオル、バッグなどを用途から設計します。</p></article>
+          <article>
+            <figure class="about-business-visual">
+              <img src="../assets/images/about/apparel-concept-720.webp" srcset="../assets/images/about/apparel-concept-720.webp 720w, ../assets/images/about/apparel-concept-1200.webp 1200w" sizes="(max-width: 680px) 92vw, (max-width: 1240px) 46vw, 590px" width="1200" height="800" alt="ピッチのラインを背景にした青いサッカーシャツ" loading="lazy" decoding="async">
+              <figcaption>コンセプトイメージ</figcaption>
+            </figure>
+            <div class="about-business-copy">
+              <h3>サッカー・アパレル</h3>
+              <p>チームウェア、ショップユニフォーム、オリジナルウェア。デザインから生産までを一貫して進行します。</p>
+            </div>
+          </article>
+          <article>
+            <figure class="about-business-visual">
+              <img src="../assets/images/about/goods-concept-720.webp" srcset="../assets/images/about/goods-concept-720.webp 720w, ../assets/images/about/goods-concept-1200.webp 1200w" sizes="(max-width: 680px) 92vw, (max-width: 1240px) 46vw, 590px" width="1200" height="800" alt="オレンジを基調としたトートバッグ、キーホルダー、マフラー" loading="lazy" decoding="async">
+              <figcaption>コンセプトイメージ</figcaption>
+            </figure>
+            <div class="about-business-copy">
+              <h3>オリジナルグッズ</h3>
+              <p>イベントアイテム、広告宣伝グッズ、店頭物販、トロフィー、タオル、バッグなどを用途から設計します。</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section about-sectors">
-        <p class="kicker">CLIENT SECTORS</p>
-        <h2>業界を越えて、<br>商品化を支える。</h2>
-        <div class="about-sector-list"><span>広告代理店</span><span>プロスポーツチーム</span><span>各スポーツ団体</span><span>飲食店</span><span>介護事業</span><span>学校法人・PTA</span><span>アパレル会社</span><span>イベント・催事</span><span>カーショップ</span><span>旅行代理店</span></div>
+      <section class="section about-sectors" aria-labelledby="about-sectors-title">
+        <div class="about-section-heading">
+          <p class="kicker">CLIENT SECTORS</p>
+          <h2 id="about-sectors-title"><span>あらゆる業界の</span><wbr><span>ブランドイメージを高める</span></h2>
+        </div>
+        <ul class="about-sector-list">
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 17h5l16-7v22l-16-7H6zM11 25l3 10h4l-3-8M33 16l5-3m-5 12 5 3m-4-7h6"/></svg></span>
+            <span class="about-sector-name">広告代理店</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 7h18v8a9 9 0 0 1-18 0zM12 10H6v4a7 7 0 0 0 7 7m17-11h6v4a7 7 0 0 1-7 7m-8 3v9m-7 3h14m-11-3h8"/></svg></span>
+            <span class="about-sector-name">プロスポーツチーム</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="21" cy="21" r="16"/><path d="m21 14 7 5-3 8h-8l-3-8 7-5Zm0-9v9M6 16l8 3m-3 15 6-7m14 7-6-7m11-11-8 3"/></svg></span>
+            <span class="about-sector-name">各スポーツ団体</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 29h32v4H5zm3 0v-2a13 13 0 0 1 26 0v2M21 14v-4m-2 0h4"/></svg></span>
+            <span class="about-sector-name">飲食店</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 20c-12-6-7-15 0-10 7-5 12 4 0 10ZM4 27l6 6 8 3h10l10-11c1-3-2-5-4-3l-6 5m-5 1h4a3 3 0 0 0 0-6H16l-4 3H4"/></svg></span>
+            <span class="about-sector-name">介護事業</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 17 16-10 16 10M8 18h26v18H8zm9 18v-8h8v8M4 36h34"/><circle cx="21" cy="19" r="2"/></svg></span>
+            <span class="about-sector-name">学校法人・PTA</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 7-9 5-3 7 8 4 2-4v16h16V19l2 4 8-4-3-7-9-5a6 6 0 0 1-12 0Z"/></svg></span>
+            <span class="about-sector-name">アパレル会社</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 13h32v6a4 4 0 0 0 0 8v6H5v-6a4 4 0 0 0 0-8zM27 14v3m0 4v3m0 4v4"/></svg></span>
+            <span class="about-sector-name">イベント・催事</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 20 4-9h16l4 9m-28 9v-6l4-3h24l4 3v6H5zm4 0v5h5v-5m14 0v5h5v-5m-23-5h4m14 0h4"/></svg></span>
+            <span class="about-sector-name">カーショップ</span>
+          </li>
+          <li>
+            <span class="about-sector-visual"><svg viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M10 13h22a3 3 0 0 1 3 3v18H7V16a3 3 0 0 1 3-3Zm6 0V8h10v5m-12 1v19m14-19v19M12 35v3m18-3v3"/></svg></span>
+            <span class="about-sector-name">旅行代理店</span>
+          </li>
+        </ul>
       </section>
 
       <section class="section about-company" id="company">

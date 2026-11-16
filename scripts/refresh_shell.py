@@ -1,19 +1,62 @@
-"""Keep the existing static page shells aligned; details inherit the catalog header."""
-from pathlib import Path
+"""Render the common header into the static page shells."""
 import re
-ROOT=Path(__file__).resolve().parents[1]
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+NAV_VERSION = '20261116menu1'
+CATALOG_VERSION = '20261116catalog3'
+BASE_PAGES = (
+    'index.html', 'about/index.html', 'cases/index.html', 'collections/index.html',
+    'products/index.html', 'sports/index.html', 'estimate/index.html', 'trophy/index.html',
+    '404.html',
+)
+NAV_LINKS = (
+    ('/collections/', 'collections', 'COLLECTION', '特集コレクション'),
+    ('/products/#lineup', 'products', 'PRODUCT', '商品を探す'),
+    ('/about/', 'about', 'ABOUT', '私たちについて'),
+    ('/cases/', 'cases', 'WORKS', '制作実績'),
+    ('/#order', 'order', 'ORDER', '注文の流れ'),
+    ('/#faq', 'faq', 'FAQ', 'よくある質問'),
+    ('/estimate/#auto', 'estimate', 'ESTIMATE', '簡易見積もり'),
+    ('/estimate/#quick', 'contact', 'CONSULT', 'メールで相談'),
+)
+
+
+def header_html():
+    links = '\n'.join(
+        f'        <a href="{url}" data-nav="{key}"><span>{en}</span><small>{ja}</small></a>'
+        for url, key, en, ja in NAV_LINKS
+    )
+    return f'''<header class="site-header" data-header>
+      <a class="brand" href="/#home" aria-label="GINGA PRINT FACTORY トップページ">
+        <span class="brand-mark">GPF</span>
+        <span class="brand-text">GINGA PRINT FACTORY</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 2h18M0 7h18M0 12h18"/></svg>
+        <span class="menu-label">メニュー</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>
+{links}
+      </nav>
+    </header>'''
+
+
 def refresh():
-    pages=[ROOT/'index.html',ROOT/'404.html']+[ROOT/d/'index.html' for d in ('about','cases','collections','products','sports','estimate','trophy')]
-    for p in pages:
-        s=p.read_text();pre='./' if p.parent==ROOT else '../'
-        links=[('products/index.html#lineup','products','PRODUCTS','商品を探す'),('collections/index.html','collections','COLLECTIONS','特集'),('cases/index.html','cases','WORKS','制作実績'),('index.html#faq','faq','FAQ','よくある質問'),('estimate/index.html#quick','contact','CONSULT','メールで相談')]
-        nav='<nav class="site-nav" id="site-nav" aria-label="メインメニュー" data-site-nav>\n'+''.join(f'        <a href="{pre}{url}" data-nav="{key}"><span>{en}</span><small>{ja}</small></a>\n' for url,key,en,ja in links)+'      </nav>'
-        s=re.sub(r'<nav class="site-nav"[^>]*>.*?</nav>',lambda _:nav,s,flags=re.S)
-        s=re.sub(r'creative.js\?v=[\w]+','creative.js?v=20261112r1',s)
-        if 'renewal.css?' not in s:s=s.replace('</head>',f'<link rel="stylesheet" href="{pre}renewal.css?v=20261112r1">\n  </head>')
-        if p.parent.name=='sports' and 'product-detail.css' not in s:s=s.replace('</head>',f'<link rel="stylesheet" href="{pre}product-detail.css?v=20261112renewal1">\n  </head>')
-        s=s.replace('<main', '<a class="skip-link" href="#main-content">本文へ移動</a>\n    <main',1) if 'skip-link' not in s else s
-        s=s.replace('<main ', '<main id="main-content" ',1) if 'id="main-content"' not in s else s
-        s=s.replace('<main>', '<main id="main-content">',1)
-        p.write_text(s)
-if __name__=='__main__':refresh()
+    for name in BASE_PAGES:
+        page = ROOT / name
+        original = page.read_text(encoding='utf-8')
+        html, count = re.subn(r'<header class="site-header"[^>]*>.*?</header>',
+                              lambda _: header_html(), original, flags=re.S)
+        if count != 1:
+            raise ValueError(f'Expected one site header in {name}')
+        html = re.sub(r'(navigation\.(?:css|js)\?v=)[\w-]+',
+                      lambda match: match[1] + NAV_VERSION, html)
+        html = re.sub(r'((?:/script|estimate-data|product-detail)\.(?:css|js)\?v=)[\w-]+',
+                      lambda match: match[1] + CATALOG_VERSION, html)
+        if html != original:
+            page.write_text(html, encoding='utf-8')
+
+
+if __name__ == '__main__':
+    refresh()

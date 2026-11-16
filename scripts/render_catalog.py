@@ -5,26 +5,40 @@ from html import escape
 from pathlib import Path
 from urllib.parse import urlsplit, quote
 
+from refresh_shell import refresh
+
 ROOT = Path(__file__).resolve().parents[1]
 START = '<!-- PUBLIC PRODUCTS START -->'
 END = '<!-- PUBLIC PRODUCTS END -->'
 
 def load_catalog():
-    text = (ROOT / 'estimate/estimate-data.js').read_text()
-    return json.loads(text.split('window.estimateCatalog =', 1)[1].strip().removesuffix(';'))
+    text = (ROOT / 'estimate/estimate-data.js').read_text(encoding='utf-8')
+    catalog = json.loads(text.split('window.estimateCatalog =', 1)[1].strip().removesuffix(';'))
+    # Older editor exports may still carry private working values for ASK items.
+    catalog.pop('temporaryDefaults', None)
+    for item in catalog['products']:
+        if item.get('priceStatus') == 'temporary':
+            item['price'] = item['lot'] = None
+    return catalog
+
+
+def write_catalog(path, catalog):
+    data = json.dumps(catalog, ensure_ascii=False, indent=2)
+    path.write_text('// 公開用商品マスター。未確定の価格・最低ロットは掲載しない。\n'
+                    f'window.estimateCatalog = {data};\n', encoding='utf-8')
+
 
 def render_cards(items, heading):
     cards = []
     for item in items:
-        temporary = item.get('priceStatus') == 'temporary'
+        ask = item.get('priceStatus') == 'temporary'
         use_cases = escape(' '.join(item.get('useCases', [])), quote=True)
         scenes = escape(' '.join(item.get('scenes', [])), quote=True)
         aliases = escape(' '.join(item.get('searchAliases', [])), quote=True)
-        conditions = "\n            <p class='product-conditions-note'>仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>" if temporary else ""
         individual = item.get('priceStatus') == 'individual'
-        price = '個別確認' if individual else f"¥{item['price']:,}"
-        price_label = '価格' if individual else '仮価格' if temporary else '参考上代'
-        lot = '個別確認' if item['lot'] is None else f"{'仮 ' if temporary else ''}{item['lot']}点〜"
+        price = 'ASK' if ask else '個別確認' if individual else f"¥{item['price']:,}"
+        price_label = '価格' if ask or individual else '参考上代'
+        lot = 'ASK' if ask else '個別確認' if item['lot'] is None else f"{item['lot']}点〜"
         no = item['no']
         name = escape(item['name'])
         image = item.get('image')
@@ -38,20 +52,25 @@ def render_cards(items, heading):
             media = f'<img src="../{escape(image, quote=True)}" alt="{name}の{caption}" loading="lazy" decoding="async" width="{item.get("imageWidth", 800)}" height="{item.get("imageHeight", 600)}"><figcaption>{caption}</figcaption>'
         else:
             media = '<span class="product-image-label">商品写真 掲載予定</span>'
+        actions = []
+        if not ask:
+            actions.append(f'<a class="public-product-cta" href="../estimate/index.html?product={no}#auto" aria-label="{name}の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>')
+        consult_class = 'public-product-cta' if ask else 'product-mail-link'
+        actions.append(f'<a class="{consult_class}" href="../estimate/index.html?product={no}#quick" data-consult-product="{no}" aria-label="{name}についてメールで相談">メールで相談 <span aria-hidden="true">↗</span></a>')
+        action_html = '\n            '.join(actions)
         cards.append(f'''        <article class="public-product-card" data-category="{escape(item['category'])}" data-use-cases="{use_cases}" data-scenes="{scenes}" data-search-aliases="{aliases}" data-product-no="{no}" id="product-{no:02}">
           <figure class="public-product-media product-image-slot{' is-empty' if not image else ''}" aria-label="{name}の写真">{media}</figure>
           <div class="public-product-body">
             <div class="public-product-index"><span>NO.{no:02}</span><span>{escape(item['category'])}</span></div>
             <{heading}><a class="product-name-link" href="../products/item-{no:02}.html" aria-label="{name}の商品詳細">{name} <span aria-hidden="true">↗</span></a></{heading}>
-            <p class="public-product-price"><span>{price_label} {"" if individual else "<small>税抜 / 1点</small>"}</span><strong>{price}</strong></p>
+            <p class="public-product-price"><span>{price_label} {"" if ask or individual else "<small>税抜 / 1点</small>"}</span><strong>{price}</strong></p>
             <dl class="public-product-specs">
               <div><dt>サイズ</dt><dd>{escape(item['size'] or '個別確認')}</dd></div>
               <div><dt>仕様</dt><dd>{escape(item['spec'])}</dd></div>
               <div><dt>最低ロット</dt><dd>{lot}</dd></div>
               <div><dt>納期目安</dt><dd>{escape(item['lead'])}</dd></div>
-            </dl>{conditions}
-            <a class="public-product-cta" href="../estimate/index.html?product={no}#auto" aria-label="{name}の簡易見積もり">簡易見積もり <span aria-hidden="true">↗</span></a>
-            <a class="product-mail-link" href="../estimate/index.html?product={no}#quick" data-consult-product="{no}" aria-label="{name}についてメールで相談">メールで相談 ↗</a>
+            </dl>
+            {action_html}
             <button class="product-compare-toggle" type="button" data-compare-product="{no}" aria-pressed="false" aria-label="{name}を比較に追加" hidden>＋ 比較に追加</button>
           </div>
         </article>''')
@@ -92,7 +111,7 @@ def render_home(items, featured_numbers):
 
 def render_sports_picks(path, items):
     featured = {
-        'sports-cheering': (36, 41, 20),
+        'sports-cheering': (6, 41, 20),
         'sports-merch': (15, 7, 17),
         'sports-awards': (12, 13, 27),
     }
@@ -124,10 +143,11 @@ def render_sports_picks(path, items):
 
 
 def render():
+    refresh()
     catalog = load_catalog()
     items = [item for item in catalog['products'] if not item['provisional'] or item.get('published')]
     render_page(ROOT / 'products/index.html', items, 'h2')
-    render_home(items, catalog.get('homeFeatured', [15, 6, 7, 36, 41]))
+    render_home(items, catalog.get('homeFeatured', [15, 6, 7, 20, 41]))
     sports = [item for item in items if 'スポーツ' in item.get('useCases', [])]
     sports_page = ROOT / 'sports/index.html'
     render_sports_picks(sports_page, sports)

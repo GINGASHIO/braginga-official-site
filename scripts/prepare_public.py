@@ -14,14 +14,16 @@ def build():
     if PUBLIC.exists():
         shutil.rmtree(PUBLIC)
     PUBLIC.mkdir(parents=True)
-    for name in ROOT_FILES + [f'{page}/index.html' for page in PAGES] + ['estimate/estimate-data.js']:
+    for name in ROOT_FILES + [f'{page}/index.html' for page in PAGES]:
         copy(ROOT / name, PUBLIC / name)
-    from render_catalog import load_catalog
-    products = load_catalog()['products']
-    active_images = {item.get('image') for item in products if not item['provisional'] or item.get('published')}
+    from render_catalog import load_catalog, write_catalog
+    catalog = load_catalog()
+    write_catalog(PUBLIC / 'estimate/estimate-data.js', catalog)
+    products = [item for item in catalog['products'] if not item['provisional'] or item.get('published')]
+    active_images = {item.get('image') for item in products}
     for item in products:
-        if not item['provisional'] or item.get('published'):
-            name = f"products/item-{item['no']:02}.html"
+        for number in (item['no'], *item.get('legacyNumbers', [])):
+            name = f"products/item-{number:02}.html"
             copy(ROOT / name, PUBLIC / name)
     for src in (ROOT / 'assets').rglob('*'):
         relative = src.relative_to(ROOT)

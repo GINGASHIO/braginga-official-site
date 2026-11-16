@@ -1,9 +1,10 @@
 """Render product detail pages from the public catalog."""
 
-import re
 from html import escape
 from pathlib import Path
 from urllib.parse import quote, urlsplit
+
+from refresh_shell import CATALOG_VERSION, NAV_VERSION, header_html
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,26 +17,93 @@ def positive_integer(item, key):
     return value
 
 
-def photo(item, featured=False):
-    image = item.get("image")
-    if not image:
-        return '<span class="detail-photo-pending">商品写真 掲載予定</span>'
-
+def photo_url(image, number):
     parts = urlsplit(image)
     path = ROOT / image
     if (parts.scheme or parts.netloc or parts.query or parts.fragment
             or not image.startswith("assets/images/") or ".." in Path(image).parts
             or not path.resolve().is_relative_to(ROOT / "assets/images")
             or not path.is_file()):
-        raise ValueError(f"Invalid product image for No.{item['no']}")
+        raise ValueError(f"Invalid product image for No.{number}")
+    return f"../{escape(quote(image))}"
 
+
+def photo(item, featured=False):
+    image = item.get("image")
+    if not image:
+        return '<span class="detail-photo-pending">商品写真 掲載予定</span>'
+    url = photo_url(image, item["no"])
     caption = item.get("imageCaption") or "制作例"
-    alt = escape(f"{item['name']}の{caption}") if featured else ""
+    alt = escape(item.get("imageAlt") or f"{item['name']}の{caption}") if featured else ""
     loading = 'fetchpriority="high"' if featured else 'loading="lazy"'
     width = positive_integer(item, "imageWidth")
     height = positive_integer(item, "imageHeight")
-    return (f'<img src="../{escape(quote(image))}" alt="{alt}" width="{width}" '
+    return (f'<img src="{url}" alt="{alt}" width="{width}" '
             f'height="{height}" {loading} decoding="async">')
+
+
+def product_media(item):
+    name = escape(item["name"])
+    number = item["no"]
+    primary = photo(item, featured=True)
+    caption = escape(item.get("imageCaption") or "制作例")
+    caption_html = f"<figcaption>{caption}</figcaption>" if item.get("image") else ""
+    gallery = item.get("gallery", [])
+    if gallery:
+        url = photo_url(item["image"], number)
+        primary = f'''<a class="detail-photo-zoom" href="{url}" data-gallery-photo aria-label="{name}のメイン画像を拡大">
+              {primary}<span class="detail-photo-enlarge" aria-hidden="true">拡大 ⤢</span>
+            </a>'''
+    figure = f'''<figure class="detail-photo">
+          <div class="detail-photo-frame">{primary}</div>
+          {caption_html}
+        </figure>'''
+    if not gallery:
+        return figure
+
+    photos = []
+    for image in gallery:
+        url = photo_url(image["image"], number)
+        thumb = photo_url(image["thumb"], number)
+        alt = escape(image["alt"])
+        width = positive_integer(image, "width")
+        height = positive_integer(image, "height")
+        photos.append(f'''              <li>
+                <a href="{url}" data-gallery-photo aria-label="{alt}を拡大">
+                  <img src="{thumb}" width="{width}" height="{height}" alt="{alt}" loading="lazy" decoding="async">
+                  <span class="detail-photo-enlarge" aria-hidden="true">⤢</span>
+                </a>
+              </li>''')
+    photos_html = "\n".join(photos)
+    return f'''<div class="detail-media" data-product-gallery>
+        {figure}
+          <section class="detail-gallery" aria-labelledby="detail-gallery-title">
+            <div class="detail-gallery-heading">
+              <h2 id="detail-gallery-title">ほかの制作例</h2>
+              <div class="detail-gallery-controls" data-gallery-controls hidden>
+                <button type="button" data-gallery-prev aria-label="前の写真へ" aria-controls="detail-gallery-track">←</button>
+                <button type="button" data-gallery-next aria-label="次の写真へ" aria-controls="detail-gallery-track">→</button>
+              </div>
+            </div>
+            <ul class="detail-gallery-track" id="detail-gallery-track" data-gallery-track>
+{photos_html}
+            </ul>
+          </section>
+          <dialog class="detail-gallery-dialog" aria-labelledby="detail-gallery-dialog-title">
+            <div class="detail-gallery-viewer">
+              <div class="detail-gallery-dialog-bar">
+                <h2 id="detail-gallery-dialog-title">制作例の拡大</h2>
+                <button type="button" data-gallery-close autofocus>閉じる ×</button>
+              </div>
+              <img data-gallery-preview alt="">
+              <div class="detail-gallery-dialog-bar">
+                <button type="button" data-gallery-view-prev aria-label="拡大した前の写真">←</button>
+                <span data-gallery-position aria-live="polite"></span>
+                <button type="button" data-gallery-view-next aria-label="拡大した次の写真">→</button>
+              </div>
+            </div>
+          </dialog>
+        </div>'''
 
 
 def related_cards(item, items):
@@ -58,24 +126,24 @@ def related_cards(item, items):
     return "\n".join(cards)
 
 
-def page(item, items, header):
+def page(item, items, *, legacy=False):
     number = positive_integer(item, "no")
     name = escape(item["name"])
     category = escape(item["category"])
     individual = item.get("priceStatus") == "individual"
-    price = "個別確認" if individual else f"¥{positive_integer(item, 'price'):,}"
-    lot = "個別確認" if item["lot"] is None else f"{positive_integer(item, 'lot')}点〜"
-    price_unit = "" if individual else "<small>税抜 / 1点</small>"
-    temporary = item.get("priceStatus") == "temporary"
-    price_label = "価格" if individual else "仮価格" if temporary else "参考上代"
-    lot_label = "仮最低ロット" if temporary else "最低ロット"
+    ask = item.get("priceStatus") == "temporary"
+    price = "ASK" if ask else "個別確認" if individual else f"¥{positive_integer(item, 'price'):,}"
+    lot = "ASK" if ask else "個別確認" if item["lot"] is None else f"{positive_integer(item, 'lot')}点〜"
+    price_unit = "" if ask or individual else "<small>税抜 / 1点</small>"
+    price_label = "価格" if ask or individual else "参考上代"
     size = escape(item.get("size") or "個別確認")
     spec = escape(item.get("spec") or "個別確認")
     lead = escape(item.get("lead") or "個別確認")
-    caption = escape(item.get("imageCaption") or "制作例")
-    caption_html = f"<figcaption>{caption}</figcaption>" if item.get("image") else ""
-    price_note = ('<p class="detail-temp-note">仮価格・仮ロットで掲載中です。正式な条件は後日確定します。</p>'
-                  if temporary else "")
+    canonical = f'\n    <link rel="canonical" href="https://braginga.net/products/item-{number:02}">' if legacy else ""
+    estimate_action = (f'<a class="detail-action-primary" href="../estimate/index.html?product={number}#auto">簡易見積もり <span aria-hidden="true">→</span></a>' if not ask else "")
+    if estimate_action:
+        estimate_action = "\n            " + estimate_action
+    consult_class = ' class="detail-action-primary"' if ask else ""
     sports_link = ('\n          <a href="../sports/index.html">スポーツ特集を見る →</a>'
                    if "スポーツ" in item.get("useCases", []) else "")
     return f'''<!doctype html>
@@ -85,19 +153,20 @@ def page(item, items, header):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{name}の価格、最低ロット、サイズ、仕様、納期をご確認いただけます。">
-    <title>{name} | GINGA PRINT FACTORY</title>
+    <title>{name} | GINGA PRINT FACTORY</title>{canonical}
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=20261114color1">
     <link rel="stylesheet" href="../creative.css?v=20261114color1">
-    <link rel="stylesheet" href="../navigation.css?v=20260919a">
+    <link rel="stylesheet" href="../navigation.css?v={NAV_VERSION}">
     <link rel="stylesheet" href="../studio.css?v=20261112c">
-    <link rel="stylesheet" href="../product-detail.css?v=20261112renewal1">
+    <link rel="stylesheet" href="../product-detail.css?v={CATALOG_VERSION}">
     <link rel="stylesheet" href="../renewal.css?v=20261112r1">
-    <script src="../navigation.js?v=20260919a" defer></script>
+    <script src="../navigation.js?v={NAV_VERSION}" defer></script>
   </head>
   <body data-page="products" data-product-no="{number}">
-    {header}
-    <main class="sub-page product-detail-page">
+    {header_html()}
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+    <main id="main-content" class="sub-page product-detail-page">
       <nav class="breadcrumbs" aria-label="現在地">
         <a href="../index.html">トップ</a><span aria-hidden="true">/</span>
         <a href="index.html#lineup" data-catalog-return>商品一覧</a><span aria-hidden="true">/</span>
@@ -109,19 +178,14 @@ def page(item, items, header):
           <h1 id="detail-title">{name}</h1>
           <dl class="detail-price-list">
             <div><dt>{price_label} {price_unit}</dt><dd>{price}</dd></div>
-            <div><dt>{lot_label}</dt><dd>{lot}</dd></div>
+            <div><dt>最低ロット</dt><dd>{lot}</dd></div>
           </dl>
-          {price_note}
-          <div class="detail-actions">
-            <a class="detail-action-primary" href="../estimate/index.html?product={number}#auto">簡易見積もり <span aria-hidden="true">→</span></a>
-            <a href="../estimate/index.html?product={number}#quick" data-consult-product="{number}">メールで相談 <span aria-hidden="true">↗</span></a>
+          <div class="detail-actions">{estimate_action}
+            <a{consult_class} href="../estimate/index.html?product={number}#quick" data-consult-product="{number}">メールで相談 <span aria-hidden="true">↗</span></a>
           </div>
           <button class="product-compare-toggle" type="button" data-compare-product="{number}" aria-pressed="false" aria-label="{name}を比較に追加" hidden>＋ 比較に追加</button>
         </section>
-        <figure class="detail-photo">
-          <div class="detail-photo-frame">{photo(item, featured=True)}</div>
-          {caption_html}
-        </figure>
+        {product_media(item)}
         <section class="detail-specifications" aria-labelledby="detail-spec-title">
           <h2 id="detail-spec-title">商品仕様</h2>
           <dl>
@@ -143,8 +207,8 @@ def page(item, items, header):
       </section>
     </main>
     <footer class="site-footer"><span>GINGA PRINT FACTORY</span><span>BRAGINGA LLC</span></footer>
-    <script src="../estimate/estimate-data.js?v=20261114editor1"></script>
-    <script src="../script.js?v=20261114editor1"></script>
+    <script src="../estimate/estimate-data.js?v={CATALOG_VERSION}"></script>
+    <script src="../script.js?v={CATALOG_VERSION}"></script>
   </body>
 </html>
 '''
@@ -152,17 +216,17 @@ def page(item, items, header):
 
 def render(items):
     products = ROOT / "products"
-    catalog_html = (products / "index.html").read_text(encoding="utf-8")
-    header = re.search(r'<header class="site-header"[^>]*>.*?</header>', catalog_html, re.S)
-    if not header:
-        raise ValueError("Product catalog header not found")
+    pages = {}
+    for item in items:
+        number = positive_integer(item, "no")
+        for page_number in (number, *item.get("legacyNumbers", [])):
+            if type(page_number) is not int or page_number < 1 or page_number in pages:
+                raise ValueError(f"Invalid or duplicate product number: {page_number}")
+            pages[page_number] = item
 
-    numbers = [positive_integer(item, "no") for item in items]
-    if len(numbers) != len(set(numbers)):
-        raise ValueError("Duplicate product numbers")
-
-    for item, number in zip(items, numbers):
-        output = products / f"item-{number:02}.html"
-        result = '\n'.join(line.rstrip() for line in page(item, items, header.group()).splitlines()) + '\n'
+    for page_number, item in pages.items():
+        output = products / f"item-{page_number:02}.html"
+        html = page(item, items, legacy=page_number != item["no"])
+        result = '\n'.join(line.rstrip() for line in html.splitlines()) + '\n'
         if not output.is_file() or output.read_text(encoding="utf-8") != result:
             output.write_text(result, encoding="utf-8")

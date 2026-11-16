@@ -151,6 +151,10 @@ if (catalogReturn) {
 }
 const publicCatalogItems = (window.estimateCatalog?.products || []).filter(item => !item.provisional || item.published);
 const publicProductGrid = document.querySelector('[data-public-product-grid]');
+const askForPrice = item => item.priceStatus === 'temporary';
+const findCatalogProduct = (items, number) => Number.isSafeInteger(number)
+  ? items.find(item => item.no === number || item.legacyNumbers?.includes(number))
+  : undefined;
 
 if (publicProductGrid) {
   const filters = document.querySelector('[data-catalog-filter]');
@@ -268,10 +272,10 @@ if (publicProductGrid) {
 const compareButtons = [...document.querySelectorAll('[data-compare-product]')];
 if (compareButtons.length && publicCatalogItems.length) {
   let selected = [];
-  const validNumbers = new Set(publicCatalogItems.map(item => item.no));
   const loadComparison = () => {
     const stored = sessionRead(comparisonKey, []);
-    selected = Array.isArray(stored) ? [...new Set(stored.filter(no => Number.isSafeInteger(no) && validNumbers.has(no)))].slice(0, 3) : [];
+    const numbers = Array.isArray(stored) ? stored.map(no => findCatalogProduct(publicCatalogItems, no)?.no) : [];
+    selected = [...new Set(numbers.filter(Number.isSafeInteger))].slice(0, 3);
   };
   loadComparison();
   const region = document.createElement('section');
@@ -334,7 +338,7 @@ if (compareButtons.length && publicCatalogItems.length) {
     grid.replaceChildren();
     selected.forEach(no => {
       const item = publicCatalogItems.find(product => product.no === no);
-      const temporary = item.priceStatus === 'temporary';
+      const ask = askForPrice(item);
       const card = element('article', undefined, 'comparison-item');
       const heading = element('h3');
       const link = element('a', item.name);
@@ -344,18 +348,25 @@ if (compareButtons.length && publicCatalogItems.length) {
       heading.append(link);
       card.append(heading);
       const list = element('dl');
-      const price = Number.isFinite(item.price) ? `¥${item.price.toLocaleString('ja-JP')}（税抜）` : '個別確認';
-      const values = [[temporary ? '仮価格 / 1点' : '参考上代 / 1点', price], [temporary ? '仮最低ロット' : '最低ロット', Number.isFinite(item.lot) ? `${item.lot}点〜` : '個別確認'], ['サイズ', item.size || '個別確認'], ['仕様', item.spec || '個別確認'], ['納期目安', item.lead || '個別確認']];
+      const price = ask ? 'ASK' : Number.isFinite(item.price) ? `¥${item.price.toLocaleString('ja-JP')}（税抜）` : '個別確認';
+      const lot = ask ? 'ASK' : Number.isFinite(item?.lot) ? `${item.lot}点〜` : '個別確認';
+      const values = [
+        [ask ? '価格' : '参考上代 / 1点', price], ['最低ロット', lot],
+        ['サイズ', item.size || '個別確認'], ['仕様', item.spec || '個別確認'], ['納期目安', item.lead || '個別確認'],
+      ];
       values.forEach(([label, value]) => {
         const row = element('div'); row.append(element('dt', label), element('dd', value)); list.append(row);
       });
       card.append(list);
-      if (temporary) card.append(element('p', '仮条件です。正式な価格・仕様・納期はご相談ください。', 'comparison-note'));
       const actions = element('div', undefined, 'comparison-actions');
-      const estimate = element('a', '簡易見積もり →'); estimate.href = `../estimate/index.html?product=${no}#auto`;
+      if (!ask) {
+        const estimate = element('a', '簡易見積もり →');
+        estimate.href = `../estimate/index.html?product=${no}#auto`;
+        actions.append(estimate);
+      }
       const consult = element('a', 'メールで相談 →'); consult.href = `../estimate/index.html?product=${no}#quick`; consult.dataset.consultProduct = String(no);
       const remove = element('button', '比較から外す'); remove.type = 'button'; remove.dataset.compareRemove = String(no); remove.setAttribute('aria-label', `${item.name}を比較から外す`);
-      actions.append(estimate, consult, remove); card.append(actions); grid.append(card);
+      actions.append(consult, remove); card.append(actions); grid.append(card);
     });
     if (focusedRemove && selected.length) (grid.querySelector(`[data-compare-remove="${focusedRemove}"]`) || grid.querySelector('[data-compare-remove]'))?.focus({ preventScroll: true });
     sessionWrite(comparisonKey, selected);
@@ -399,13 +410,76 @@ document.addEventListener('click', event => {
   const link = event.target.closest('[data-consult-product]');
   if (!link) return;
   const draft = sessionRead(estimatorDraftKey);
-  if (draft?.productNo !== Number(link.dataset.consultProduct)) return;
+  const product = findCatalogProduct(publicCatalogItems, draft?.productNo);
+  if (product?.no !== Number(link.dataset.consultProduct)) return;
   const quantity = Number(draft.quantity);
   if (String(draft.quantity).trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0) {
     const url = new URL(link.href);
     url.searchParams.set('quantity', String(quantity));
     link.href = url.href;
   }
+});
+
+document.querySelectorAll('[data-product-gallery]').forEach(gallery => {
+  const track = gallery.querySelector('[data-gallery-track]');
+  const controls = gallery.querySelector('[data-gallery-controls]');
+  const previous = controls.querySelector('[data-gallery-prev]');
+  const next = controls.querySelector('[data-gallery-next]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const syncControls = () => {
+    const end = track.scrollWidth - track.clientWidth;
+    controls.hidden = end < 2;
+    previous.setAttribute('aria-disabled', String(track.scrollLeft < 2));
+    next.setAttribute('aria-disabled', String(end - track.scrollLeft < 2));
+  };
+  [[previous, -1], [next, 1]].forEach(([button, direction]) => {
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-disabled') === 'true') return;
+      const distance = track.firstElementChild.getBoundingClientRect().width +
+        (parseFloat(getComputedStyle(track).columnGap) || 0);
+      track.scrollBy({left: distance * direction, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    });
+  });
+  track.addEventListener('scroll', syncControls, {passive: true});
+  window.addEventListener('resize', syncControls);
+  syncControls();
+
+  const dialog = gallery.querySelector('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  const links = [...gallery.querySelectorAll('[data-gallery-photo]')];
+  const image = dialog.querySelector('[data-gallery-preview]');
+  const position = dialog.querySelector('[data-gallery-position]');
+  let opener;
+  let current = 0;
+  const showPhoto = index => {
+    current = (index + links.length) % links.length;
+    const link = links[current];
+    image.alt = link.querySelector('img').alt;
+    image.src = link.href;
+    position.textContent = `${current + 1} / ${links.length}`;
+  };
+  links.forEach((link, index) => {
+    link.setAttribute('aria-haspopup', 'dialog');
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      opener = link;
+      showPhoto(index);
+      dialog.showModal();
+    });
+  });
+  dialog.querySelector('[data-gallery-close]').addEventListener('click', () => dialog.close());
+  dialog.querySelector('[data-gallery-view-prev]').addEventListener('click', () => showPhoto(current - 1));
+  dialog.querySelector('[data-gallery-view-next]').addEventListener('click', () => showPhoto(current + 1));
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    event.preventDefault();
+    showPhoto(current + (event.key === 'ArrowLeft' ? -1 : 1));
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
 });
 
 const caseTrack = document.querySelector("[data-case-track]");
@@ -488,20 +562,24 @@ if (autoEstimate) {
   const estimateParams = new URLSearchParams(window.location.search);
   const savedEstimate = sessionRead(estimatorDraftKey);
   const requestedProductNo = /^\d+$/.test(estimateParams.get('product') || '') ? Number(estimateParams.get('product')) : null;
-  const explicitProduct = catalog.products.find(item => item.no === requestedProductNo);
+  const explicitProduct = findCatalogProduct(catalog.products, requestedProductNo);
+  const savedProduct = findCatalogProduct(catalog.products, savedEstimate?.productNo);
   const requestedCategory = estimateParams.get('category');
-  const requestedProduct = explicitProduct || (!requestedCategory && !estimateParams.has('product') && Number.isSafeInteger(savedEstimate?.productNo) ? catalog.products.find(item => item.no === savedEstimate.productNo) : null);
+  const requestedProduct = explicitProduct || (!requestedCategory && !estimateParams.has('product') ? savedProduct : null);
   categorySelect.replaceChildren(...catalog.categories.map(category => new Option(category, category)));
   if (catalog.categories.includes(requestedCategory)) categorySelect.value = requestedCategory;
   if (requestedProduct) {
     categorySelect.value = requestedProduct.category;
-    if (Number.isFinite(requestedProduct.lot)) quantityInput.value = String(requestedProduct.lot);
+    if (askForPrice(requestedProduct)) quantityInput.value = '';
+    else if (Number.isFinite(requestedProduct.lot)) quantityInput.value = String(requestedProduct.lot);
   }
+
+  const chosenProduct = () => productSelect.value === '' ? undefined : catalog.products[Number(productSelect.value)];
 
   const syncProducts = () => {
     const products = catalog.products.filter((item) => item.category === categorySelect.value);
-    productSelect.replaceChildren(...products.map(item => {
-      const label = item.priceStatus === 'temporary' && item.published ? '（仮価格・仮ロット）'
+    productSelect.replaceChildren(new Option('商品を選択してください', ''), ...products.map(item => {
+      const label = askForPrice(item) ? '（ASK）'
         : item.provisional || item.priceStatus === 'individual' ? '（個別見積もり）' : '';
       return new Option(item.name + label, String(catalog.products.indexOf(item)));
     }));
@@ -520,47 +598,48 @@ if (autoEstimate) {
     return { value, valid, empty: text === '' };
   };
   const updateEstimate = () => {
-    const item = catalog.products[Number(productSelect.value)] || catalog.products[0];
-    if (!item) return;
+    const item = chosenProduct();
     const quantity = Number(quantityInput.value);
-    const validQuantity = quantityInput.value.trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0 && (!Number.isFinite(item.price) || Number.isSafeInteger(item.price * quantity));
-    const temporary = item.published === true && item.priceStatus === 'temporary';
-    const hasPrice = (!item.provisional || temporary) && Number.isFinite(item.price) && item.price > 0;
-    const belowLot = validQuantity && Number.isFinite(item.lot) && quantity < item.lot;
+    const validQuantity = quantityInput.value.trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0 && (!Number.isFinite(item?.price) || Number.isSafeInteger(item.price * quantity));
+    const ask = item && askForPrice(item);
+    const hasPrice = item && !ask && !item.provisional && Number.isFinite(item.price) && item.price > 0;
+    const belowLot = !ask && validQuantity && Number.isFinite(item?.lot) && quantity < item.lot;
+    const invalidQuantity = Boolean(item && !validQuantity && (!ask || quantityInput.value.trim() !== '' || quantityInput.validity.badInput));
     const canEstimate = validQuantity && hasPrice && !belowLot;
     const shipping = parseFee(shippingInput), other = parseFee(otherInput);
     const goods = canEstimate ? item.price * quantity : null;
     const total = canEstimate && shipping.valid && other.valid ? goods + shipping.value + other.value : null;
     const validTotal = total !== null && Number.isSafeInteger(total) && Number.isSafeInteger(Math.round(total * 1.1));
-    quantityInput.setAttribute('aria-invalid', String(!validQuantity));
-    autoEstimate.querySelector('[data-estimate-spec]').textContent = Object.hasOwn(item, 'size') ? (item.size || '個別確認') : item.spec;
-    autoEstimate.querySelector('[data-estimate-print]').textContent = Object.hasOwn(item, 'size') ? item.spec : (item.notes || '個別確認');
-    autoEstimate.querySelector('[data-estimate-lot]').textContent = Number.isFinite(item.lot) ? `${temporary ? '仮 ' : ''}${item.lot}点〜` : '個別に確認';
-    autoEstimate.querySelector('[data-estimate-lead]').textContent = item.lead;
-    autoEstimate.querySelector('[data-estimate-notes]').textContent = item.notes || '—';
-    autoEstimate.querySelector('[data-estimate-unit]').textContent = hasPrice ? `${yen(item.price)} / 点${temporary ? '（仮）' : ''}` : '個別見積もり';
-    autoEstimate.querySelector('[data-estimate-count]').textContent = validQuantity ? `${quantity}点` : '—';
-    autoEstimate.querySelector('[data-estimate-goods-subtotal]').textContent = canEstimate ? yen(goods) : '要確認';
+    quantityInput.setAttribute('aria-invalid', String(invalidQuantity));
+    const hasSize = item && Object.hasOwn(item, 'size');
+    const size = hasSize ? (item.size || '個別確認') : item?.spec;
+    const spec = hasSize ? item.spec : item?.notes;
+    autoEstimate.querySelector('[data-estimate-spec]').textContent = size || '—';
+    autoEstimate.querySelector('[data-estimate-print]').textContent = spec || (item ? '個別確認' : '—');
+    autoEstimate.querySelector('[data-estimate-lot]').textContent = ask ? 'ASK' : Number.isFinite(item?.lot) ? `${item.lot}点〜` : item ? '個別に確認' : '—';
+    autoEstimate.querySelector('[data-estimate-lead]').textContent = item?.lead || '—';
+    autoEstimate.querySelector('[data-estimate-notes]').textContent = item?.notes || '—';
+    autoEstimate.querySelector('[data-estimate-unit]').textContent = ask ? 'ASK' : hasPrice ? `${yen(item.price)} / 点` : item ? '個別見積もり' : '—';
+    autoEstimate.querySelector('[data-estimate-count]').textContent = item && validQuantity ? `${quantity}点` : '—';
+    autoEstimate.querySelector('[data-estimate-goods-subtotal]').textContent = canEstimate ? yen(goods) : item ? '要確認' : '—';
     autoEstimate.querySelector('[data-estimate-subtotal]').textContent = validTotal ? yen(total) : '—';
     autoEstimate.querySelector('[data-estimate-tax]').textContent = validTotal ? yen(total * 1.1) : '—';
     autoEstimate.querySelector('[data-estimate-shipping-amount]').textContent = shipping.valid ? yen(shipping.value) : shipping.empty ? '未定' : '要確認';
     autoEstimate.querySelector('[data-estimate-other-amount]').textContent = other.valid ? yen(other.value) : other.empty ? '未定' : '要確認';
     autoEstimate.querySelector('[data-estimate-formula]').textContent = canEstimate ? `${yen(item.price)} × ${quantity}点 ＋ 送料 ＋ その他費用` : '単価 × 個数 ＋ 送料 ＋ その他費用';
-    autoEstimate.querySelector('[data-estimate-price-note]').textContent = temporary ? '仮価格500円・仮ロット50点です。正式な価格・仕様・納期は後日確認します。' : hasPrice ? '2026年公開価格表の参考上代です。' : '価格・最低ロット・納期は未確定です。内容を確認して個別にご案内します。';
-    autoEstimate.querySelector('[data-estimate-warning]').textContent = !validQuantity ? '個数は1以上の整数で入力してください。大きすぎる個数は個別にご相談ください。' : belowLot ? `最低ロットは${item.lot}点です。ロット未満は個別見積もりとなります。` : '';
+    autoEstimate.querySelector('[data-estimate-price-note]').textContent = !item ? '' : ask ? '価格・最低ロットはメールでご確認いただけます。' : hasPrice ? '2026年公開価格表の参考上代です。' : '価格・最低ロット・納期は未確定です。内容を確認して個別にご案内します。';
+    autoEstimate.querySelector('[data-estimate-warning]').textContent = invalidQuantity ? '個数は1以上の整数で入力してください。大きすぎる個数は個別にご相談ください。' : belowLot ? `最低ロットは${item.lot}点です。ロット未満は個別見積もりとなります。` : '';
     autoEstimate.querySelector('[data-estimate-fee-warning]').textContent = (!shipping.empty && !shipping.valid) || (!other.empty && !other.valid) || (total !== null && !validTotal) ? '送料・その他費用は0以上の整数で入力してください。大きすぎる金額は個別にご相談ください。' : '';
-    autoEstimate.querySelector('[data-estimate-total-note]').textContent = !canEstimate ? '商品・個数を確認するか、メールでご相談ください。' : validTotal ? (temporary ? '仮価格・仮ロットに基づく金額です。正式条件は後日確定します。' : '正式な費用は、内容確認後のお見積もりでご案内します。') : '送料・その他費用を入力すると合計を表示します。未定の場合もメールでご相談いただけます。';
-    const size = Object.hasOwn(item, 'size') ? (item.size || '個別確認') : item.spec;
-    const spec = Object.hasOwn(item, 'size') ? item.spec : (item.notes || '個別確認');
-    const body = `商品：${item.name}\nサイズ：${size}\n仕様：${spec}\n個数：${validQuantity ? quantity + '点' : '未定・要確認'}\n参考単価（税抜）：${hasPrice ? yen(item.price) + (temporary ? '（仮）' : '') : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) + (temporary ? '（仮価格で計算）' : '') : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) + (temporary ? '（仮価格で計算）' : '') : '未定・要確認'}\n${temporary ? '最低ロット：仮50点（正式条件は後日確認）' : ''}\n\nこの内容で相談します。`;
+    autoEstimate.querySelector('[data-estimate-total-note]').textContent = !item ? '商品を選択してください。' : ask ? 'この商品の価格と最低ロットはメールでご相談ください。' : !canEstimate ? '商品・個数を確認するか、メールでご相談ください。' : validTotal ? '正式な費用は、内容確認後のお見積もりでご案内します。' : '送料・その他費用を入力すると合計を表示します。未定の場合もメールでご相談いただけます。';
+    const body = `商品：${item?.name || '未定'}\nサイズ：${size || '個別確認'}\n仕様：${spec || '個別確認'}\n個数：${item && validQuantity ? quantity + '点' : '未定・要確認'}\n参考単価（税抜）：${ask ? 'ASK' : hasPrice ? yen(item.price) : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) : '未定・要確認'}${ask ? '\n最低ロット：ASK' : ''}\n\nこの内容で相談します。`;
     autoEstimate.querySelector('[data-estimate-mail]').href = `mailto:info@ginga-bra.com?subject=${encodeURIComponent('簡易見積もりのご相談')}&body=${encodeURIComponent(body)}`;
   };
 
   const refreshEstimate = () => {
     updateEstimate();
-    const item = catalog.products[Number(productSelect.value)];
-    if (item) sessionWrite(estimatorDraftKey, {
-      productNo: item.no, quantity: quantityInput.value,
+    const item = chosenProduct();
+    sessionWrite(estimatorDraftKey, {
+      productNo: item?.no ?? null, quantity: quantityInput.value,
       shipping: shippingInput.value, other: otherInput.value,
     });
   };
@@ -570,11 +649,11 @@ if (autoEstimate) {
   shippingInput.addEventListener('input', refreshEstimate);
   otherInput.addEventListener('input', refreshEstimate);
   autoEstimate.querySelector('[data-estimate-consult]')?.addEventListener('click', () => {
-    const item = catalog.products[Number(productSelect.value)];
+    const item = chosenProduct();
     if (item) document.dispatchEvent(new CustomEvent('braginga:consult-product', { detail: { productNo: item.no, quantity: quantityInput.value } }));
   });
   syncProducts();
-  if (requestedProduct && savedEstimate && Number.isSafeInteger(savedEstimate.productNo) && savedEstimate.productNo === requestedProduct.no) {
+  if (requestedProduct && savedProduct === requestedProduct) {
     [['quantity', quantityInput], ['shipping', shippingInput], ['other', otherInput]].forEach(([key, input]) => {
       if (typeof savedEstimate[key] === 'string' && savedEstimate[key].length <= 30) input.value = savedEstimate[key];
     });
@@ -592,9 +671,9 @@ if (quickForm) {
   const fields = Object.fromEntries(names.map(name => [name, quickForm.elements.namedItem(name)]));
   const draft = sessionRead(consultationDraftKey, {});
   const contexts = {
-    'case:uniform-goods': { item: 'ユニフォームをモチーフにしたチームグッズ', label: '参考の制作例：ユニフォームをグッズに' },
-    'case:mask': { item: 'オリジナルマスク', label: '参考の制作例：オリジナルマスク' },
-    'case:ecobag': { item: 'オリジナルエコバッグ', label: '参考の制作例：ピッチ柄のエコバッグ' },
+    'case:uniform-goods': { item: 'チームオリジナルグッズ', label: '参考の制作例：ニチジョウにチーム愛を' },
+    'case:mask': { item: 'ウォッシャブルマスク', label: '参考の制作例：02 BtoB' },
+    'case:ecobag': { item: 'コーヒー・エコバッグ', label: '参考の制作例：03 BtoB Vol.2' },
     'case:coffee': { item: 'コーヒー・マグカップのグッズ企画', label: '参考の制作例：HALF TIME COFFEE' },
     'topic:trophy': { item: 'トロフィー・表彰品', label: 'ご相談のテーマ：トロフィー・表彰品' },
     'award:budget': { item: '予算重視・高級感重視モデル（BG-4963 / BG-4904）', label: '選択した表彰品：予算重視・高級感重視モデル（BG-4963 / BG-4904）' },
@@ -629,10 +708,10 @@ if (quickForm) {
   };
   const validQuantity = value => /^\d+$/.test(String(value || '')) && Number.isSafeInteger(Number(value)) && Number(value) > 0;
   const prefill = (productNo, quantity, force = false) => {
-    const item = (window.estimateCatalog?.products || []).find(product => product.no === productNo);
+    const item = findCatalogProduct(publicCatalogItems, productNo);
     if (!item) return;
-    if (force || selectedProductNo !== productNo || !fields.item.value) fields.item.value = item.name;
-    selectedProductNo = productNo;
+    if (force || selectedProductNo !== item.no || !fields.item.value) fields.item.value = item.name;
+    selectedProductNo = item.no;
     contextKey = '';
     if (validQuantity(quantity)) fields.quantity.value = String(quantity);
     else if (force) fields.quantity.value = '';
@@ -653,7 +732,9 @@ if (quickForm) {
   } else {
     const productNo = explicitProductNo || selectedProductNo;
     const savedCalculator = sessionRead(estimatorDraftKey);
-    const carriedQuantity = params.get('quantity') || (savedCalculator?.productNo === productNo && !fields.quantity.value ? savedCalculator.quantity : null);
+    const savedProduct = findCatalogProduct(publicCatalogItems, savedCalculator?.productNo);
+    const requestedProduct = findCatalogProduct(publicCatalogItems, productNo);
+    const carriedQuantity = params.get('quantity') || (requestedProduct && savedProduct === requestedProduct && !fields.quantity.value ? savedCalculator.quantity : null);
     prefill(productNo, carriedQuantity);
   }
   document.addEventListener('braginga:consult-product', event => prefill(event.detail?.productNo, event.detail?.quantity, true));

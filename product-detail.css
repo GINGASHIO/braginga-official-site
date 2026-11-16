@@ -26,9 +26,10 @@
 
 .detail-summary h1 {
   margin: 0 0 18px;
-  font-size: clamp(26px, 4.1vw, 50px);
+  font-size: clamp(26px, 3.5vw, 46px);
   line-height: 1.22;
   letter-spacing: -.035em;
+  text-wrap: balance;
   overflow-wrap: anywhere;
 }
 
@@ -62,15 +63,6 @@
   font-size: clamp(28px, 4.4vw, 42px);
 }
 
-.detail-temp-note {
-  margin: 0 0 14px;
-  padding: 8px 10px;
-  background: #fbf2e6;
-  color: #624422;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
 .detail-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -90,6 +82,10 @@
   font-size: 13px;
   font-weight: 750;
   text-align: center;
+}
+
+.detail-actions a:only-child {
+  grid-column: 1 / -1;
 }
 
 .detail-actions .detail-action-primary {
@@ -143,6 +139,153 @@
 .detail-photo figcaption {
   padding: 6px 12px;
   text-align: end;
+}
+
+.detail-media {
+  min-width: 0;
+}
+
+.detail-photo-zoom {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-in;
+}
+
+.detail-photo-enlarge {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 4px 8px;
+  color: #fff;
+  background: #20251d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.detail-gallery {
+  margin-top: 14px;
+}
+
+.detail-gallery-heading,
+.detail-gallery-dialog-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.detail-gallery-heading {
+  margin-bottom: 8px;
+}
+
+.detail-gallery-heading h2,
+.detail-gallery-dialog-bar h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.detail-gallery-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.detail-gallery-controls[hidden] {
+  display: none;
+}
+
+.detail-gallery-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(118px, 30%, 185px);
+  gap: 8px;
+  margin: 0;
+  padding: 3px 3px 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 3px;
+  list-style: none;
+}
+
+.detail-gallery-track li {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.detail-gallery-track a {
+  display: block;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--detail-line);
+  background: #eeefe8;
+  cursor: zoom-in;
+}
+
+.detail-gallery-track img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-gallery button,
+.detail-gallery-dialog button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 9px;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.detail-gallery button[aria-disabled="true"] {
+  opacity: .46;
+  cursor: default;
+}
+
+.detail-gallery-dialog {
+  width: min(100% - 24px, 1080px);
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 1px solid #5b6259;
+  background: #171917;
+  color: #fff;
+}
+
+.detail-gallery-dialog::backdrop {
+  background: rgb(0 0 0 / .78);
+}
+
+.detail-gallery-viewer {
+  padding: clamp(10px, 2vw, 18px);
+}
+
+.detail-gallery-viewer img {
+  display: block;
+  max-width: 100%;
+  max-height: min(69dvh, 750px);
+  width: auto;
+  height: auto;
+  margin: 10px auto;
+  background: #101110;
+  object-fit: contain;
+}
+
+.detail-gallery-dialog [data-gallery-position] {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.detail-gallery-dialog button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+body:has(.detail-gallery-dialog[open]) {
+  overflow: hidden;
 }
 
 .detail-specifications h2,
@@ -239,7 +382,7 @@
     padding-block: 34px 48px;
   }
 
-  .detail-photo {
+  .detail-layout > :is(.detail-photo, .detail-media) {
     grid-column: 1;
     grid-row: 1 / span 2;
   }
@@ -299,7 +442,6 @@
 .comparison-item dl div { display: grid; grid-template-columns: 95px minmax(0, 1fr); gap: 10px; padding: 8px 0; border-top: 1px solid #e5e9df; font-size: 13px; line-height: 1.65; }
 .comparison-item dt { color: #5c6657; }
 .comparison-item dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
-.comparison-note { margin: 0 0 12px; color: #70501d; font-size: 12px; line-height: 1.65; }
 .comparison-actions { display: grid; gap: 5px; margin-top: auto; }
 .comparison-actions a { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 0; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .comparison-actions a:first-child { color: #254b36; }
