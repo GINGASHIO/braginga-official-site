@@ -21,6 +21,10 @@ body{background:var(--studio-paper);color:var(--studio-ink)}
   color: #50564e;
 }
 .studio-description span { display: block; }
+@media (min-width: 1024px) {
+  .studio-description { font-size: clamp(13px, 1.25vw, 17px); }
+  .studio-description span { display: inline; }
+}
 .section.home-production-examples { padding-block: clamp(20px, 3.8vw, 48px); }
 .home-production-examples a { display: block; cursor: zoom-in; }
 .home-production-examples img { display: block; width: 100%; height: auto; }
@@ -93,10 +97,81 @@ body[data-page=products] .public-product-cta:hover{background:#414b3a}
 body[data-page=products] .public-product-card:focus-within{outline:2px solid #5a6551;outline-offset:3px}
 .catalog-source-note{font-size:12px;color:#63695c;margin-top:16px}
 @media(max-width:1100px){body[data-page=products] .public-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){body[data-page=products] .public-product-grid{grid-template-columns:1fr;gap:28px}body[data-page=products] .public-product-body{padding:22px}body[data-page=products] .public-product-body :is(h2,h3){min-height:0;font-size:23px;margin:16px 0 22px}body[data-page=products] .public-product-price strong{font-size:32px}body[data-page=products] .public-product-specs div{grid-template-columns:82px minmax(0,1fr)}body[data-page=products] .public-product-cta{font-size:14px}}
 body[data-page=products] .public-product-card{scroll-margin-top:0}
 body[data-page=products] .product-mail-link{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:8px;text-decoration:underline;text-underline-offset:4px;font-size:13px;color:#31392b}
 body[data-page=products] .product-image-slot figcaption{background:#fffdf7e8;color:#282d24;font-size:10px;font-weight:500;right:12px;bottom:12px;letter-spacing:0;text-shadow:none}
+@media (max-width: 640px) {
+  body[data-page=products] .public-product-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  body[data-page=products] .public-product-body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 8px;
+    padding: 14px 16px;
+  }
+
+  body[data-page=products] .public-product-body > * { grid-column: 1 / -1; }
+
+  body[data-page=products] .public-product-body :is(h2, h3) {
+    min-height: 0;
+    margin: 4px 0 9px;
+    font-size: clamp(16px, 4.15vw, 18px);
+    line-height: 1.4;
+  }
+
+  body[data-page=products] .public-product-price {
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+  }
+
+  body[data-page=products] .public-product-price small { display: inline; }
+  body[data-page=products] .public-product-price strong { font-size: 25px; }
+
+  body[data-page=products] .public-product-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  body[data-page=products] .public-product-specs div {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 2px;
+    padding: 5px 0;
+    line-height: 1.45;
+  }
+
+  body[data-page=products] .public-product-specs dd {
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  body[data-page=products] .public-product-cta {
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  body[data-page=products] .public-product-body .product-mail-link {
+    grid-column: 1;
+    margin-top: 6px;
+  }
+
+  body[data-page=products] .public-product-body .product-compare-toggle {
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  body[data-page=products] .public-product-body .product-mail-link + .product-compare-toggle {
+    grid-column: 2;
+  }
+}
 .estimate-fees{display:grid;grid-template-columns:1fr 1fr;gap:14px}.estimate-fees label{min-width:0}.estimate-fees input{width:100%;min-height:48px;padding:12px;border:1px solid #aaa;background:white;color:#111;font:inherit;font-size:16px}.estimate-formula{font-size:13px!important;line-height:1.8!important;color:inherit;overflow-wrap:anywhere}.estimate-total-note{font-size:13px!important;line-height:1.8!important}.estimate-result dl div{gap:14px}.estimate-result dd{overflow-wrap:anywhere}.estimate-result [data-estimate-subtotal]{font-size:clamp(30px,4.6vw,56px)}
 @media(max-width:430px){.estimate-fees{grid-template-columns:1fr}}
 body[data-page=products] .product-conditions-note{font-size:12px;line-height:1.7;color:#735025;margin:-8px 0 18px;padding:10px 12px;background:#fbf2e6}
