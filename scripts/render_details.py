@@ -17,6 +17,20 @@ def positive_integer(item, key):
     return value
 
 
+def product_lot_html(item):
+    if item.get("priceStatus") == "temporary":
+        return "ASK"
+    if item.get("lot") is None:
+        return "個別確認"
+    unit = escape(item.get("unit", "点"))
+    tiers = item.get("quantityPrices")
+    if tiers:
+        return "<br>".join(
+            f"{int(quantity):,}{unit}：¥{price:,}" for quantity, price in tiers.items()
+        )
+    return f"{positive_integer(item, 'lot')}{unit}〜"
+
+
 def photo_url(image, number):
     parts = urlsplit(image)
     path = ROOT / image
@@ -130,8 +144,11 @@ def page(item, items, *, legacy=False):
     individual = item.get("priceStatus") == "individual"
     ask = item.get("priceStatus") == "temporary"
     price = "ASK" if ask else "個別確認" if individual else f"¥{positive_integer(item, 'price'):,}"
-    lot = "ASK" if ask else "個別確認" if item["lot"] is None else f"{positive_integer(item, 'lot')}点〜"
-    price_unit = "" if ask or individual else "<small>税抜 / 1点</small>"
+    unit = escape(item.get("unit", "点"))
+    lot = product_lot_html(item)
+    if item.get("quantityPrices"):
+        price += "〜"
+    price_unit = "" if ask or individual else f"<small>税抜 / 1{unit}</small>"
     price_label = "価格" if ask or individual else "参考上代"
     size = escape(item.get("size") or "個別確認")
     spec = escape(item.get("spec") or "個別確認")

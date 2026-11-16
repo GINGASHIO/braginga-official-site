@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, quote
 
 from refresh_shell import refresh
+from render_details import product_lot_html, render as render_details
 
 ROOT = Path(__file__).resolve().parents[1]
 START = '<!-- PUBLIC PRODUCTS START -->'
@@ -37,7 +38,11 @@ def render_cards(items, heading):
         individual = item.get('priceStatus') == 'individual'
         price = 'ASK' if ask else '個別確認' if individual else f"¥{item['price']:,}"
         price_label = '価格' if ask or individual else '参考上代'
-        lot = 'ASK' if ask else '個別確認' if item['lot'] is None else f"{item['lot']}点〜"
+        unit = escape(item.get('unit', '点'))
+        lot = product_lot_html(item)
+        if item.get("quantityPrices"):
+            price += "〜"
+        price_unit = '' if ask or individual else f'<small>税抜 / 1{unit}</small>'
         no = item['no']
         name = escape(item['name'])
         image = item.get('image')
@@ -62,7 +67,7 @@ def render_cards(items, heading):
           <div class="public-product-body">
             <div class="public-product-index">{escape(item['category'])}</div>
             <{heading}><a class="product-name-link" href="../products/item-{no:02}.html" aria-label="{name}の商品詳細">{name} <span aria-hidden="true">↗</span></a></{heading}>
-            <p class="public-product-price"><span>{price_label} {"" if ask or individual else "<small>税抜 / 1点</small>"}</span><strong>{price}</strong></p>
+            <p class="public-product-price"><span>{price_label} {price_unit}</span><strong>{price}</strong></p>
             <dl class="public-product-specs">
               <div><dt>サイズ</dt><dd>{escape(item['size'] or '個別確認')}</dd></div>
               <div><dt>仕様</dt><dd>{escape(item['spec'])}</dd></div>
@@ -150,7 +155,6 @@ def render():
     sports = [item for item in items if 'sports' in item.get('scenes', [])]
     sports_page = ROOT / 'sports/index.html'
     render_sports_picks(sports_page, sports)
-    from render_details import render as render_details
     render_details(items)
 
 if __name__ == '__main__':

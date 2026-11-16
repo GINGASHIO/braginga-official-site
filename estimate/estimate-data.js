@@ -929,16 +929,15 @@ window.estimateCatalog = {
     {
       "no": 29,
       "category": "タオル",
-      "name": "織りタオル",
-      "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "写真は制作例です。サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
+      "name": "2色ジャガード織マフラータオル",
+      "size": "H20cm×W110cm",
+      "price": 1700,
+      "lot": 100,
+      "lead": "5〜6週間",
+      "spec": "2色ジャガード織",
+      "notes": "写真は制作例です。",
+      "provisional": false,
       "published": true,
-      "priceStatus": "temporary",
       "image": "assets/images/products/product-29-20261111.webp",
       "imageWidth": 750,
       "imageHeight": 1000,
@@ -950,6 +949,16 @@ window.estimateCatalog = {
         "sports-cheering",
         "sports-merch",
         "sports-awards"
+      ],
+      "unit": "枚",
+      "quantityPrices": {
+        "100": 2200,
+        "200": 1800,
+        "300": 1700
+      },
+      "priceNote": "価格は枚数ごとの1枚あたりの税抜単価です。",
+      "searchAliases": [
+        "織りタオル"
       ]
     },
     {
@@ -1435,6 +1444,28 @@ window.estimateCatalog = {
       "imageHeight": 896,
       "imageAlt": "屋外に設置した紫色のラウンドタイプののぼりバナー",
       "imageCaption": "制作例"
+    },
+    {
+      "no": 53,
+      "category": "タオル",
+      "name": "顔料インクジェットプリントハンカチ",
+      "size": "20×20cm",
+      "price": 700,
+      "lot": 100,
+      "unit": "枚",
+      "lead": "約4週間",
+      "spec": "顔料インクジェットプリント",
+      "provisional": false,
+      "priceNote": "表示価格は税抜の参考上代です。",
+      "image": "assets/images/products/product-53-inkjet-handkerchief-20261116.webp",
+      "imageWidth": 1000,
+      "imageHeight": 750,
+      "imageCaption": "制作例",
+      "imageAlt": "チームエンブレムとマスコットをプリントした青いハンカチ",
+      "scenes": [
+        "sports",
+        "promo"
+      ]
     }
   ]
 };

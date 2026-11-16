@@ -344,10 +344,15 @@ if (compareButtons.length && publicCatalogItems.length) {
       heading.append(link);
       card.append(heading);
       const list = element('dl');
-      const price = ask ? 'ASK' : Number.isFinite(item.price) ? `¥${item.price.toLocaleString('ja-JP')}（税抜）` : '個別確認';
-      const lot = ask ? 'ASK' : Number.isFinite(item?.lot) ? `${item.lot}点〜` : '個別確認';
+      const unit = item.unit || '点';
+      const pricesByQuantity = item.quantityPrices;
+      const startingPrice = Number.isFinite(item.price) ? `¥${item.price.toLocaleString('ja-JP')}${pricesByQuantity ? '〜' : ''}（税抜）` : '個別確認';
+      const price = ask ? 'ASK' : startingPrice;
+      const lot = ask ? 'ASK' : pricesByQuantity
+        ? Object.entries(pricesByQuantity).map(([quantity, price]) => `${quantity}${unit}：¥${price.toLocaleString('ja-JP')}`).join(' / ')
+        : Number.isFinite(item.lot) ? `${item.lot}${unit}〜` : '個別確認';
       const values = [
-        [ask ? '価格' : '参考上代 / 1点', price], ['最低ロット', lot],
+        [ask ? '価格' : `参考上代 / 1${unit}`, price], ['最低ロット', lot],
         ['サイズ', item.size || '個別確認'], ['仕様', item.spec || '個別確認'], ['納期目安', item.lead || '個別確認'],
       ];
       values.forEach(([label, value]) => {
@@ -619,38 +624,43 @@ if (autoEstimate) {
   const updateEstimate = () => {
     const item = chosenProduct();
     const quantity = Number(quantityInput.value);
-    const validQuantity = quantityInput.value.trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0 && (!Number.isFinite(item?.price) || Number.isSafeInteger(item.price * quantity));
+    const pricesByQuantity = item?.quantityPrices;
+    const unitPrice = pricesByQuantity ? pricesByQuantity[quantity] : item?.price;
+    const validQuantity = quantityInput.value.trim() !== '' && Number.isSafeInteger(quantity) && quantity > 0 && (!Number.isFinite(unitPrice) || Number.isSafeInteger(unitPrice * quantity));
     const ask = item && askForPrice(item);
     const hasPrice = item && !ask && !item.provisional && Number.isFinite(item.price) && item.price > 0;
     const belowLot = !ask && validQuantity && Number.isFinite(item?.lot) && quantity < item.lot;
     const invalidQuantity = Boolean(item && !validQuantity && (!ask || quantityInput.value.trim() !== '' || quantityInput.validity.badInput));
-    const canEstimate = validQuantity && hasPrice && !belowLot;
+    const hasUnitPrice = hasPrice && Number.isFinite(unitPrice);
+    const quoteNeeded = validQuantity && hasPrice && !hasUnitPrice && !belowLot;
+    const canEstimate = validQuantity && hasUnitPrice && !belowLot;
     const shipping = parseFee(shippingInput), other = parseFee(otherInput);
-    const goods = canEstimate ? item.price * quantity : null;
+    const goods = canEstimate ? unitPrice * quantity : null;
     const total = canEstimate && shipping.valid && other.valid ? goods + shipping.value + other.value : null;
     const validTotal = total !== null && Number.isSafeInteger(total) && Number.isSafeInteger(Math.round(total * 1.1));
     quantityInput.setAttribute('aria-invalid', String(invalidQuantity));
     const hasSize = item && Object.hasOwn(item, 'size');
     const size = hasSize ? (item.size || '個別確認') : item?.spec;
     const spec = hasSize ? item.spec : item?.notes;
+    const unit = item?.unit || '点';
     autoEstimate.querySelector('[data-estimate-spec]').textContent = size || '—';
     autoEstimate.querySelector('[data-estimate-print]').textContent = spec || (item ? '個別確認' : '—');
-    autoEstimate.querySelector('[data-estimate-lot]').textContent = ask ? 'ASK' : Number.isFinite(item?.lot) ? `${item.lot}点〜` : item ? '個別に確認' : '—';
+    autoEstimate.querySelector('[data-estimate-lot]').textContent = ask ? 'ASK' : Number.isFinite(item?.lot) ? `${item.lot}${unit}〜` : item ? '個別に確認' : '—';
     autoEstimate.querySelector('[data-estimate-lead]').textContent = item?.lead || '—';
     autoEstimate.querySelector('[data-estimate-notes]').textContent = item?.notes || '—';
-    autoEstimate.querySelector('[data-estimate-unit]').textContent = ask ? 'ASK' : hasPrice ? `${yen(item.price)} / 点` : item ? '個別見積もり' : '—';
-    autoEstimate.querySelector('[data-estimate-count]').textContent = item && validQuantity ? `${quantity}点` : '—';
+    autoEstimate.querySelector('[data-estimate-unit]').textContent = ask ? 'ASK' : hasUnitPrice ? `${yen(unitPrice)} / ${unit}` : item ? '個別見積もり' : '—';
+    autoEstimate.querySelector('[data-estimate-count]').textContent = item && validQuantity ? `${quantity}${unit}` : '—';
     autoEstimate.querySelector('[data-estimate-goods-subtotal]').textContent = canEstimate ? yen(goods) : item ? '要確認' : '—';
     autoEstimate.querySelector('[data-estimate-subtotal]').textContent = validTotal ? yen(total) : '—';
     autoEstimate.querySelector('[data-estimate-tax]').textContent = validTotal ? yen(total * 1.1) : '—';
     autoEstimate.querySelector('[data-estimate-shipping-amount]').textContent = shipping.valid ? yen(shipping.value) : shipping.empty ? '未定' : '要確認';
     autoEstimate.querySelector('[data-estimate-other-amount]').textContent = other.valid ? yen(other.value) : other.empty ? '未定' : '要確認';
-    autoEstimate.querySelector('[data-estimate-formula]').textContent = canEstimate ? `${yen(item.price)} × ${quantity}点 ＋ 送料 ＋ その他費用` : '単価 × 個数 ＋ 送料 ＋ その他費用';
-    autoEstimate.querySelector('[data-estimate-price-note]').textContent = !item ? '' : ask ? '価格・最低ロットはメールでご確認いただけます。' : hasPrice ? '2026年公開価格表の参考上代です。' : '価格・最低ロット・納期は未確定です。内容を確認して個別にご案内します。';
-    autoEstimate.querySelector('[data-estimate-warning]').textContent = invalidQuantity ? '個数は1以上の整数で入力してください。大きすぎる個数は個別にご相談ください。' : belowLot ? `最低ロットは${item.lot}点です。ロット未満は個別見積もりとなります。` : '';
+    autoEstimate.querySelector('[data-estimate-formula]').textContent = canEstimate ? `${yen(unitPrice)} × ${quantity}${unit} ＋ 送料 ＋ その他費用` : '単価 × 個数 ＋ 送料 ＋ その他費用';
+    autoEstimate.querySelector('[data-estimate-price-note]').textContent = !item ? '' : ask ? '価格・最低ロットはメールでご確認いただけます。' : hasPrice ? (item.priceNote || '2026年公開価格表の参考上代です。') : '価格・最低ロット・納期は未確定です。内容を確認して個別にご案内します。';
+    autoEstimate.querySelector('[data-estimate-warning]').textContent = invalidQuantity ? '個数は1以上の整数で入力してください。大きすぎる個数は個別にご相談ください。' : belowLot ? `最低ロットは${item.lot}${unit}です。ロット未満は個別見積もりとなります。` : quoteNeeded ? 'この枚数は個別見積もりとなります。' : '';
     autoEstimate.querySelector('[data-estimate-fee-warning]').textContent = (!shipping.empty && !shipping.valid) || (!other.empty && !other.valid) || (total !== null && !validTotal) ? '送料・その他費用は0以上の整数で入力してください。大きすぎる金額は個別にご相談ください。' : '';
     autoEstimate.querySelector('[data-estimate-total-note]').textContent = !item ? '商品を選択してください。' : ask ? 'この商品の価格と最低ロットはメールでご相談ください。' : !canEstimate ? '商品・個数を確認するか、メールでご相談ください。' : validTotal ? '正式な費用は、内容確認後のお見積もりでご案内します。' : '送料・その他費用を入力すると合計を表示します。未定の場合もメールでご相談いただけます。';
-    estimateText = `商品：${item?.name || '未定'}\nサイズ：${size || '個別確認'}\n仕様：${spec || '個別確認'}\n個数：${item && validQuantity ? quantity + '点' : '未定・要確認'}\n参考単価（税抜）：${ask ? 'ASK' : hasPrice ? yen(item.price) : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) : '未定・要確認'}${ask ? '\n最低ロット：ASK' : ''}\n\nこの内容で相談します。`;
+    estimateText = `商品：${item?.name || '未定'}\nサイズ：${size || '個別確認'}\n仕様：${spec || '個別確認'}\n個数：${item && validQuantity ? quantity + unit : '未定・要確認'}\n参考単価（税抜）：${ask ? 'ASK' : hasUnitPrice ? yen(unitPrice) : '個別確認'}\n商品代金（税抜）：${canEstimate ? yen(goods) : '個別確認'}\n送料（税抜）：${shipping.valid ? yen(shipping.value) : '未定・要確認'}\nその他費用（税抜）：${other.valid ? yen(other.value) : '未定・要確認'}\n合計（税抜）：${validTotal ? yen(total) : '未定・要確認'}${ask ? '\n最低ロット：ASK' : ''}\n\nこの内容で相談します。`;
     if (copyPreview) copyPreview.value = estimateText;
     if (copyStatus) copyStatus.textContent = '';
   };

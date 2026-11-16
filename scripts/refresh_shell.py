@@ -4,7 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 NAV_VERSION = '20261116logo2'
-CATALOG_VERSION = '20261116catalog7'
+CATALOG_VERSION = '20261116catalog9'
 BASE_PAGES = (
     'index.html', 'about/index.html', 'cases/index.html', 'collections/index.html',
     'products/index.html', 'sports/index.html', 'estimate/index.html', 'trophy/index.html',
@@ -61,8 +61,6 @@ def refresh():
                       lambda match: match[1] + NAV_VERSION, html)
         html = re.sub(r'((?:/script|estimate-data|product-detail)\.(?:css|js)\?v=)[\w-]+',
                       lambda match: match[1] + CATALOG_VERSION, html)
-        if name == 'estimate/index.html':
-            html = html.replace(f'/script.js?v={CATALOG_VERSION}', '/script.js?v=20261116copy1')
         if html != original:
             page.write_text(html, encoding='utf-8')
 
