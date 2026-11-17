@@ -1217,16 +1217,15 @@ window.estimateCatalog = {
     {
       "no": 32,
       "category": "バッグ",
-      "name": "薄手トートバッグ",
+      "name": "ナチュラルコットンバッグ",
       "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "写真は制作例です。サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
+      "price": 650,
+      "lot": 30,
+      "lead": "3週間",
+      "spec": "シーチング（薄手生地）",
+      "notes": "写真は制作例です。サイズはご相談ください。",
+      "provisional": false,
       "published": true,
-      "priceStatus": "temporary",
       "image": "assets/images/products/product-32-ginga-20261116.webp",
       "imageWidth": 1200,
       "imageHeight": 1600,
@@ -1245,17 +1244,41 @@ window.estimateCatalog = {
           "thumb": "assets/images/products/product-32-previous-20261116-thumb.webp",
           "width": 480,
           "height": 640,
-          "alt": "薄手トートバッグのもう一つのプリント例"
+          "alt": "ナチュラルコットンバッグのもう一つのプリント例"
         },
         {
           "image": "assets/images/products/product-32-urakawa-20261117.webp",
           "thumb": "assets/images/products/product-32-urakawa-20261117-thumb.webp",
           "width": 390,
           "height": 520,
-          "alt": "第42回ピスカリマラソンの文字とキャラクターをプリントした薄手トートバッグ"
+          "alt": "第42回ピスカリマラソンの文字とキャラクターをプリントしたナチュラルコットンバッグ"
+        },
+        {
+          "image": "assets/images/products/product-32-natural-cotton-shoulder-20261117.webp",
+          "thumb": "assets/images/products/product-32-natural-cotton-shoulder-20261117-thumb.webp",
+          "width": 364,
+          "height": 520,
+          "alt": "生成りのナチュラルコットンバッグを肩に掛けた使用例"
+        },
+        {
+          "image": "assets/images/products/product-32-natural-cotton-contents-20261117.webp",
+          "thumb": "assets/images/products/product-32-natural-cotton-contents-20261117-thumb.webp",
+          "width": 369,
+          "height": 520,
+          "alt": "ナチュラルコットンバッグにヘッドホンや小物を入れた使用例"
         }
       ],
-      "imageAlt": "黒いGiNGAロゴをプリントした生成りの薄手トートバッグ"
+      "imageAlt": "黒いGiNGAロゴをプリントした生成りのナチュラルコットンバッグ",
+      "searchAliases": [
+        "薄手トートバッグ"
+      ],
+      "unit": "枚",
+      "quantityPrices": {
+        "30": 1200,
+        "50": 900,
+        "100": 650
+      },
+      "priceNote": "価格は枚数ごとの1枚あたりの税抜単価です。"
     },
     {
       "no": 33,
