@@ -150,7 +150,8 @@ def render():
     refresh()
     catalog = load_catalog()
     items = [item for item in catalog['products'] if not item['provisional'] or item.get('published')]
-    render_page(ROOT / 'products/index.html', items, 'h2')
+    lineup = sorted(items, key=lambda item: item.get('priceStatus') in ('temporary', 'individual'))
+    render_page(ROOT / 'products/index.html', lineup, 'h2')
     render_home(items, catalog.get('homeFeatured', [15, 6, 7, 20, 41]))
     sports = [item for item in items if 'sports' in item.get('scenes', [])]
     sports_page = ROOT / 'sports/index.html'

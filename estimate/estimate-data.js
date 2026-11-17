@@ -774,7 +774,7 @@ window.estimateCatalog = {
     {
       "no": 16,
       "category": "店舗用品",
-      "name": "POP・販促ツール",
+      "name": "デザイン",
       "size": null,
       "price": null,
       "lot": null,
