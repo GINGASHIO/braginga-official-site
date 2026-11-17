@@ -121,7 +121,7 @@ def render_home(items, featured_numbers):
 def render_sports_picks(path, items):
     featured = {
         'sports-cheering': (6, 41, 20),
-        'sports-merch': (15, 7, 17),
+        'sports-merch': (15, 7, 6),
         'sports-awards': (12, 13, 27),
     }
     original = path.read_text()

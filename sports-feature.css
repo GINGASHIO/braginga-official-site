@@ -47,14 +47,14 @@
   padding-block: clamp(28px, 4.6vw, 64px);
   border-bottom: 1px solid var(--sports-line);
 }
-.sports-picks h2, .sports-section-head h2, .sports-contact h2, .sports-case h2 {
+.sports-picks h2, .sports-section-head h2, .sports-contact h2 {
   margin: 0;
   font-size: clamp(27px, 3.3vw, 48px);
   font-weight: 850;
   line-height: 1.2;
   letter-spacing: -.045em;
 }
-.sports-picks p, .sports-case p, .sports-section-head p { margin: 9px 0 0; color: var(--sports-muted); }
+.sports-picks p, .sports-section-head p { margin: 9px 0 0; color: var(--sports-muted); }
 .sports-pick-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -84,19 +84,7 @@
 .sports-pick-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .sports-links, .sports-lineup-links, .sports-contact-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
 .sports-text-link { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; font-weight: 750; text-decoration: underline; text-underline-offset: 4px; }
-.sports-case {
-  display: grid;
-  grid-template-columns: minmax(0, .7fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(16px, 5vw, 66px);
-  margin-block: clamp(30px, 6vw, 80px) 24px;
-  background: #eaeae5;
-}
-.sports-case figure { margin: 0; }
-.sports-case img { display: block; width: 100%; height: clamp(185px, 28vw, 320px); object-fit: contain; }
-.sports-case > div { padding: 22px; }
-.sports-case h3 { margin: 12px 0 0; font-size: clamp(19px, 2.1vw, 32px); line-height: 1.35; }
-.sports-lineup-links { padding-bottom: 12px; }
+.sports-lineup-links { padding-block: clamp(20px, 3vw, 36px); }
 .sports-button {
   display: inline-flex;
   align-items: center;
@@ -122,9 +110,6 @@
 @media (max-width: 760px) {
   .sports-wrap { width: calc(100% - 36px); }
   .sports-hero-inner, .sports-contact-inner { grid-template-columns: minmax(0, 1fr); }
-  .sports-case { grid-template-columns: minmax(0, .65fr) minmax(0, 1fr); gap: 0; }
-  .sports-case > div { padding: 14px 12px; }
-  .sports-case p { font-size: .86rem; }
   .sports-use-nav a { font-size: .88rem; }
   .sports-pick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

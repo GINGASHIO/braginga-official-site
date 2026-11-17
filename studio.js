@@ -26,30 +26,6 @@
     window.addEventListener('resize', syncControls);
     syncControls();
   });
-  const slides = [...document.querySelectorAll('.hero-slide')];
-  let selectionRequest = 0;
-  const imageStatus = document.createElement('p');
-  imageStatus.className = 'hero-image-status';
-  imageStatus.setAttribute('role', 'status');
-  document.querySelector('.studio-visual')?.append(imageStatus);
-  document.querySelectorAll('[data-hero-select]').forEach(button => button.addEventListener('click', async () => {
-    const request = ++selectionRequest;
-    const index = Number(button.dataset.heroSelect);
-    const target = slides[index];
-    button.setAttribute('aria-busy', 'true');
-    try {
-      if (target.dataset.src && !target.getAttribute('src')) target.src = target.dataset.src;
-      if (!target.complete || !target.naturalWidth) await target.decode();
-      if (request !== selectionRequest) return;
-      slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
-      document.querySelectorAll('[data-hero-select]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-      imageStatus.textContent = '';
-    } catch {
-      if (request === selectionRequest) imageStatus.textContent = '画像を読み込めませんでした。時間をおいて、もう一度お選びください。';
-    } finally {
-      button.removeAttribute('aria-busy');
-    }
-  }));
   const tabs = document.querySelector('.direction-tabs');
   if (tabs) {
     const buttons = [...tabs.querySelectorAll('button')];
