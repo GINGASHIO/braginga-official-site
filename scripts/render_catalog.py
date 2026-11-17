@@ -40,6 +40,11 @@ def render_cards(items, heading):
         price_label = '価格' if ask or individual else '参考上代'
         unit = escape(item.get('unit', '点'))
         lot = product_lot_html(item)
+        design_fee = item.get("designFeeNote")
+        design_fee_row = (
+            f'\n              <div><dt>備考</dt><dd>{escape(design_fee)}</dd></div>'
+            if design_fee else ''
+        )
         if item.get("quantityPrices"):
             price += "〜"
         price_unit = '' if ask or individual else f'<small>税抜 / 1{unit}</small>'
@@ -72,7 +77,7 @@ def render_cards(items, heading):
               <div><dt>サイズ</dt><dd>{escape(item['size'] or '個別確認')}</dd></div>
               <div><dt>仕様</dt><dd>{escape(item['spec'])}</dd></div>
               <div><dt>最低ロット</dt><dd>{lot}</dd></div>
-              <div><dt>納期目安</dt><dd>{escape(item['lead'])}</dd></div>
+              <div><dt>納期目安</dt><dd>{escape(item['lead'])}</dd></div>{design_fee_row}
             </dl>
             {action_html}
             <button class="product-compare-toggle" type="button" data-compare-product="{no}" aria-pressed="false" aria-label="{name}を比較に追加" hidden>＋ 比較に追加</button>

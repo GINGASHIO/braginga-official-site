@@ -869,15 +869,14 @@ window.estimateCatalog = {
       "no": 20,
       "category": "店舗用品",
       "name": "のぼり",
-      "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "写真は制作例です。サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
+      "size": "W600mm×H1800mm",
+      "price": 1800,
+      "lot": 10,
+      "lead": "2週間",
+      "spec": "フルカラー・ポンジ生地・変形無し・チチ（左側）・ヒートカット・防炎無し・適量包装",
+      "notes": "写真は制作例です。",
+      "provisional": false,
       "published": true,
-      "priceStatus": "temporary",
       "image": "assets/images/products/product-20-hokusho-20261117.webp",
       "imageWidth": 1440,
       "imageHeight": 1080,
@@ -907,7 +906,14 @@ window.estimateCatalog = {
           "height": 520,
           "alt": "のぼりの既存の制作例"
         }
-      ]
+      ],
+      "unit": "枚",
+      "quantityPrices": {
+        "10": 1800
+      },
+      "priceFrom": true,
+      "priceNote": "10枚ご注文時の目安です。正式な金額はお見積もりでご案内します。",
+      "designFeeNote": "デザイン料は別途ご相談ください。"
     },
     {
       "no": 21,
@@ -1623,15 +1629,13 @@ window.estimateCatalog = {
       "no": 50,
       "name": "うちわ",
       "category": "応援グッズ",
-      "size": null,
-      "price": null,
-      "lot": null,
-      "lead": "個別確認",
-      "spec": "個別確認",
-      "notes": "サイズ・仕様・納期はご相談ください。",
-      "provisional": true,
+      "size": "縦34.5cm × 横24.3cm",
+      "price": 60,
+      "lot": 100,
+      "lead": "3週間",
+      "spec": "一般スタンダードサイズ",
+      "provisional": false,
       "published": true,
-      "priceStatus": "temporary",
       "image": "assets/images/products/product-50-shinei-20261116.webp",
       "scenes": [
         "sports",
@@ -1645,7 +1649,15 @@ window.estimateCatalog = {
       "imageWidth": 1115,
       "imageHeight": 1152,
       "imageAlt": "真栄FCのエンブレムや協賛ロゴを入れた青と黄色のうちわ",
-      "imageCaption": "制作例"
+      "imageCaption": "制作例",
+      "unit": "枚",
+      "quantityPrices": {
+        "100": 250,
+        "300": 120,
+        "500": 90,
+        "1000": 60
+      },
+      "designFeeNote": "デザイン料は別途ご相談ください。"
     },
     {
       "no": 51,

@@ -25,8 +25,9 @@ def product_lot_html(item):
     unit = escape(item.get("unit", "点"))
     tiers = item.get("quantityPrices")
     if tiers:
+        suffix = "〜" if item.get("priceFrom") else ""
         return "<br>".join(
-            f"{int(quantity):,}{unit}：¥{price:,}" for quantity, price in tiers.items()
+            f"{int(quantity):,}{unit}：¥{price:,}{suffix}" for quantity, price in tiers.items()
         )
     return f"{positive_integer(item, 'lot')}{unit}〜"
 
@@ -146,6 +147,11 @@ def page(item, items, *, legacy=False):
     price = "ASK" if ask else "個別確認" if individual else f"¥{positive_integer(item, 'price'):,}"
     unit = escape(item.get("unit", "点"))
     lot = product_lot_html(item)
+    design_fee = item.get("designFeeNote")
+    design_fee_row = (
+        f'\n            <div><dt>備考</dt><dd>{escape(design_fee)}</dd></div>'
+        if design_fee else ''
+    )
     if item.get("quantityPrices"):
         price += "〜"
     price_unit = "" if ask or individual else f"<small>税抜 / 1{unit}</small>"
@@ -205,7 +211,7 @@ def page(item, items, *, legacy=False):
           <dl>
             <div><dt>サイズ</dt><dd>{size}</dd></div>
             <div><dt>仕様</dt><dd>{spec}</dd></div>
-            <div><dt>納期目安</dt><dd>{lead}</dd></div>
+            <div><dt>納期目安</dt><dd>{lead}</dd></div>{design_fee_row}
           </dl>
         </section>
       </div>
