@@ -1737,46 +1737,113 @@ window.estimateCatalog = {
       "no": 54,
       "category": "タオル",
       "name": "フルカラー昇華転写マフラータオル",
-      "size": "H20cm×W110cm",
-      "price": null,
-      "lot": null,
+      "size": "約21×110cm",
+      "price": 980,
+      "lot": 60,
       "unit": "枚",
-      "lead": "3週間",
-      "spec": "昇華プリント",
-      "provisional": true,
-      "published": true,
-      "priceStatus": "temporary",
+      "lead": "お見積もり時にご案内",
+      "spec": "ベーシック生地・フルカラー昇華転写プリント込み",
+      "provisional": false,
       "image": "assets/images/products/product-54-sublimation-muffler-towel.jpg",
       "imageWidth": 1733,
       "imageHeight": 945,
-      "imageCaption": "制作例",
+      "imageCaption": "プリント制作例",
       "imageAlt": "北海道十勝スカイアースの青いフルカラー昇華転写マフラータオル",
       "scenes": [
         "sports",
         "promo"
-      ]
+      ],
+      "designFeeNote": "送料・サンプル・デザイン調整は別途お見積もり。厚手・両面印刷・標準ロット未満はご相談ください。"
     },
     {
       "no": 55,
       "category": "タオル",
       "name": "フルカラー昇華転写スポーツタオル",
-      "size": "H40cm×W110cm",
-      "price": null,
-      "lot": null,
+      "size": "約40×110cm",
+      "price": 1680,
+      "lot": 30,
       "unit": "枚",
-      "lead": "3週間",
-      "spec": "昇華プリント",
-      "provisional": true,
-      "published": true,
-      "priceStatus": "temporary",
+      "lead": "お見積もり時にご案内",
+      "spec": "ベーシック生地・フルカラー昇華転写プリント込み",
+      "provisional": false,
       "image": "assets/images/products/product-55-sublimation-sports-towel.jpg",
       "imageWidth": 934,
       "imageHeight": 426,
-      "imageCaption": "制作例",
+      "imageCaption": "プリント制作例",
       "imageAlt": "仙台89ERSの選手イラストをプリントした黄色いスポーツタオル",
       "scenes": [
         "sports",
         "promo"
+      ],
+      "designFeeNote": "送料・サンプル・デザイン調整は別途お見積もり。厚手・両面印刷・標準ロット未満はご相談ください。"
+    },
+    {
+      "no": 56,
+      "category": "タオル",
+      "name": "フルカラー昇華転写フェイスタオル",
+      "size": "約34×84cm",
+      "price": 1280,
+      "lot": 60,
+      "unit": "枚",
+      "lead": "お見積もり時にご案内",
+      "spec": "ベーシック生地・フルカラー昇華転写プリント込み",
+      "provisional": false,
+      "designFeeNote": "送料・サンプル・デザイン調整は別途お見積もり。標準ロット未満はご相談ください。",
+      "scenes": [
+        "sports",
+        "promo",
+        "graduation",
+        "sports-merch"
+      ],
+      "searchAliases": [
+        "フェースタオル",
+        "チームグッズ"
+      ]
+    },
+    {
+      "no": 57,
+      "category": "タオル",
+      "name": "フルカラー昇華転写バスタオル",
+      "size": "約60×120cm",
+      "price": 2980,
+      "lot": 15,
+      "unit": "枚",
+      "lead": "お見積もり時にご案内",
+      "spec": "ベーシック生地・フルカラー昇華転写プリント込み",
+      "provisional": false,
+      "designFeeNote": "送料・サンプル・デザイン調整は別途お見積もり。標準ロット未満はご相談ください。",
+      "scenes": [
+        "sports",
+        "graduation",
+        "sports-merch",
+        "sports-awards"
+      ],
+      "searchAliases": [
+        "大判タオル",
+        "記念品"
+      ]
+    },
+    {
+      "no": 58,
+      "category": "タオル",
+      "name": "フルカラー昇華転写ミニハンカチ",
+      "size": "約25×25cm",
+      "price": 480,
+      "lot": 100,
+      "unit": "枚",
+      "lead": "お見積もり時にご案内",
+      "spec": "ベーシック生地・フルカラー昇華転写プリント込み",
+      "provisional": false,
+      "designFeeNote": "送料・サンプル・デザイン調整は別途お見積もり。標準ロット未満はご相談ください。",
+      "scenes": [
+        "sports",
+        "promo",
+        "graduation"
+      ],
+      "searchAliases": [
+        "25cmハンカチ",
+        "ミニタオル",
+        "配布用"
       ]
     }
   ]
